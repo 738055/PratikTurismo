@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep:*)",
+      "Bash(npm install:*)",
+      "Bash(npx tsc:*)",
+      "Bash(find /d/Projetos/ReservaTurismo/ReservaTurismo/app/lib -type f -name \"*.ts\" 2>/dev/null | head -20)",
+      "Bash(xargs:*)",
+      "Bash(wc:*)",
+      "Bash(./node_modules/.bin/tsc:*)",
+      "Bash(ls:*)",
+      "Bash(node:*)",
+      "Bash(where tsc:*)",
+      "Bash(npx supabase:*)",
+      "Read(//c/Users/thoma/.supabase/**)",
+      "Read(//d/Projetos/ReservaTurismo/ReservaTurismo/$APPDATA/supabase/**)",
+      "Bash(npx next:*)",
+      "Bash(npx:*)",
+      "Bash(npm exec:*)",
+      "Bash(iconv:*)",
+      "Bash(powershell:*)",
+      "Bash(npm ls:*)",
+      "Bash(cat:*)",
+      "Bash(python3:*)"
+    ]
+  }
+}
