@@ -39,22 +39,33 @@ export default function HomePage() {
         <PromoModal />
 
         {/* --- NAVEGAÇÃO POR CATEGORIA --- */}
-        <section className="border-b border-gray-100 bg-white">
+        <section className="bg-white border-b border-gray-100 py-8 md:py-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-stretch gap-2 overflow-x-auto scrollbar-hide py-3">
-              {categories.length > 0 ? categories.map((cat) => (
+            <div className="flex items-baseline justify-between mb-5">
+              <h2 className="text-lg font-bold text-secondary">O que você procura?</h2>
+              <Link href="/categories" className="text-sm font-semibold text-primary hover:text-primary-dark transition-colors">
+                Ver categorias
+              </Link>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+              {categories.length > 0 ? categories.slice(0, 5).map((cat) => (
                 <button
                   key={cat.id}
                   onClick={() => router.push(cat.slug === 'transfers' ? '/transfers/search' : `/tours/search?category=${cat.slug}`)}
-                  className="flex items-center gap-2.5 px-4 py-2.5 rounded-lg text-gray-600 hover:text-primary hover:bg-primary-50 transition-colors whitespace-nowrap group"
+                  className="flex items-center gap-3 p-4 rounded-xl border border-gray-200 bg-white hover:border-primary hover:bg-primary-50/40 transition-colors text-left group"
                 >
-                  <span className="text-gray-400 group-hover:text-primary transition-colors">
+                  <span className="w-11 h-11 rounded-lg bg-primary-50 text-primary flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
                     {getCategoryIcon(cat.slug)}
                   </span>
-                  <span className="text-sm font-semibold">{cat.label}</span>
+                  <span className="min-w-0">
+                    <span className="block text-sm font-semibold text-secondary truncate">{cat.label}</span>
+                    <span className="block text-[12px] text-gray-400 group-hover:text-primary transition-colors">Ver opções →</span>
+                  </span>
                 </button>
               )) : (
-                <div className="h-10 w-48 bg-gray-100 animate-pulse rounded" />
+                Array.from({ length: 5 }).map((_, i) => (
+                  <div key={i} className="h-[76px] bg-gray-100 animate-pulse rounded-xl" />
+                ))
               )}
             </div>
           </div>

@@ -65,9 +65,9 @@ export default function ClientLoginPage() {
   return (
     <PublicLayout>
       <div className="min-h-[70vh] flex items-center justify-center bg-gray-50 p-4">
-        <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border border-gray-100">
+        <div className="bg-white p-8 rounded-xl shadow-sm w-full max-w-md border border-gray-200">
           <div className="text-center mb-8">
-            <h1 className="text-2xl font-black text-secondary mb-2">
+            <h1 className="text-2xl font-bold text-secondary mb-2">
               {isLogin ? 'Acesse sua conta' : 'Crie sua conta'}
             </h1>
             <p className="text-gray-500 text-sm">
@@ -84,7 +84,7 @@ export default function ClientLoginPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             {!isLogin && (
               <div>
-                <label className="block text-sm font-bold text-gray-700 mb-1">Nome Completo</label>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">Nome Completo</label>
                 <div className="relative">
                   <User className="absolute left-3 top-3 text-gray-400" size={20} />
                   <input
@@ -92,7 +92,7 @@ export default function ClientLoginPage() {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary outline-none"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                     placeholder="João da Silva"
                   />
                 </div>
@@ -100,7 +100,7 @@ export default function ClientLoginPage() {
             )}
             
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-1">E-mail</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-1">E-mail</label>
               <div className="relative">
                 <Mail className="absolute left-3 top-3 text-gray-400" size={20} />
                 <input
@@ -108,14 +108,14 @@ export default function ClientLoginPage() {
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary outline-none"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                   placeholder="seu@email.com"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-1">Senha</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-1">Senha</label>
               <div className="relative">
                 <Lock className="absolute left-3 top-3 text-gray-400" size={20} />
                 <input
@@ -123,7 +123,7 @@ export default function ClientLoginPage() {
                   required
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary outline-none"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                   placeholder="••••••••"
                 />
               </div>
@@ -132,9 +132,9 @@ export default function ClientLoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 rounded-xl transition-colors flex items-center justify-center gap-2 mt-6"
+              className="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2 mt-6"
             >
-              {loading ? <Loader2 className="animate-spin" size={20} /> : (isLogin ? 'Entrar' : 'Criar Conta')}
+              {loading ? <Loader2 className="animate-spin" size={20} /> : (isLogin ? 'Entrar' : 'Criar conta')}
               {!loading && <ArrowRight size={20} />}
             </button>
           </form>

@@ -173,7 +173,7 @@ export const ProductDetailPageClient: React.FC<ProductDetailPageClientProps> = (
                 const hasHalfStar = (displayRating / 2) % 1 >= 0.5;
                 return (
                   <span className="flex items-center gap-1.5 ml-2">
-                    <span className="bg-[#11224D] text-white font-bold text-sm px-2 py-0.5 rounded-md">
+                    <span className="bg-secondary text-white font-semibold text-sm px-2 py-0.5 rounded">
                       {displayRating.toFixed(1)}
                     </span>
                     <span className="flex items-center gap-0.5">
@@ -183,9 +183,9 @@ export const ProductDetailPageClient: React.FC<ProductDetailPageClientProps> = (
                           size={14}
                           className={
                             i < fullStars
-                              ? 'text-yellow-400 fill-yellow-400'
+                              ? 'text-accent fill-accent'
                               : i === fullStars && hasHalfStar
-                              ? 'text-yellow-400 fill-yellow-400/50'
+                              ? 'text-accent fill-accent/50'
                               : 'text-gray-300'
                           }
                         />
@@ -300,7 +300,7 @@ export const ProductDetailPageClient: React.FC<ProductDetailPageClientProps> = (
                              <ul className="space-y-3">
                                 {product.features.map((feat, i) => (
                                   <li key={i} className="flex items-start gap-3 text-gray-800 font-medium">
-                                    <Check size={20} className="text-green-600 mt-0.5 shrink-0" strokeWidth={3} />
+                                    <Check size={20} className="text-success mt-0.5 shrink-0" strokeWidth={3} />
                                     <span>{feat}</span>
                                   </li>
                                 ))}
@@ -326,9 +326,9 @@ export const ProductDetailPageClient: React.FC<ProductDetailPageClientProps> = (
                {product.importantInfo && (
                  <div className="p-8 border-b border-gray-100">
                      <h2 className="text-xl font-bold mb-4 text-gray-800 flex items-center gap-2">
-                        <AlertCircle className="text-orange-500"/> Antes de participar
+                        <AlertCircle className="text-accent"/> Antes de participar
                      </h2>
-                     <div className="text-gray-600 leading-relaxed text-sm whitespace-pre-line bg-orange-50/50 p-4 rounded-xl border border-orange-100">
+                     <div className="text-gray-600 leading-relaxed text-sm whitespace-pre-line bg-accent-50 p-4 rounded-xl border border-accent-100">
                         {product.importantInfo}
                      </div>
                  </div>
@@ -337,7 +337,7 @@ export const ProductDetailPageClient: React.FC<ProductDetailPageClientProps> = (
                {product.cancellationPolicy && (
                  <div className="p-8">
                      <h2 className="text-xl font-bold mb-4 text-gray-800 flex items-center gap-2">
-                        <ShieldCheck className="text-green-600"/> Política de cancelamento
+                        <ShieldCheck className="text-success"/> Política de cancelamento
                      </h2>
                      <div className="text-gray-600 leading-relaxed text-sm whitespace-pre-line">
                         {product.cancellationPolicy}
@@ -380,7 +380,7 @@ export const ProductDetailPageClient: React.FC<ProductDetailPageClientProps> = (
                         <p className="text-[10px] font-bold uppercase tracking-widest opacity-80 mb-1">
                            {product.compareAtPrice ? 'Por apenas' : 'A partir de'}
                         </p>
-                        <div className="text-3xl font-black">
+                        <div className="text-3xl font-bold">
                           {formatCurrency(product.price)}
                         </div>
                       </div>
@@ -532,18 +532,18 @@ export const ProductDetailPageClient: React.FC<ProductDetailPageClientProps> = (
 
                       <div className="mt-6 border-t pt-4">
                          <div className="flex justify-between items-center mb-4">
-                            <span className="font-bold text-gray-700">{t('total')}</span>
+                            <span className="font-semibold text-gray-700">{t('total')}</span>
                             <div className="text-right">
-                              <span className="block text-3xl font-black text-primary">{formatCurrency(calculateTotal())}</span>
-                              <span className="text-[10px] text-gray-500 font-medium bg-gray-100 px-2 py-0.5 rounded">Em até 6x no cartão</span>
+                              <span className="block text-2xl font-bold text-secondary">{formatCurrency(calculateTotal())}</span>
+                              <span className="text-[11px] text-gray-500">ou em até 6x no cartão</span>
                             </div>
                          </div>
-                         
+
                          <div className="flex gap-2">
-                           <button onClick={handleAddToCart} className="flex-1 bg-white border-2 border-primary-600 text-primary-600 font-bold py-3 rounded-lg hover:bg-primary-50 transition-all flex items-center justify-center gap-2">
-                              <ShoppingBag size={20}/> Adicionar
+                           <button onClick={handleAddToCart} className="flex-1 bg-white border border-primary text-primary font-semibold py-3 rounded-lg hover:bg-primary-50 transition-colors flex items-center justify-center gap-2">
+                              <ShoppingBag size={18}/> Adicionar
                            </button>
-                           <button onClick={handleBuyNow} className="flex-1 bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 rounded-lg shadow-lg transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 uppercase tracking-wide">
+                           <button onClick={handleBuyNow} className="flex-1 bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2">
                               Comprar
                            </button>
                          </div>

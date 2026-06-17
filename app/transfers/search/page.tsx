@@ -138,10 +138,10 @@ export default function TransferSearchPage() {
   return (
     <PublicLayout>
       {/* Cabeçalho de Busca */}
-      <div className="bg-[#1e3a8a] pt-8 pb-32 text-white relative shadow-lg">
-        <div className="container mx-auto px-4">
-          <h1 className="text-3xl font-bold mb-6 flex items-center gap-3">
-            <Plane size={32} /> Translados e Receptivos
+      <div className="bg-secondary pt-8 pb-32 text-white relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
+            <Plane size={28} /> Transfers e receptivo
           </h1>
 
           <form onSubmit={handleSearch} className="bg-white p-4 rounded-xl text-gray-800 shadow-xl space-y-4">
@@ -208,7 +208,7 @@ export default function TransferSearchPage() {
 
               <button
                 type="submit"
-                className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-3 rounded-xl shadow-lg flex items-center justify-center gap-2 self-end"
+                className="bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-3 rounded-lg flex items-center justify-center gap-2 self-end"
               >
                 <Search size={20} /> Buscar
               </button>
@@ -306,7 +306,7 @@ export default function TransferSearchPage() {
                 return (
                   <div
                     key={transfer.id}
-                    className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all flex flex-col md:flex-row group"
+                    className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-primary/40 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex flex-col md:flex-row group"
                   >
                     {/* Imagem e Badges */}
                     <div className="relative w-full md:w-64 bg-gray-50 flex items-center justify-center border-b md:border-b-0 md:border-r border-gray-100 shrink-0 min-h-[140px]">
@@ -373,7 +373,7 @@ export default function TransferSearchPage() {
                             </div>
                           )}
                           <div className="flex items-center gap-1 bg-gray-50 px-2 py-1 rounded">
-                            <ShieldCheck size={14} className="text-green-600" /> Seguro incluso
+                            <ShieldCheck size={14} className="text-success" /> Seguro incluso
                           </div>
                         </div>
 
@@ -383,7 +383,7 @@ export default function TransferSearchPage() {
                             {transfer.features.map((feat, i) => (
                               <span
                                 key={i}
-                                className="text-xs text-green-700 bg-green-50 px-2 py-0.5 rounded flex items-center gap-1"
+                                className="text-xs text-primary-800 bg-primary-50 border border-primary-100 px-2 py-0.5 rounded flex items-center gap-1"
                               >
                                 <Check size={12} /> {feat}
                               </span>
@@ -393,7 +393,7 @@ export default function TransferSearchPage() {
                       </div>
 
                       {transfer.is_free_cancellation && (
-                        <p className="text-xs text-[#00a650] font-medium mt-3 flex items-center gap-1">
+                        <p className="text-xs text-success font-medium mt-3 flex items-center gap-1">
                           <Check size={12} strokeWidth={3} /> Cancelamento gratuito
                         </p>
                       )}
@@ -414,8 +414,8 @@ export default function TransferSearchPage() {
                       )}
 
                       <div className="flex items-baseline gap-1 mb-1">
-                        <span className="text-sm font-bold text-gray-500">R$</span>
-                        <span className="text-3xl font-black text-gray-900">{finalPrice.toFixed(0)}</span>
+                        <span className="text-sm font-semibold text-gray-500">R$</span>
+                        <span className="text-2xl font-bold text-secondary">{finalPrice.toFixed(0)}</span>
                       </div>
 
                       <span className="text-[10px] text-gray-500 mb-4">
@@ -424,7 +424,7 @@ export default function TransferSearchPage() {
 
                       <button
                         onClick={() => openBookingModal(transfer)}
-                        className="w-full bg-[#270570] hover:bg-[#1f0459] text-white font-bold py-3 rounded-xl shadow-md transition-transform hover:-translate-y-0.5 text-sm"
+                        className="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-2.5 rounded-lg transition-colors text-sm"
                       >
                         Selecionar
                       </button>
@@ -439,10 +439,10 @@ export default function TransferSearchPage() {
       {/* Modal de Reserva */}
       {isModalOpen && selectedTransfer && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden">
-            <div className="bg-[#1e3a8a] p-4 flex justify-between text-white">
+          <div className="bg-white rounded-xl shadow-2xl max-w-lg w-full overflow-hidden">
+            <div className="bg-secondary p-4 flex justify-between text-white">
               <h3 className="font-bold flex items-center gap-2">
-                <Plane size={20} /> Dados do Voo
+                <Plane size={20} /> Dados do voo
               </h3>
               <button onClick={() => setIsModalOpen(false)}><X size={20} /></button>
             </div>
@@ -493,9 +493,9 @@ export default function TransferSearchPage() {
 
               <button
                 onClick={confirmBooking}
-                className="w-full mt-2 py-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl flex items-center justify-center gap-2"
+                className="w-full mt-2 py-3 bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg flex items-center justify-center gap-2"
               >
-                Confirmar e ir para o Carrinho <Check size={18} />
+                Confirmar e ir para o carrinho <Check size={18} />
               </button>
             </div>
           </div>

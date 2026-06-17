@@ -138,7 +138,7 @@ export default function AffiliateDashboardPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="text-xl font-black text-primary-600 tracking-tighter">
-              RESERVA<span className="text-gray-800">TURISMO</span>
+              Pratik<span className="text-gray-800">Turismo</span>
             </span>
             <span className="text-xs bg-primary-100 text-primary-700 px-2 py-1 rounded-full font-bold">PARCEIRO</span>
           </div>

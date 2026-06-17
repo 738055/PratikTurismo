@@ -13,53 +13,55 @@ export default function BlogListPage() {
 
   return (
     <PublicLayout>
-      {/* SEO Header Structure */}
-      <div className="bg-gray-50 py-12 border-b border-gray-200">
-         <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl font-black text-gray-800 mb-4">Dicas da Fronteira</h1>
-            <p className="text-xl text-gray-500 max-w-2xl mx-auto">
+      {/* Cabeçalho */}
+      <div className="bg-gray-50 py-12 md:py-16 border-b border-gray-100">
+         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p className="text-primary-700 font-semibold text-sm mb-1.5">Blog</p>
+            <h1 className="text-3xl md:text-4xl font-bold text-secondary mb-3">Dicas da fronteira</h1>
+            <p className="text-gray-500 max-w-2xl">
                As melhores dicas de compras, gastronomia e passeios em Foz do Iguaçu, Paraguai e Argentina.
             </p>
          </div>
       </div>
 
-      <div className="container mx-auto px-4 py-12">
-         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {activePosts.map(post => (
-               <article key={post.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-all group flex flex-col h-full">
-                  <div className="h-56 overflow-hidden relative">
-                     <img 
-                        src={post.imageUrl} 
-                        alt={post.title} 
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+               <article key={post.id} className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-primary/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-200 group flex flex-col h-full">
+                  <div className="h-48 overflow-hidden relative">
+                     {/* eslint-disable-next-line @next/next/no-img-element */}
+                     <img
+                        src={post.imageUrl}
+                        alt={post.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                      />
-                     <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-gray-800 uppercase tracking-wide">
+                     <div className="absolute top-3 left-3 bg-white/95 px-2.5 py-1 rounded text-xs font-semibold text-secondary">
                         Dicas
                      </div>
                   </div>
-                  
-                  <div className="p-6 flex-1 flex flex-col">
-                     <div className="flex items-center gap-4 text-xs text-gray-400 mb-4">
+
+                  <div className="p-5 flex-1 flex flex-col">
+                     <div className="flex items-center gap-4 text-xs text-gray-400 mb-3">
                         <span className="flex items-center gap-1"><Calendar size={12}/> {post.date}</span>
                         <span className="flex items-center gap-1"><User size={12}/> {post.author}</span>
                      </div>
-                     
+
                      <Link href={`/blog/${post.slug}`}>
-                        <h2 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-primary transition-colors leading-tight">
+                        <h2 className="text-lg font-bold text-secondary mb-2 group-hover:text-primary transition-colors leading-snug">
                            {post.title}
                         </h2>
                      </Link>
-                     
-                     <p className="text-gray-600 text-sm mb-6 line-clamp-3 leading-relaxed">
+
+                     <p className="text-gray-600 text-sm mb-5 line-clamp-3 leading-relaxed">
                         {post.excerpt}
                      </p>
-                     
+
                      <div className="mt-auto pt-4 border-t border-gray-100">
-                        <Link 
-                           href={`/blog/${post.slug}`} 
-                           className="text-primary font-bold text-sm flex items-center gap-2 hover:gap-3 transition-all"
+                        <Link
+                           href={`/blog/${post.slug}`}
+                           className="text-primary font-semibold text-sm inline-flex items-center gap-1.5"
                         >
-                           Ler matéria completa <ArrowRight size={16}/>
+                           Ler matéria completa <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform"/>
                         </Link>
                      </div>
                   </div>

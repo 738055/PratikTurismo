@@ -173,11 +173,11 @@ export default function CheckoutPage() {
   if (cartItems.length === 0 && !clientSecret) {
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
-        <div className="bg-white p-8 rounded-xl shadow-sm text-center max-w-md">
-           <h2 className="text-xl font-bold text-gray-800 mb-2">Seu carrinho está vazio</h2>
+        <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 text-center max-w-md">
+           <h2 className="text-xl font-bold text-secondary mb-2">Seu carrinho está vazio</h2>
            <p className="text-gray-500 mb-6">Escolha alguns passeios incríveis para continuar.</p>
-           <button onClick={() => router.push('/')} className="bg-primary text-white font-bold py-2 px-6 rounded-lg w-full hover:bg-primary-dark">
-              Voltar para a Loja
+           <button onClick={() => router.push('/')} className="bg-primary text-white font-semibold py-2.5 px-6 rounded-lg w-full hover:bg-primary-dark transition-colors">
+              Voltar aos passeios
            </button>
         </div>
       </div>
@@ -187,8 +187,8 @@ export default function CheckoutPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="container mx-auto px-4 max-w-6xl">
-        <h1 className="text-3xl font-bold text-gray-800 mb-8 flex items-center gap-2">
-           <Lock className="text-green-600" size={28}/> Finalizar Reserva
+        <h1 className="text-2xl md:text-3xl font-bold text-secondary mb-8 flex items-center gap-2">
+           <Lock className="text-success" size={26}/> Finalizar reserva
         </h1>
 
         <div className="flex flex-col lg:flex-row gap-8">
@@ -203,23 +203,23 @@ export default function CheckoutPage() {
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="md:col-span-2">
-                            <label className="block text-sm font-bold text-gray-700 mb-1">Nome Completo</label>
+                            <label className="block text-sm font-semibold text-gray-700 mb-1">Nome Completo</label>
                             <input type="text" className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-primary outline-none" placeholder="Como no documento" value={customer.name} onChange={e => setCustomer({...customer, name: e.target.value})} />
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-gray-700 mb-1">E-mail</label>
+                            <label className="block text-sm font-semibold text-gray-700 mb-1">E-mail</label>
                             <input type="email" className="w-full border border-gray-300 rounded-lg p-3" placeholder="Para envio do voucher" value={customer.email} onChange={e => setCustomer({...customer, email: e.target.value})} />
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-gray-700 mb-1">Confirmar E-mail</label>
+                            <label className="block text-sm font-semibold text-gray-700 mb-1">Confirmar E-mail</label>
                             <input type="email" className={`w-full border rounded-lg p-3 ${customer.confirmEmail && customer.email !== customer.confirmEmail ? 'border-red-500' : 'border-gray-300'}`} placeholder="Digite novamente" value={customer.confirmEmail} onChange={e => setCustomer({...customer, confirmEmail: e.target.value})} />
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-gray-700 mb-1">Celular / WhatsApp</label>
+                            <label className="block text-sm font-semibold text-gray-700 mb-1">Celular / WhatsApp</label>
                             <input type="tel" className="w-full border border-gray-300 rounded-lg p-3" placeholder="(00) 00000-0000" value={customer.phone} onChange={e => setCustomer({...customer, phone: e.target.value})} />
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-gray-700 mb-1">CPF ou Passaporte</label>
+                            <label className="block text-sm font-semibold text-gray-700 mb-1">CPF ou Passaporte</label>
                             <input type="text" className="w-full border border-gray-300 rounded-lg p-3" placeholder="Documento do titular" value={customer.document} onChange={e => setCustomer({...customer, document: e.target.value})} />
                         </div>
                       </div>
@@ -240,10 +240,10 @@ export default function CheckoutPage() {
                         </label>
                         <label className={`flex items-center gap-4 p-4 border rounded-xl cursor-pointer transition-all ${paymentMethod === 'pix' ? 'border-primary bg-primary-50' : 'border-gray-200 hover:bg-gray-50'}`}>
                             <input type="radio" name="payment" value="pix" checked={paymentMethod === 'pix'} onChange={() => setPaymentMethod('pix')} className="w-5 h-5 text-primary" />
-                            <div className="font-bold text-green-600">PIX</div>
+                            <div className="font-bold text-success">PIX</div>
                             <div>
-                              <span className="block font-bold text-gray-800">Pagamento Instantâneo</span>
-                              <span className="text-xs text-green-600 font-bold">-5% de desconto extra</span>
+                              <span className="block font-semibold text-gray-800">Pagamento instantâneo</span>
+                              <span className="text-xs text-success font-semibold">-5% de desconto extra</span>
                             </div>
                         </label>
                       </div>
@@ -252,7 +252,7 @@ export default function CheckoutPage() {
              ) : (
                 <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
                     <div className="flex items-center gap-3 mb-6 border-b pb-4">
-                        <div className="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center font-bold">
+                        <div className="w-8 h-8 rounded-full bg-success text-white flex items-center justify-center font-bold">
                             <Lock size={16}/>
                         </div>
                         <h2 className="text-xl font-bold text-gray-800">Insira os Dados de Pagamento</h2>
@@ -301,7 +301,7 @@ export default function CheckoutPage() {
                          <label className="text-xs font-bold text-gray-500 uppercase mb-1 flex items-center gap-1"><Tag size={12}/> Cupom de Desconto</label>
                          <div className="flex gap-2">
                             <input type="text" className={`flex-1 border rounded-lg p-2 text-sm uppercase font-mono ${couponError ? 'border-red-300 bg-red-50 focus:ring-red-200' : 'border-gray-300 focus:ring-primary'}`} placeholder="CÓDIGO" value={couponCode} onChange={e => setCouponCode(e.target.value)} />
-                            <button onClick={handleApplyCoupon} disabled={!couponCode || verifyingCoupon} className="bg-gray-800 text-white px-3 py-2 rounded-lg text-xs font-bold hover:bg-black disabled:opacity-50 transition-colors">{verifyingCoupon ? <Loader2 className="animate-spin" size={14}/> : 'Aplicar'}</button>
+                            <button onClick={handleApplyCoupon} disabled={!couponCode || verifyingCoupon} className="bg-secondary text-white px-3 py-2 rounded-lg text-xs font-semibold hover:bg-secondary-light disabled:opacity-50 transition-colors">{verifyingCoupon ? <Loader2 className="animate-spin" size={14}/> : 'Aplicar'}</button>
                          </div>
                          {couponError && <p className="text-xs text-red-500 mt-1 font-medium">{couponError}</p>}
                       </div>
@@ -322,7 +322,7 @@ export default function CheckoutPage() {
                    <div className="flex justify-between text-gray-600 text-sm"><span>Subtotal</span><span>{formatCurrency(cartTotal)}</span></div>
                    {appliedCoupon && (<div className="flex justify-between text-green-600 text-sm font-bold bg-green-50/50 p-1 rounded"><span>Desconto</span><span>- {formatCurrency(discountAmount)}</span></div>)}
                    {paymentMethod === 'pix' && (<div className="flex justify-between text-primary-600 text-sm font-medium"><span>Desconto PIX (5%)</span><span>- {formatCurrency(pixDiscount)}</span></div>)}
-                   <div className="flex justify-between text-xl font-black text-gray-900 pt-4 border-t border-gray-100"><span>Total</span><span>{formatCurrency(finalTotal)}</span></div>
+                   <div className="flex justify-between text-xl font-bold text-secondary pt-4 border-t border-gray-100"><span>Total</span><span>{formatCurrency(finalTotal)}</span></div>
                 </div>
 
                 <button

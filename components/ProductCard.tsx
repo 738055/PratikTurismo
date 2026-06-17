@@ -187,7 +187,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         className="w-full bg-primary hover:bg-primary-dark text-white text-sm font-semibold py-2.5 px-5 rounded-lg transition-colors flex items-center justify-center gap-2"
       >
         <span>{isTransfer ? 'Reservar' : 'Ver detalhes'}</span>
-        <ArrowRight size={16} />
+        <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
       </button>
     </div>
   );
@@ -199,7 +199,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     return (
       <div
         onClick={handleClick}
-        className="w-[280px] md:w-[300px] h-full flex flex-col bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-200 group cursor-pointer overflow-hidden"
+        className="w-[280px] md:w-[300px] h-full flex flex-col bg-white rounded-xl border border-gray-200 hover:border-primary/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-200 group cursor-pointer overflow-hidden"
       >
         {/* Imagem */}
         <div className="relative aspect-[3/2] w-full overflow-hidden bg-gray-100 shrink-0">
@@ -250,7 +250,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <div
       onClick={handleClick}
-      className="flex flex-col sm:flex-row bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all duration-200 group cursor-pointer"
+      className="flex flex-col sm:flex-row bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-primary/40 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 group cursor-pointer"
     >
       {/* Imagem */}
       <div className="relative w-full sm:w-[280px] h-56 sm:h-auto shrink-0 overflow-hidden bg-gray-100">
