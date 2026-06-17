@@ -3,21 +3,22 @@
 import React from 'react';
 import Link from 'next/link';
 import { Instagram, Facebook, Mail, MapPin, Phone, ShieldCheck, CreditCard, ChevronRight } from 'lucide-react';
+import { BrandLogo } from '@/components/Frontend/BrandLogo';
 
 export const PratikFooter = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-secondary text-gray-400 pt-20 pb-10">
+    <footer className="relative bg-secondary text-gray-400 pt-20 pb-10">
+      {/* Faixa-acento da marca (colinas + sol) */}
+      <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary via-sun to-accent" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
           {/* Brand Column */}
           <div className="md:col-span-4">
-            <Link href="/" className="flex items-center gap-1 mb-6 group">
-              <span className="text-3xl font-black tracking-tighter text-white">
-                Pratik<span className="text-accent">.</span>
-              </span>
-            </Link>
+            <div className="mb-6">
+              <BrandLogo height={44} onDark />
+            </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-8 max-w-sm">
               Sua agência de turismo local em Foz do Iguaçu. Oferecemos as melhores experiências, passeios e transfers com o conforto e a segurança que você merece.
             </p>

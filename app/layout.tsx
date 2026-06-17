@@ -12,8 +12,8 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://reservaturismo.com
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'Reserva Turismo | Passeios e Transfers em Foz do Iguaçu',
-    template: '%s | Reserva Turismo',
+    default: 'Pratik Turismo | Passeios e Transfers em Foz do Iguaçu',
+    template: '%s | Pratik Turismo',
   },
   description:
     'A melhor agência de turismo em Foz do Iguaçu. Reserve passeios nas Cataratas, City Tour, transfers de aeroporto e muito mais. Cancele grátis, parcele em até 10x.',

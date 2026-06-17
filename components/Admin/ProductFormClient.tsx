@@ -213,7 +213,7 @@ export default function ProductFormClient({ initialData, mode }: ProductFormClie
       </div>
 
       <div className="flex h-2 bg-gray-100">
-         <div className="bg-blue-600 transition-all duration-300" style={{ width: `${(currentStep / totalSteps) * 100}%` }}></div>
+         <div className="bg-primary-600 transition-all duration-300" style={{ width: `${(currentStep / totalSteps) * 100}%` }}></div>
       </div>
 
       <div className="p-8 min-h-[400px]">
@@ -291,14 +291,14 @@ export default function ProductFormClient({ initialData, mode }: ProductFormClie
               </div>
 
               <div className="col-span-2">
-                <label className="block text-sm font-bold text-gray-700 mb-1 flex items-center gap-1"><Tag size={16} className="text-blue-600"/> Tags (Selos no Card)</label>
+                <label className="block text-sm font-bold text-gray-700 mb-1 flex items-center gap-1"><Tag size={16} className="text-primary-600"/> Tags (Selos no Card)</label>
                 <div className="flex gap-2 mb-2">
                   <input type="text" className="flex-1 border p-2 rounded-lg text-sm" placeholder="Ex: Recepção com Placa..." value={tempTag} onChange={e => setTempTag(e.target.value)} onKeyDown={e => e.key === 'Enter' && addArrayItem('tags', tempTag, setTempTag)} />
                   <button onClick={() => addArrayItem('tags', tempTag, setTempTag)} className="bg-gray-100 px-3 rounded-lg hover:bg-gray-200">Add</button>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {formData.tags?.map((tag, idx) => (
-                    <span key={idx} className="bg-blue-50 text-blue-700 border border-blue-200 px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                    <span key={idx} className="bg-primary-50 text-primary-700 border border-primary-200 px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
                       {tag} <X size={12} className="cursor-pointer" onClick={() => removeArrayItem('tags', idx)}/>
                     </span>
                   ))}
@@ -378,8 +378,8 @@ export default function ProductFormClient({ initialData, mode }: ProductFormClie
 
              {/* CONFIGURAÇÕES GERAIS DE VEÍCULO (Aparece para Todos os Transfers) */}
              {formData.type === 'transfer' && (
-                <div className="bg-blue-50 border border-blue-100 p-6 rounded-xl mb-6">
-                   <h3 className="font-bold text-blue-900 mb-4 flex items-center gap-2">Detalhes do Veículo e Cobrança</h3>
+                <div className="bg-primary-50 border border-primary-100 p-6 rounded-xl mb-6">
+                   <h3 className="font-bold text-primary-900 mb-4 flex items-center gap-2">Detalhes do Veículo e Cobrança</h3>
                    
                    <div className="grid grid-cols-2 gap-4 mb-4">
                       <div>
@@ -508,10 +508,10 @@ export default function ProductFormClient({ initialData, mode }: ProductFormClie
                 </div>
 
                 {/* ── PRIVATIVO (Por Veículo) ── */}
-                <div className="border-2 border-blue-200 rounded-xl overflow-hidden">
-                  <div className="bg-blue-50 px-4 py-3 flex items-center gap-2 border-b border-blue-200">
-                    <Car size={18} className="text-blue-600" />
-                    <span className="font-bold text-blue-800 text-sm">Privativo — Por Veículo</span>
+                <div className="border-2 border-primary-200 rounded-xl overflow-hidden">
+                  <div className="bg-primary-50 px-4 py-3 flex items-center gap-2 border-b border-primary-200">
+                    <Car size={18} className="text-primary-600" />
+                    <span className="font-bold text-primary-800 text-sm">Privativo — Por Veículo</span>
                   </div>
                   <div className="p-4 space-y-3">
                     <div className="space-y-2">
@@ -533,14 +533,14 @@ export default function ProductFormClient({ initialData, mode }: ProductFormClie
                           setFormData(prev => ({ ...prev, pricingTiers: [...(prev.pricingTiers || []), { ...tempTierPrivate, mode: 'per_vehicle' as const, id: Date.now().toString() }] }));
                           setTempTierPrivate({ name: '', price: 0, costPrice: 0 });
                         }}
-                        className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-blue-700 text-sm flex items-center justify-center gap-1"
+                        className="w-full bg-primary-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-primary-700 text-sm flex items-center justify-center gap-1"
                       >
                         <Plus size={14} /> Adicionar Veículo
                       </button>
                     </div>
                     <div className="space-y-2 mt-3">
                       {(formData.pricingTiers || []).filter(t => t.mode === 'per_vehicle').map((tier) => (
-                        <div key={tier.id} className="flex justify-between items-center bg-blue-50/50 border border-blue-100 p-2.5 rounded-lg">
+                        <div key={tier.id} className="flex justify-between items-center bg-primary-50/50 border border-primary-100 p-2.5 rounded-lg">
                           <div>
                             <span className="font-bold text-gray-800 text-sm">{tier.name}</span>
                             <div className="text-xs text-gray-500 flex gap-3 mt-0.5">
@@ -600,7 +600,7 @@ export default function ProductFormClient({ initialData, mode }: ProductFormClie
          </button>
 
          {currentStep < totalSteps ? (
-            <button onClick={() => setCurrentStep(prev => prev + 1)} className="bg-blue-600 text-white px-8 py-2 rounded-lg font-bold flex items-center gap-2 hover:bg-blue-700">
+            <button onClick={() => setCurrentStep(prev => prev + 1)} className="bg-primary-600 text-white px-8 py-2 rounded-lg font-bold flex items-center gap-2 hover:bg-primary-700">
               Próximo <ArrowRight size={18}/>
             </button>
          ) : (

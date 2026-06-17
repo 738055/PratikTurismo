@@ -55,7 +55,7 @@ const SERVICE_TYPE_LABELS: Record<string, string> = {
 };
 
 const SERVICE_TYPE_COLORS: Record<string, string> = {
-  transfer_in: 'bg-blue-100 text-blue-800',
+  transfer_in: 'bg-primary-100 text-primary-800',
   transfer_out: 'bg-orange-100 text-orange-800',
   tour: 'bg-emerald-100 text-emerald-800',
   excursion: 'bg-purple-100 text-purple-800',
@@ -624,7 +624,7 @@ export default function ServiceOrderWizard({ initialData, mode, docType }: Servi
 
       {/* Progress Bar */}
       <div className="h-2 bg-gray-100">
-        <div className="h-full bg-sky-500 transition-all duration-300" style={{ width: `${(step / TOTAL_STEPS) * 100}%` }} />
+        <div className="h-full bg-primary-500 transition-all duration-300" style={{ width: `${(step / TOTAL_STEPS) * 100}%` }} />
       </div>
 
       {/* Step Labels */}
@@ -635,7 +635,7 @@ export default function ServiceOrderWizard({ initialData, mode, docType }: Servi
             type="button"
             onClick={() => { if (i + 1 < step) setStep(i + 1); }}
             className={`flex-1 min-w-[100px] py-3 text-center text-xs font-bold uppercase tracking-wide transition-colors ${
-              step === i + 1 ? 'text-sky-600 border-b-2 border-sky-500' : step > i + 1 ? 'text-gray-400 cursor-pointer hover:text-sky-400' : 'text-gray-300'
+              step === i + 1 ? 'text-primary-600 border-b-2 border-primary-500' : step > i + 1 ? 'text-gray-400 cursor-pointer hover:text-primary-400' : 'text-gray-300'
             }`}
           >
             {step > i + 1 ? <Check size={14} className="inline mr-1" /> : null}{label}
@@ -771,7 +771,7 @@ export default function ServiceOrderWizard({ initialData, mode, docType }: Servi
                   <button
                     type="button"
                     onClick={cloneLastPassengerData}
-                    className="text-sm font-medium text-sky-600 hover:text-sky-800 flex items-center gap-1"
+                    className="text-sm font-medium text-primary-600 hover:text-primary-800 flex items-center gap-1"
                   >
                     <Copy size={14} /> Clonar Nacionalidade/Doc
                   </button>
@@ -849,7 +849,7 @@ export default function ServiceOrderWizard({ initialData, mode, docType }: Servi
                 <button
                   type="button"
                   onClick={addPassenger}
-                  className="bg-sky-600 text-white px-5 py-2 rounded-lg text-sm font-bold flex items-center gap-1 hover:bg-sky-700"
+                  className="bg-primary-600 text-white px-5 py-2 rounded-lg text-sm font-bold flex items-center gap-1 hover:bg-primary-700"
                 >
                   <Plus size={14} /> Adicionar Passageiro
                 </button>
@@ -964,9 +964,9 @@ export default function ServiceOrderWizard({ initialData, mode, docType }: Servi
 
                 {/* Transfer-specific fields */}
                 {isTransfer(tempItem.service_type) && (
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 bg-blue-50/50 p-3 rounded-lg border border-blue-100">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 bg-primary-50/50 p-3 rounded-lg border border-primary-100">
                     <div>
-                      <label className="block text-xs font-bold text-blue-700 mb-1 flex items-center gap-1"><Plane size={12} /> Nº Voo</label>
+                      <label className="block text-xs font-bold text-primary-700 mb-1 flex items-center gap-1"><Plane size={12} /> Nº Voo</label>
                       <input
                         value={tempItem.flight_number || ''}
                         onChange={e => setTempItem({ ...tempItem, flight_number: e.target.value })}
@@ -975,7 +975,7 @@ export default function ServiceOrderWizard({ initialData, mode, docType }: Servi
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-bold text-blue-700 mb-1">Horário do Voo</label>
+                      <label className="block text-xs font-bold text-primary-700 mb-1">Horário do Voo</label>
                       <input
                         type="time"
                         value={tempItem.flight_time || ''}
@@ -984,7 +984,7 @@ export default function ServiceOrderWizard({ initialData, mode, docType }: Servi
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-bold text-blue-700 mb-1">Localizador Aéreo</label>
+                      <label className="block text-xs font-bold text-primary-700 mb-1">Localizador Aéreo</label>
                       <input
                         value={tempItem.airline_locator || ''}
                         onChange={e => setTempItem({ ...tempItem, airline_locator: e.target.value })}
@@ -1019,7 +1019,7 @@ export default function ServiceOrderWizard({ initialData, mode, docType }: Servi
                 <button
                   type="button"
                   onClick={addItem}
-                  className="bg-sky-600 text-white px-5 py-2 rounded-lg text-sm font-bold flex items-center gap-1 hover:bg-sky-700"
+                  className="bg-primary-600 text-white px-5 py-2 rounded-lg text-sm font-bold flex items-center gap-1 hover:bg-primary-700"
                 >
                   <Plus size={14} /> Adicionar Serviço
                 </button>
@@ -1085,14 +1085,14 @@ export default function ServiceOrderWizard({ initialData, mode, docType }: Servi
                     const g = guides.find(g => g.id === watchedData.assigned_guide_id);
                     if (!g) return null;
                     return (
-                      <div className="mt-4 p-3 bg-white rounded-lg border border-sky-200">
-                        <p className="font-bold text-sky-700">{g.name}</p>
+                      <div className="mt-4 p-3 bg-white rounded-lg border border-primary-200">
+                        <p className="font-bold text-primary-700">{g.name}</p>
                         {g.phone && <p className="text-sm text-gray-600">WhatsApp: {g.phone}</p>}
                         {g.document_number && <p className="text-sm text-gray-600">Doc: {g.document_number}</p>}
                         {g.languages_spoken?.length > 0 && (
                           <div className="flex flex-wrap gap-1 mt-2">
                             {g.languages_spoken.map((l, i) => (
-                              <span key={i} className="text-xs bg-sky-50 text-sky-700 px-2 py-0.5 rounded">{l}</span>
+                              <span key={i} className="text-xs bg-primary-50 text-primary-700 px-2 py-0.5 rounded">{l}</span>
                             ))}
                           </div>
                         )}
@@ -1179,9 +1179,9 @@ export default function ServiceOrderWizard({ initialData, mode, docType }: Servi
               {/* OS: OS + Periodo/Hotel + Pax titular */}
               {docType === 'os' && (
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="bg-sky-50 border border-sky-200 rounded-xl p-4">
-                    <p className="text-xs font-bold text-sky-600 uppercase mb-1">OS</p>
-                    <p className="text-xl font-black text-sky-800">{watchedData.os_number || '-'}</p>
+                  <div className="bg-primary-50 border border-primary-200 rounded-xl p-4">
+                    <p className="text-xs font-bold text-primary-600 uppercase mb-1">OS</p>
+                    <p className="text-xl font-black text-primary-800">{watchedData.os_number || '-'}</p>
                     <p className="text-sm text-gray-600 mt-1">{watchedData.agency_name || 'Sem agencia'}</p>
                     {watchedData.reference_code && <p className="text-xs text-gray-500">Ref: {watchedData.reference_code}</p>}
                   </div>
@@ -1359,22 +1359,22 @@ export default function ServiceOrderWizard({ initialData, mode, docType }: Servi
                 <div className="border-t border-gray-200 pt-5">
                   <h3 className="font-bold text-gray-700 mb-3 text-sm uppercase">Gerar {docConfig.title}</h3>
                   <div className={`border-2 rounded-xl p-4 ${
-                    docType === 'os' ? 'border-sky-200 bg-sky-50' :
+                    docType === 'os' ? 'border-primary-200 bg-primary-50' :
                     docType === 'agenda' ? 'border-teal-200 bg-teal-50' :
                     'border-amber-200 bg-amber-50'
                   }`}>
                     <div className="flex items-center gap-2 mb-4">
                       <div className={`text-white rounded-lg p-2 ${
-                        docType === 'os' ? 'bg-sky-600' : docType === 'agenda' ? 'bg-teal-600' : 'bg-amber-600'
+                        docType === 'os' ? 'bg-primary-600' : docType === 'agenda' ? 'bg-teal-600' : 'bg-amber-600'
                       }`}>
                         {docType === 'os' ? <FileText size={18} /> : docType === 'agenda' ? <ClipboardList size={18} /> : <Users size={18} />}
                       </div>
                       <div>
                         <h4 className={`font-bold text-sm ${
-                          docType === 'os' ? 'text-sky-900' : docType === 'agenda' ? 'text-teal-900' : 'text-amber-900'
+                          docType === 'os' ? 'text-primary-900' : docType === 'agenda' ? 'text-teal-900' : 'text-amber-900'
                         }`}>{docConfig.title}</h4>
                         <p className={`text-xs ${
-                          docType === 'os' ? 'text-sky-700' : docType === 'agenda' ? 'text-teal-700' : 'text-amber-700'
+                          docType === 'os' ? 'text-primary-700' : docType === 'agenda' ? 'text-teal-700' : 'text-amber-700'
                         }`}>
                           {docType === 'os' && 'Documento interno para guia/motorista'}
                           {docType === 'agenda' && 'Agenda de servicos para o passageiro / agencia'}
@@ -1388,7 +1388,7 @@ export default function ServiceOrderWizard({ initialData, mode, docType }: Servi
                         value={pdfLang}
                         onChange={e => setPdfLang(e.target.value as any)}
                         className={`border rounded-lg px-3 py-2 text-sm bg-white ${
-                          docType === 'os' ? 'border-sky-300' : docType === 'agenda' ? 'border-teal-300' : 'border-amber-300'
+                          docType === 'os' ? 'border-primary-300' : docType === 'agenda' ? 'border-teal-300' : 'border-amber-300'
                         }`}
                       >
                         {docType === 'manifesto' ? (
@@ -1414,7 +1414,7 @@ export default function ServiceOrderWizard({ initialData, mode, docType }: Servi
                         )}
                         disabled={loading}
                         className={`text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 disabled:opacity-50 ${
-                          docType === 'os' ? 'bg-sky-600 hover:bg-sky-700' :
+                          docType === 'os' ? 'bg-primary-600 hover:bg-primary-700' :
                           docType === 'agenda' ? 'bg-teal-600 hover:bg-teal-700' :
                           'bg-amber-600 hover:bg-amber-700'
                         }`}
@@ -1441,7 +1441,7 @@ export default function ServiceOrderWizard({ initialData, mode, docType }: Servi
                           setShowEmailModal(true);
                         }}
                         className={`border px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 ${
-                          docType === 'os' ? 'bg-sky-100 text-sky-700 border-sky-300 hover:bg-sky-200' :
+                          docType === 'os' ? 'bg-primary-100 text-primary-700 border-primary-300 hover:bg-primary-200' :
                           docType === 'agenda' ? 'bg-teal-100 text-teal-700 border-teal-300 hover:bg-teal-200' :
                           'bg-amber-100 text-amber-700 border-amber-300 hover:bg-amber-200'
                         }`}
@@ -1467,7 +1467,7 @@ export default function ServiceOrderWizard({ initialData, mode, docType }: Servi
           </button>
 
           {step < TOTAL_STEPS ? (
-            <button type="button" onClick={advanceStep} className="bg-sky-600 text-white px-8 py-2 rounded-lg font-bold flex items-center gap-2 hover:bg-sky-700">
+            <button type="button" onClick={advanceStep} className="bg-primary-600 text-white px-8 py-2 rounded-lg font-bold flex items-center gap-2 hover:bg-primary-700">
               Próximo <ArrowRight size={18} />
             </button>
           ) : (

@@ -70,7 +70,7 @@ function TicketsSearchContent() {
             placeholder="Ex: Cataratas, Parque das Aves..." 
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#00A3AD] outline-none text-sm"
+            className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#5E9E20] outline-none text-sm"
           />
           <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
         </div>
@@ -87,7 +87,7 @@ function TicketsSearchContent() {
             type="range" min="0" max="2000" step="10"
             value={priceRange.max}
             onChange={(e) => setPriceRange(prev => ({ ...prev, max: Number(e.target.value) }))}
-            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#00A3AD]"
+            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#5E9E20]"
           />
         </div>
       </div>
@@ -107,7 +107,7 @@ function TicketsSearchContent() {
       <div className="bg-white border-b border-gray-200">
         <div className="container mx-auto px-4 py-8">
           <div className="flex items-center gap-3 mb-2">
-             <div className="p-2 bg-purple-100 text-purple-600 rounded-lg">
+             <div className="p-2 bg-accent/10 text-accent rounded-lg">
                 <Ticket size={24} />
              </div>
              <h1 className="text-3xl font-bold text-gray-900">Ingressos</h1>
@@ -154,7 +154,7 @@ function TicketsSearchContent() {
               <div className="text-center py-20 bg-white rounded-xl border border-gray-100">
                 <Ticket size={48} className="mx-auto text-gray-300 mb-4" />
                 <h3 className="text-lg font-bold">Nenhum ingresso encontrado</h3>
-                <button onClick={clearFilters} className="text-[#00A3AD] font-bold mt-2">Limpar filtros</button>
+                <button onClick={clearFilters} className="text-[#5E9E20] font-bold mt-2">Limpar filtros</button>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -177,9 +177,9 @@ function TicketsSearchContent() {
                        <div className="mt-auto pt-4 border-t border-gray-50 flex justify-between items-center">
                           <div>
                              <span className="text-[10px] text-gray-400 uppercase font-bold">Valor Adulto</span>
-                             <div className="text-xl font-black text-[#00A3AD]">{ticket.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</div>
+                             <div className="text-xl font-black text-[#5E9E20]">{ticket.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</div>
                           </div>
-                          <Link href={`/tours/${ticket.slug}`} className="bg-[#00A3AD] text-white p-2.5 rounded-lg hover:bg-[#008A93] transition-colors">
+                          <Link href={`/tours/${ticket.slug}`} className="bg-[#5E9E20] text-white p-2.5 rounded-lg hover:bg-[#4A7C1A] transition-colors">
                              <ArrowRight size={20} />
                           </Link>
                        </div>

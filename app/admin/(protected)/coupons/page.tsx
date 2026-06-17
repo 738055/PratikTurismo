@@ -160,7 +160,7 @@ export default function CouponsPage() {
                      </div>
                   </div>
                   
-                  <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 grid grid-cols-2 gap-4">
+                  <div className="bg-primary-50 p-4 rounded-lg border border-primary-100 grid grid-cols-2 gap-4">
                      <div>
                         <label className="block text-xs font-bold text-gray-600 mb-1 uppercase">Tipo de Desconto</label>
                         <select 
@@ -276,7 +276,7 @@ export default function CouponsPage() {
                   {filtered.length > 0 ? filtered.map(c => (
                      <tr key={c.id} className="hover:bg-gray-50 transition-colors">
                         <td className="px-6 py-4">
-                           <span className="font-mono font-bold text-primary bg-blue-50 px-2 py-1 rounded">{c.code}</span>
+                           <span className="font-mono font-bold text-primary bg-primary-50 px-2 py-1 rounded">{c.code}</span>
                            {c.description && <div className="text-xs text-gray-500 mt-1">{c.description}</div>}
                         </td>
                         <td className="px-6 py-4 font-bold text-gray-800">
@@ -295,7 +295,7 @@ export default function CouponsPage() {
                         </td>
                         <td className="px-6 py-4 text-right">
                            <div className="flex justify-end gap-2">
-                              <button onClick={() => { setFormData({...c, discountType: c.discountType as any}); setIsEditing(true); }} className="p-2 text-blue-600 hover:bg-blue-50 rounded"><Edit2 size={16}/></button>
+                              <button onClick={() => { setFormData({...c, discountType: c.discountType as any}); setIsEditing(true); }} className="p-2 text-primary-600 hover:bg-primary-50 rounded"><Edit2 size={16}/></button>
                               <button onClick={() => handleDelete(c.id)} className="p-2 text-red-600 hover:bg-red-50 rounded"><Trash2 size={16}/></button>
                            </div>
                         </td>

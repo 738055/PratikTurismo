@@ -54,7 +54,7 @@ function PackagesSearchContent() {
              step="100"
              value={priceRange.max}
              onChange={(e) => setPriceRange(prev => ({ ...prev, max: Number(e.target.value) }))}
-             className="w-full accent-blue-600 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+             className="w-full accent-primary-600 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
            />
            <div className="flex justify-between text-sm text-gray-500 mt-2 font-medium">
              <span>R$ {priceRange.min}</span>
@@ -68,14 +68,14 @@ function PackagesSearchContent() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Header */}
-      <div className="bg-blue-900 text-white py-12 md:py-20 relative overflow-hidden">
+      <div className="bg-primary-900 text-white py-12 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/images/cataratas-bg.jpg')] bg-cover bg-center opacity-20 mix-blend-overlay"></div>
         <div className="container mx-auto px-4 relative z-10 text-center">
           <span className="inline-block bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1 rounded-full text-sm font-bold mb-4 animate-fade-in-up">
             <Gift size={14} className="inline mr-2" /> Ofertas Especiais
           </span>
           <h1 className="text-3xl md:text-5xl font-black mb-6 leading-tight">Pacotes & Combos Exclusivos</h1>
-          <p className="text-xl md:text-2xl text-blue-100 max-w-2xl mx-auto mb-8 font-light">
+          <p className="text-xl md:text-2xl text-primary-100 max-w-2xl mx-auto mb-8 font-light">
             Economize até 30% combinando as melhores experiências de Foz do Iguaçu em um só pacote.
           </p>
           
@@ -89,7 +89,7 @@ function PackagesSearchContent() {
                value={searchTerm}
                onChange={(e) => setSearchTerm(e.target.value)}
              />
-             <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-bold transition-all shadow-lg hover:shadow-blue-200">
+             <button className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-bold transition-all shadow-lg hover:shadow-primary-200">
                Buscar
              </button>
           </div>
@@ -111,7 +111,7 @@ function PackagesSearchContent() {
              <p className="font-bold text-gray-600">{filteredPackages.length} pacotes encontrados</p>
              <button 
                onClick={() => setIsMobileFilterOpen(true)}
-               className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm font-bold text-blue-900 border border-gray-200"
+               className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm font-bold text-primary-900 border border-gray-200"
              >
                <SlidersHorizontal size={18} /> Filtros
              </button>
@@ -136,7 +136,7 @@ function PackagesSearchContent() {
                 {filteredPackages.map((pkg: Product) => (
                   <div key={pkg.id} className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group flex flex-col">
                     <div className="relative h-64 overflow-hidden">
-                       <span className="absolute top-4 left-4 z-20 bg-yellow-400 text-blue-900 text-xs font-black px-3 py-1 rounded-full shadow-lg uppercase tracking-wider">
+                       <span className="absolute top-4 left-4 z-20 bg-yellow-400 text-primary-900 text-xs font-black px-3 py-1 rounded-full shadow-lg uppercase tracking-wider">
                           Combo
                        </span>
                        <img 
@@ -162,8 +162,8 @@ function PackagesSearchContent() {
 
                        {/* Features / Inclusos */}
                        {pkg.features && pkg.features.length > 0 && (
-                         <div className="mb-6 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
-                            <span className="text-xs font-bold text-blue-800 uppercase tracking-wider mb-2 block">Incluso no pacote:</span>
+                         <div className="mb-6 bg-primary-50/50 p-4 rounded-xl border border-primary-100">
+                            <span className="text-xs font-bold text-primary-800 uppercase tracking-wider mb-2 block">Incluso no pacote:</span>
                             <ul className="text-sm text-gray-700 space-y-1">
                                {pkg.features.map((feature, index) => (
                                  <li key={index} className="flex items-center gap-2"><CheckCircle size={14} className="text-green-500"/> {feature}</li>
@@ -177,10 +177,10 @@ function PackagesSearchContent() {
                              <span className="block text-xs text-gray-400 line-through font-medium">De {(pkg.price * 1.2).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>
                              <div className="flex items-baseline gap-1">
                                 <span className="text-sm text-gray-500 font-bold">Por</span>
-                                <span className="text-2xl font-black text-blue-600">{pkg.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>
+                                <span className="text-2xl font-black text-primary-600">{pkg.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>
                              </div>
                           </div>
-                          <Link href={`/tours/${pkg.slug}`} className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-bold transition-colors shadow-lg shadow-blue-200">
+                          <Link href={`/tours/${pkg.slug}`} className="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-bold transition-colors shadow-lg shadow-primary-200">
                              Ver Detalhes
                           </Link>
                        </div>
@@ -212,7 +212,7 @@ function PackagesSearchContent() {
 export default function PackagesSearchPage() {
   return (
     <PublicLayout>
-      <Suspense fallback={<div className="h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-900"></div></div>}>
+      <Suspense fallback={<div className="h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary-900"></div></div>}>
          <PackagesSearchContent />
       </Suspense>
     </PublicLayout>

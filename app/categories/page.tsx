@@ -27,7 +27,7 @@ function CategoriesContent() {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-[60vh]">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#00A3AD]"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#5E9E20]"></div>
       </div>
     );
   }
@@ -60,24 +60,24 @@ function CategoriesContent() {
               >
                 {/* Cabeçalho do Card com Ícone */}
                 <div className="p-8 flex items-start justify-between bg-gradient-to-br from-gray-50 to-white">
-                  <div className="p-4 bg-blue-50 text-blue-600 rounded-2xl group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shadow-sm">
+                  <div className="p-4 bg-primary-50 text-primary-600 rounded-2xl group-hover:bg-primary-600 group-hover:text-white transition-colors duration-300 shadow-sm">
                     {renderIcon(category.icon, 32)}
                   </div>
-                  <span className="bg-gray-100 text-gray-600 text-xs font-bold px-3 py-1 rounded-full group-hover:bg-blue-100 group-hover:text-blue-700 transition-colors">
+                  <span className="bg-gray-100 text-gray-600 text-xs font-bold px-3 py-1 rounded-full group-hover:bg-primary-100 group-hover:text-primary-700 transition-colors">
                     {count} experiências
                   </span>
                 </div>
 
                 {/* Conteúdo do Card */}
                 <div className="p-8 pt-2 flex-1 flex flex-col">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">
                     {category.label}
                   </h3>
                   <p className="text-gray-500 text-sm leading-relaxed mb-6 line-clamp-2">
                     {category.description || `Descubra as melhores opções de ${category.label.toLowerCase()} em Foz do Iguaçu.`}
                   </p>
                   
-                  <div className="mt-auto flex items-center text-blue-600 font-bold text-sm group-hover:translate-x-2 transition-transform">
+                  <div className="mt-auto flex items-center text-primary-600 font-bold text-sm group-hover:translate-x-2 transition-transform">
                     Explorar <ArrowRight size={16} className="ml-2" />
                   </div>
                 </div>
@@ -95,18 +95,18 @@ function CategoriesContent() {
               <p className="text-gray-600 mb-6 text-lg">
                 Fale com nossos especialistas locais. Podemos montar um roteiro personalizado baseado nos seus interesses.
               </p>
-              <Link href="/contact" className="inline-flex items-center justify-center px-8 py-3 bg-[#00A3AD] text-white font-bold rounded-xl hover:bg-[#008A93] transition-colors shadow-lg shadow-teal-500/20">
+              <Link href="/contact" className="inline-flex items-center justify-center px-8 py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark transition-colors shadow-lg shadow-primary/20">
                  Falar com Consultor
               </Link>
            </div>
            <div className="flex-1 grid grid-cols-2 gap-4">
               <div className="bg-gray-50 p-6 rounded-2xl text-center">
-                 <MapPin className="mx-auto text-[#00A3AD] mb-3" size={32} />
+                 <MapPin className="mx-auto text-[#5E9E20] mb-3" size={32} />
                  <h4 className="font-bold">Localização</h4>
                  <p className="text-sm text-gray-500">Especialistas em Foz</p>
               </div>
               <div className="bg-gray-50 p-6 rounded-2xl text-center">
-                 <Ticket className="mx-auto text-[#00A3AD] mb-3" size={32} />
+                 <Ticket className="mx-auto text-[#5E9E20] mb-3" size={32} />
                  <h4 className="font-bold">Melhores Preços</h4>
                  <p className="text-sm text-gray-500">Sem taxas ocultas</p>
               </div>

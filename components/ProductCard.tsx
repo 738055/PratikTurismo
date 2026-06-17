@@ -114,7 +114,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <>
           {routeLabel && (
             <div className="flex items-center gap-1.5 text-sm text-gray-700 font-medium">
-              <ArrowRight size={14} className="text-purple-500 shrink-0" />
+              <ArrowRight size={14} className="text-accent shrink-0" />
               <span className="line-clamp-1">{routeLabel}</span>
             </div>
           )}
@@ -130,7 +130,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               </span>
             )}
           </div>
-          <div className="text-xs text-indigo-600 font-bold uppercase tracking-wide">
+          <div className="text-xs text-primary-600 font-bold uppercase tracking-wide">
             Transfer {isPrivate ? 'Privativo' : 'Compartilhado'}
           </div>
         </>

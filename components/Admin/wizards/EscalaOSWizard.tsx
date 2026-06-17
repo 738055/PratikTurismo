@@ -388,14 +388,14 @@ export default function EscalaOSWizard({ initialData, mode }: EscalaOSWizardProp
           <button
             onClick={generatePDF}
             disabled={loading || !osNumber}
-            className={`px-5 py-2 rounded-lg font-bold flex items-center gap-2 shadow-lg disabled:opacity-50 ${!osNumber ? 'bg-gray-500 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'}`}
+            className={`px-5 py-2 rounded-lg font-bold flex items-center gap-2 shadow-lg disabled:opacity-50 ${!osNumber ? 'bg-gray-500 cursor-not-allowed' : 'bg-primary-600 hover:bg-primary-700'}`}
           >
             <Download size={18} /> {loading ? 'Gerando...' : 'Baixar PDF'}
           </button>
           <button
             onClick={() => setShowEmailModal(true)}
             disabled={!osNumber}
-            className="bg-sky-600 hover:bg-sky-700 px-5 py-2 rounded-lg font-bold flex items-center gap-2 shadow-lg disabled:opacity-50"
+            className="bg-primary-600 hover:bg-primary-700 px-5 py-2 rounded-lg font-bold flex items-center gap-2 shadow-lg disabled:opacity-50"
           >
             <Mail size={18} /> E-mail
           </button>
@@ -408,7 +408,7 @@ export default function EscalaOSWizard({ initialData, mode }: EscalaOSWizardProp
           <div>
             <label className="block text-sm font-bold text-gray-700 mb-2 uppercase">Motorista / Guia Responsável</label>
             <select
-              className="w-full p-4 border border-gray-300 rounded-lg bg-white focus:border-sky-500 outline-none"
+              className="w-full p-4 border border-gray-300 rounded-lg bg-white focus:border-primary-500 outline-none"
               value={selectedGuide}
               onChange={e => setSelectedGuide(e.target.value)}
             >
@@ -419,7 +419,7 @@ export default function EscalaOSWizard({ initialData, mode }: EscalaOSWizardProp
           <div>
             <label className="block text-sm font-bold text-gray-700 mb-2 uppercase">Veículo Utilizado</label>
             <select
-              className="w-full p-4 border border-gray-300 rounded-lg bg-white focus:border-sky-500 outline-none"
+              className="w-full p-4 border border-gray-300 rounded-lg bg-white focus:border-primary-500 outline-none"
               value={selectedVehicle}
               onChange={e => setSelectedVehicle(e.target.value)}
             >
@@ -432,14 +432,14 @@ export default function EscalaOSWizard({ initialData, mode }: EscalaOSWizardProp
         {/* DADOS DO SERVIÇO */}
         <div className="mb-10">
           <h3 className="text-xl font-bold mb-4 text-gray-800 flex items-center gap-2 border-b pb-2">
-            <Calendar size={20} className="text-sky-600" /> Dados do Serviço
+            <Calendar size={20} className="text-primary-600" /> Dados do Serviço
           </h3>
           <div className="grid md:grid-cols-2 gap-6 bg-gray-50 p-6 rounded-lg border border-gray-200">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-2 uppercase">Data do Serviço</label>
               <input
                 type="date"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:border-sky-500 outline-none"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:border-primary-500 outline-none"
                 value={serviceDate}
                 onChange={e => setServiceDate(e.target.value)}
               />
@@ -448,7 +448,7 @@ export default function EscalaOSWizard({ initialData, mode }: EscalaOSWizardProp
               <label className="block text-sm font-bold text-gray-700 mb-2 uppercase">Serviço / Tour</label>
               <input
                 type="text"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:border-sky-500 outline-none"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:border-primary-500 outline-none"
                 placeholder="Ex: CATARATAS ARGENTINA, TRANSFER AEROPORTO"
                 value={servicoGeral}
                 onChange={e => setServicoGeral(e.target.value)}
@@ -457,7 +457,7 @@ export default function EscalaOSWizard({ initialData, mode }: EscalaOSWizardProp
             <div className="md:col-span-2">
               <label className="block text-sm font-bold text-gray-700 mb-2 uppercase">Observações</label>
               <textarea
-                className="w-full p-3 border border-gray-300 rounded-lg focus:border-sky-500 outline-none h-16"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:border-primary-500 outline-none h-16"
                 placeholder="Notas internas para o motorista/guia..."
                 value={notes}
                 onChange={e => setNotes(e.target.value)}
@@ -469,13 +469,13 @@ export default function EscalaOSWizard({ initialData, mode }: EscalaOSWizardProp
         {/* LISTA DE PICK-UPS */}
         <div className="mb-10">
           <h3 className="text-xl font-bold mb-4 text-gray-800 flex items-center gap-2 border-b pb-2">
-            <FileText size={20} className="text-sky-600" /> Lista de Pick-ups / Serviços
+            <FileText size={20} className="text-primary-600" /> Lista de Pick-ups / Serviços
             {(() => {
               const totalQty = services.reduce((s, r) => s + r.qty, 0);
               const maxPax = paxList.filter(p => p.name).length;
               const over = maxPax > 0 && totalQty > maxPax;
               return (
-                <span className={`ml-auto text-sm font-semibold px-3 py-1 rounded-full ${over ? 'bg-red-100 text-red-600' : 'bg-sky-100 text-sky-700'}`}>
+                <span className={`ml-auto text-sm font-semibold px-3 py-1 rounded-full ${over ? 'bg-red-100 text-red-600' : 'bg-primary-100 text-primary-700'}`}>
                   {totalQty} pax alocados{maxPax > 0 ? ` / ${maxPax} na lista` : ''}
                   {over && ' ⚠'}
                 </span>
@@ -496,24 +496,24 @@ export default function EscalaOSWizard({ initialData, mode }: EscalaOSWizardProp
             {services.map((svc, idx) => (
               <div key={idx} className="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2 items-center bg-white md:bg-transparent p-3 md:p-0 rounded shadow-sm md:shadow-none border md:border-none">
                 <div className="md:col-span-2">
-                  <input type="time" className="w-full p-2 border rounded focus:border-sky-500 outline-none text-xs" value={svc.time} onChange={e => updateService(idx, 'time', e.target.value)} />
+                  <input type="time" className="w-full p-2 border rounded focus:border-primary-500 outline-none text-xs" value={svc.time} onChange={e => updateService(idx, 'time', e.target.value)} />
                 </div>
                 <div className="md:col-span-2">
-                  <input placeholder="Hotel/Local" className="w-full p-2 border rounded focus:border-sky-500 outline-none text-xs" value={svc.hotel} onChange={e => updateService(idx, 'hotel', e.target.value)} />
+                  <input placeholder="Hotel/Local" className="w-full p-2 border rounded focus:border-primary-500 outline-none text-xs" value={svc.hotel} onChange={e => updateService(idx, 'hotel', e.target.value)} />
                 </div>
                 <div className="md:col-span-2">
-                  <input placeholder="Nome Titular" className="w-full p-2 border rounded focus:border-sky-500 outline-none text-xs" value={svc.pax_name} onChange={e => updateService(idx, 'pax_name', e.target.value)} />
+                  <input placeholder="Nome Titular" className="w-full p-2 border rounded focus:border-primary-500 outline-none text-xs" value={svc.pax_name} onChange={e => updateService(idx, 'pax_name', e.target.value)} />
                 </div>
                 <div className="md:col-span-1">
-                  <input type="number" min={1} className="w-full p-2 border rounded focus:border-sky-500 outline-none text-xs text-center" value={svc.qty} onChange={e => updateService(idx, 'qty', parseInt(e.target.value) || 1)} />
+                  <input type="number" min={1} className="w-full p-2 border rounded focus:border-primary-500 outline-none text-xs text-center" value={svc.qty} onChange={e => updateService(idx, 'qty', parseInt(e.target.value) || 1)} />
                 </div>
                 <div className="md:col-span-2">
-                  <select className="w-full p-2 border rounded focus:border-sky-500 outline-none text-xs bg-white" value={svc.idioma} onChange={e => updateService(idx, 'idioma', e.target.value)}>
+                  <select className="w-full p-2 border rounded focus:border-primary-500 outline-none text-xs bg-white" value={svc.idioma} onChange={e => updateService(idx, 'idioma', e.target.value)}>
                     {IDIOMAS.map(i => <option key={i} value={i}>{i}</option>)}
                   </select>
                 </div>
                 <div className="md:col-span-2">
-                  <select className="w-full p-2 border rounded focus:border-sky-500 outline-none text-xs bg-white" value={svc.tipo} onChange={e => updateService(idx, 'tipo', e.target.value)}>
+                  <select className="w-full p-2 border rounded focus:border-primary-500 outline-none text-xs bg-white" value={svc.tipo} onChange={e => updateService(idx, 'tipo', e.target.value)}>
                     <option value="REGULAR">Regular</option>
                     <option value="PRIVATIVO">Privativo</option>
                   </select>
@@ -525,7 +525,7 @@ export default function EscalaOSWizard({ initialData, mode }: EscalaOSWizardProp
                 </div>
               </div>
             ))}
-            <button onClick={addService} className="mt-2 text-sky-600 font-bold flex items-center gap-2 hover:bg-sky-50 px-4 py-2 rounded-lg text-sm">
+            <button onClick={addService} className="mt-2 text-primary-600 font-bold flex items-center gap-2 hover:bg-primary-50 px-4 py-2 rounded-lg text-sm">
               <Plus size={18} /> Adicionar Pick-up
             </button>
           </div>
@@ -534,7 +534,7 @@ export default function EscalaOSWizard({ initialData, mode }: EscalaOSWizardProp
         {/* PASSAGEIROS */}
         <div className="mb-8">
           <h3 className="text-xl font-bold mb-4 text-gray-800 flex items-center gap-2 border-b pb-2">
-            <Users size={20} className="text-sky-600" /> Lista de Passageiros ({paxList.filter(p => p.name).length})
+            <Users size={20} className="text-primary-600" /> Lista de Passageiros ({paxList.filter(p => p.name).length})
           </h3>
           <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
             <div className="hidden md:grid grid-cols-12 gap-3 mb-2 px-2 text-xs font-bold text-gray-500 uppercase">
@@ -548,23 +548,23 @@ export default function EscalaOSWizard({ initialData, mode }: EscalaOSWizardProp
             {paxList.map((pax, idx) => (
               <div key={idx} className="grid grid-cols-1 md:grid-cols-12 gap-3 mb-3 items-center bg-white md:bg-transparent p-3 md:p-0 rounded shadow-sm md:shadow-none border md:border-none">
                 <div className="md:col-span-4">
-                  <input placeholder="Nome" className="w-full p-2.5 border rounded focus:border-sky-500 outline-none text-sm" value={pax.name} onChange={e => updatePax(idx, 'name', e.target.value)} />
+                  <input placeholder="Nome" className="w-full p-2.5 border rounded focus:border-primary-500 outline-none text-sm" value={pax.name} onChange={e => updatePax(idx, 'name', e.target.value)} />
                 </div>
                 <div className="md:col-span-2">
-                  <input type="date" className="w-full p-2.5 border rounded focus:border-sky-500 outline-none text-sm" value={pax.dob} onChange={e => updatePax(idx, 'dob', e.target.value)} />
+                  <input type="date" className="w-full p-2.5 border rounded focus:border-primary-500 outline-none text-sm" value={pax.dob} onChange={e => updatePax(idx, 'dob', e.target.value)} />
                 </div>
                 <div className="md:col-span-2">
-                  <input placeholder="Nacionalidade" className="w-full p-2.5 border rounded focus:border-sky-500 outline-none text-sm" value={pax.nationality} onChange={e => updatePax(idx, 'nationality', e.target.value)} />
+                  <input placeholder="Nacionalidade" className="w-full p-2.5 border rounded focus:border-primary-500 outline-none text-sm" value={pax.nationality} onChange={e => updatePax(idx, 'nationality', e.target.value)} />
                 </div>
                 <div className="md:col-span-3">
-                  <input placeholder="Tipo e Nº Doc." className="w-full p-2.5 border rounded focus:border-sky-500 outline-none text-sm" value={pax.document} onChange={e => updatePax(idx, 'document', e.target.value)} />
+                  <input placeholder="Tipo e Nº Doc." className="w-full p-2.5 border rounded focus:border-primary-500 outline-none text-sm" value={pax.document} onChange={e => updatePax(idx, 'document', e.target.value)} />
                 </div>
                 <div className="md:col-span-1 flex justify-center">
                   <button onClick={() => removePax(idx)} className="text-red-400 hover:text-red-600 p-2"><Trash2 size={18} /></button>
                 </div>
               </div>
             ))}
-            <button onClick={addPax} className="mt-2 text-sky-600 font-bold flex items-center gap-2 hover:bg-sky-50 px-4 py-2 rounded-lg">
+            <button onClick={addPax} className="mt-2 text-primary-600 font-bold flex items-center gap-2 hover:bg-primary-50 px-4 py-2 rounded-lg">
               <Plus size={18} /> Adicionar Passageiro
             </button>
           </div>
@@ -584,7 +584,7 @@ export default function EscalaOSWizard({ initialData, mode }: EscalaOSWizardProp
                 <label className="block text-sm font-bold text-gray-700 mb-1">E-mail do Destinatário</label>
                 <input
                   type="email"
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:border-sky-500 outline-none"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:border-primary-500 outline-none"
                   placeholder="guia@email.com"
                   value={emailTo}
                   onChange={e => setEmailTo(e.target.value)}
@@ -606,7 +606,7 @@ export default function EscalaOSWizard({ initialData, mode }: EscalaOSWizardProp
               <button
                 onClick={sendEmail}
                 disabled={emailSending}
-                className="flex-1 p-3 bg-sky-600 hover:bg-sky-700 text-white rounded-lg font-bold disabled:opacity-50"
+                className="flex-1 p-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-bold disabled:opacity-50"
               >
                 {emailSending ? 'Enviando...' : 'Enviar'}
               </button>

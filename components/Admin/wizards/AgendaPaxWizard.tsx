@@ -34,7 +34,7 @@ const SERVICE_TYPE_LABELS: Record<string, string> = {
 };
 
 const SERVICE_TYPE_COLORS: Record<string, string> = {
-  transfer_in: 'bg-blue-100 text-blue-800',
+  transfer_in: 'bg-primary-100 text-primary-800',
   transfer_out: 'bg-orange-100 text-orange-800',
   tour: 'bg-emerald-100 text-emerald-800',
   excursion: 'bg-purple-100 text-purple-800',
@@ -373,8 +373,8 @@ export default function AgendaPaxWizard({ initialData, mode }: AgendaPaxWizardPr
                     <input type="number" min={1} {...register('pax_adt', { valueAsNumber: true })} className="w-full border p-2 rounded-lg text-center text-lg font-bold" />
                     {errors.pax_adt && <p className="text-red-500 text-xs mt-1">{errors.pax_adt.message}</p>}
                   </div>
-                  <div className="bg-blue-50 border border-blue-200 rounded-xl p-3 text-center">
-                    <label className="block text-xs font-bold text-blue-700 mb-1">Crianças (CHD)</label>
+                  <div className="bg-primary-50 border border-primary-200 rounded-xl p-3 text-center">
+                    <label className="block text-xs font-bold text-primary-700 mb-1">Crianças (CHD)</label>
                     <input type="number" min={0} {...register('pax_chd', { valueAsNumber: true })} className="w-full border p-2 rounded-lg text-center text-lg font-bold" />
                   </div>
                   <div className="bg-purple-50 border border-purple-200 rounded-xl p-3 text-center">
@@ -466,8 +466,8 @@ export default function AgendaPaxWizard({ initialData, mode }: AgendaPaxWizardPr
 
                 {/* Transfer fields */}
                 {isTransfer(tempService.service_type) && (
-                  <div className="bg-blue-50/50 p-3 rounded-lg border border-blue-100">
-                    <label className="block text-xs font-bold text-blue-700 mb-1 flex items-center gap-1"><Plane size={12} /> Informações do Voo</label>
+                  <div className="bg-primary-50/50 p-3 rounded-lg border border-primary-100">
+                    <label className="block text-xs font-bold text-primary-700 mb-1 flex items-center gap-1"><Plane size={12} /> Informações do Voo</label>
                     <input
                       value={tempService.voo_info || ''}
                       onChange={e => setTempService({ ...tempService, voo_info: e.target.value })}
@@ -517,7 +517,7 @@ export default function AgendaPaxWizard({ initialData, mode }: AgendaPaxWizardPr
                           </span>
                           <span className="text-sm font-bold text-gray-800">{s.nome_servico}</span>
                         </div>
-                        {s.voo_info && <p className="text-xs text-blue-600 flex items-center gap-1"><Plane size={11} /> {s.voo_info}</p>}
+                        {s.voo_info && <p className="text-xs text-primary-600 flex items-center gap-1"><Plane size={11} /> {s.voo_info}</p>}
                         {s.observacao && <p className="text-xs text-gray-500">{s.observacao}</p>}
                       </div>
                       <button type="button" onClick={() => removeService(i)} className="text-red-400 hover:text-red-600 mt-1">
@@ -654,7 +654,7 @@ export default function AgendaPaxWizard({ initialData, mode }: AgendaPaxWizardPr
                             </span>
                             <span className="text-sm font-bold text-gray-800">{s.nome_servico}</span>
                           </div>
-                          {s.voo_info && <p className="text-xs text-blue-600 mt-1"><Plane size={11} className="inline" /> {s.voo_info}</p>}
+                          {s.voo_info && <p className="text-xs text-primary-600 mt-1"><Plane size={11} className="inline" /> {s.voo_info}</p>}
                         </div>
                       </div>
                     ))}

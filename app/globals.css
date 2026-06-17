@@ -3,20 +3,46 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
+  --foreground-rgb: 45, 45, 45;        /* grafite do wordmark */
+  --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 255, 255, 255;
+
+  /* Tokens de marca Pratik (colinas / sol / grafite) */
+  --brand-green: #5E9E20;
+  --brand-sun: #FBB034;
+  --brand-accent: #F39200;
+  --brand-charcoal: #2D2D2D;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: 'Inter', sans-serif;
+  color: var(--brand-charcoal);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Custom Scrollbar */
+/* Seleção de texto com a cor da marca */
+::selection {
+  background-color: rgba(94, 158, 32, 0.18);
+  color: var(--brand-charcoal);
+}
+
+/* Foco visível para navegação por teclado (acessibilidade / WCAG AA) */
+:focus-visible {
+  outline: 2px solid var(--brand-green);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Custom Scrollbar — tons da marca */
 ::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-track { background: #f1f1f1; }
-::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+::-webkit-scrollbar-track { background: #f1f4ec; }
+::-webkit-scrollbar-thumb { background: #bcd79a; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--brand-green); }
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
@@ -39,3 +65,15 @@ body {
   100% { transform: scale(1); opacity: 1; }
 }
 .animate-bounce-in { animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+/* Respeita usuários que preferem menos movimento (acessibilidade) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

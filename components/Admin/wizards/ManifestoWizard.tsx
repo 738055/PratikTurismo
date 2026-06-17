@@ -447,14 +447,14 @@ export default function ManifestoWizard({ initialData, mode }: ManifestoWizardPr
           <button
             onClick={generatePDF}
             disabled={loading || !manifestNumber}
-            className={`px-5 py-2 rounded-lg font-bold flex items-center gap-2 shadow-lg disabled:opacity-50 ${!manifestNumber ? 'bg-gray-500 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'}`}
+            className={`px-5 py-2 rounded-lg font-bold flex items-center gap-2 shadow-lg disabled:opacity-50 ${!manifestNumber ? 'bg-gray-500 cursor-not-allowed' : 'bg-primary-600 hover:bg-primary-700'}`}
           >
             <Download size={18} /> {loading ? 'Gerando...' : 'Baixar PDF'}
           </button>
           <button
             onClick={() => setShowEmailModal(true)}
             disabled={!manifestNumber}
-            className="bg-sky-600 hover:bg-sky-700 px-5 py-2 rounded-lg font-bold flex items-center gap-2 shadow-lg disabled:opacity-50"
+            className="bg-primary-600 hover:bg-primary-700 px-5 py-2 rounded-lg font-bold flex items-center gap-2 shadow-lg disabled:opacity-50"
           >
             <Mail size={18} /> E-mail
           </button>
@@ -469,12 +469,12 @@ export default function ManifestoWizard({ initialData, mode }: ManifestoWizardPr
             <button
               type="button"
               onClick={() => handleDestinationChange('ARGENTINA')}
-              className={`p-5 rounded-xl border-2 text-left transition-all ${destination === 'ARGENTINA' ? 'border-blue-500 bg-blue-50 shadow-md' : 'border-gray-200 bg-gray-50 hover:border-gray-300'}`}
+              className={`p-5 rounded-xl border-2 text-left transition-all ${destination === 'ARGENTINA' ? 'border-primary-500 bg-primary-50 shadow-md' : 'border-gray-200 bg-gray-50 hover:border-gray-300'}`}
             >
               <div className="flex items-center gap-3">
                 <span className="text-3xl">🇦🇷</span>
                 <div>
-                  <div className={`font-bold text-lg ${destination === 'ARGENTINA' ? 'text-blue-700' : 'text-gray-700'}`}>Argentina</div>
+                  <div className={`font-bold text-lg ${destination === 'ARGENTINA' ? 'text-primary-700' : 'text-gray-700'}`}>Argentina</div>
                   <div className="text-xs text-gray-500">Ponte Tancredo Neves</div>
                 </div>
               </div>
@@ -641,7 +641,7 @@ export default function ManifestoWizard({ initialData, mode }: ManifestoWizardPr
               <label className="block text-sm font-bold text-gray-700 mb-1">E-mail do Destinatário</label>
               <input
                 type="email"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:border-sky-500 outline-none"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:border-primary-500 outline-none"
                 placeholder="motorista@email.com"
                 value={emailTo}
                 onChange={e => setEmailTo(e.target.value)}
@@ -654,7 +654,7 @@ export default function ManifestoWizard({ initialData, mode }: ManifestoWizardPr
               <button
                 onClick={sendEmail}
                 disabled={emailSending}
-                className="flex-1 p-3 bg-sky-600 hover:bg-sky-700 text-white rounded-lg font-bold disabled:opacity-50"
+                className="flex-1 p-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-bold disabled:opacity-50"
               >
                 {emailSending ? 'Enviando...' : 'Enviar'}
               </button>

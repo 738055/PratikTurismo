@@ -584,14 +584,14 @@ export default function AirportTransferWizard({ initialData, mode }: AirportTran
 
                 {/* Tags */}
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-1 flex items-center gap-1"><Tag size={14} className="text-blue-600" /> Tags (Selos)</label>
+                  <label className="block text-sm font-bold text-gray-700 mb-1 flex items-center gap-1"><Tag size={14} className="text-primary-600" /> Tags (Selos)</label>
                   <div className="flex gap-2 mb-2">
                     <input value={tempTag} onChange={(e) => setTempTag(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addTag(); } }} className="flex-1 border p-2 rounded text-sm" placeholder="Ex: Privativo, Executivo..." />
                     <button type="button" onClick={addTag} className="bg-gray-100 px-3 rounded hover:bg-gray-200 text-sm font-bold">Add</button>
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {tags.map((tag, i) => (
-                      <span key={i} className="bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full text-xs font-medium flex items-center gap-1">
+                      <span key={i} className="bg-primary-50 text-primary-700 border border-primary-200 px-2 py-0.5 rounded-full text-xs font-medium flex items-center gap-1">
                         {tag} <X size={10} className="cursor-pointer" onClick={() => setValue('tags', tags.filter((_, idx) => idx !== i))} />
                       </span>
                     ))}

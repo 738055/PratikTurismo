@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ShoppingCart, Menu, X, User, ChevronRight } from 'lucide-react';
 import { useCart } from '@/app/contexts/CartContext';
+import { BrandLogo } from '@/components/Frontend/BrandLogo';
 
 export const PratikNavbar = () => {
   const { items = [] } = useCart();
@@ -40,13 +41,7 @@ export const PratikNavbar = () => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center gap-1 group">
-              <span className={`text-2xl font-black tracking-tighter transition-colors ${
-                scrolled ? 'text-secondary' : 'text-secondary md:text-white'
-              }`}>
-                Pratik<span className="text-accent">.</span>
-              </span>
-            </Link>
+            <BrandLogo height={scrolled ? 38 : 42} onDark={!scrolled} priority />
           </div>
 
           {/* Desktop Menu */}

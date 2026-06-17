@@ -219,7 +219,7 @@ export default function TransferSearchPage() {
               <label className="flex items-center gap-2 cursor-pointer">
                 <input
                   type="checkbox"
-                  className="w-4 h-4 accent-blue-600"
+                  className="w-4 h-4 accent-primary-600"
                   checked={roundtrip}
                   onChange={(e) => setRoundtrip(e.target.checked)}
                 />
@@ -251,8 +251,8 @@ export default function TransferSearchPage() {
                       onClick={() => setFilterType(type)}
                       className={`px-3 py-1 rounded-full text-xs font-bold border transition-colors ${
                         filterType === type
-                          ? 'bg-blue-600 text-white border-blue-600'
-                          : 'bg-white text-gray-600 border-gray-300 hover:border-blue-400'
+                          ? 'bg-primary-600 text-white border-primary-600'
+                          : 'bg-white text-gray-600 border-gray-300 hover:border-primary-400'
                       }`}
                     >
                       {type === 'all' ? 'Todos' : type === 'private' ? 'Privativo' : 'Compartilhado'}
@@ -273,7 +273,7 @@ export default function TransferSearchPage() {
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 px-5 py-3 flex items-center justify-between">
             <p className="text-sm text-gray-600">
               <strong>{filteredTransfers.length}</strong> opção{filteredTransfers.length !== 1 ? 'ões' : ''} encontrada{filteredTransfers.length !== 1 ? 's' : ''}
-              {roundtrip && <span className="ml-2 bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full text-xs font-bold">Ida e Volta</span>}
+              {roundtrip && <span className="ml-2 bg-accent/10 text-accent-dark px-2 py-0.5 rounded-full text-xs font-bold">Ida e Volta</span>}
             </p>
             {hasSearched && searchParams.originAirport && (
               <p className="text-xs text-gray-400">
@@ -285,7 +285,7 @@ export default function TransferSearchPage() {
 
           {filteredTransfers.length === 0 ? (
             <div className="bg-white p-10 rounded-xl text-center shadow border border-gray-100">
-              <div className="bg-blue-50 w-20 h-20 rounded-full flex items-center justify-center text-blue-400 mx-auto mb-4">
+              <div className="bg-primary-50 w-20 h-20 rounded-full flex items-center justify-center text-primary-400 mx-auto mb-4">
                 <Plane size={32} />
               </div>
               <p className="text-gray-600 font-bold mb-2">
@@ -323,12 +323,12 @@ export default function TransferSearchPage() {
                       )}
                       <div className="absolute top-2 left-2 flex flex-col gap-1 z-10">
                         <span
-                          className={`px-2 py-1 rounded text-[10px] font-bold uppercase text-white shadow ${isPrivate ? 'bg-indigo-600' : 'bg-blue-500'}`}
+                          className={`px-2 py-1 rounded text-[10px] font-bold uppercase text-white shadow ${isPrivate ? 'bg-primary-600' : 'bg-primary-500'}`}
                         >
                           {isPrivate ? 'Privativo' : 'Compartilhado'}
                         </span>
                         {supportsRoundtrip && (
-                          <span className="bg-purple-600 text-white px-2 py-1 rounded text-[10px] font-bold shadow flex items-center gap-1">
+                          <span className="bg-accent text-white px-2 py-1 rounded text-[10px] font-bold shadow flex items-center gap-1">
                             <ArrowRightLeft size={9} /> Ida e Volta
                           </span>
                         )}
@@ -348,7 +348,7 @@ export default function TransferSearchPage() {
 
                         {/* Rota do Trecho */}
                         {firstRoute && (
-                          <p className="text-xs text-purple-600 font-medium mb-3 flex items-center gap-1">
+                          <p className="text-xs text-accent-dark font-medium mb-3 flex items-center gap-1">
                             <MapPin size={11} />
                             {firstRoute.originCode ? `${firstRoute.originCode} — ` : ''}{firstRoute.originName}
                             {' → '}
@@ -359,11 +359,11 @@ export default function TransferSearchPage() {
                         {/* Capacidades */}
                         <div className="flex flex-wrap gap-3 text-sm text-gray-600 mb-4">
                           <div className="flex items-center gap-1 bg-gray-50 px-2 py-1 rounded">
-                            <User size={14} className="text-blue-600" />
+                            <User size={14} className="text-primary-600" />
                             Até {transfer.transferDetails?.passengerCapacity} pax
                           </div>
                           <div className="flex items-center gap-1 bg-gray-50 px-2 py-1 rounded">
-                            <Luggage size={14} className="text-blue-600" />
+                            <Luggage size={14} className="text-primary-600" />
                             {transfer.transferDetails?.luggageCapacity} mala{(transfer.transferDetails?.luggageCapacity ?? 0) !== 1 ? 's' : ''}
                           </div>
                           {transfer.transferDetails?.handLuggageCapacity != null && (
@@ -408,7 +408,7 @@ export default function TransferSearchPage() {
                       </span>
 
                       {roundtrip && (
-                        <span className="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded font-bold mb-2">
+                        <span className="text-xs bg-accent/10 text-accent-dark px-2 py-0.5 rounded font-bold mb-2">
                           Ida e Volta inclusa
                         </span>
                       )}
@@ -447,7 +447,7 @@ export default function TransferSearchPage() {
               <button onClick={() => setIsModalOpen(false)}><X size={20} /></button>
             </div>
             <div className="p-6 space-y-4">
-              <p className="text-sm text-gray-600 bg-blue-50 p-3 rounded-lg border border-blue-100">
+              <p className="text-sm text-gray-600 bg-primary-50 p-3 rounded-lg border border-primary-100">
                 Para o veículo <strong>{selectedTransfer.name}</strong>, informe os dados do voo para que o motorista monitore a chegada.
               </p>
 

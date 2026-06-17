@@ -71,7 +71,7 @@ export default function AdminLoginPage() {
       <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border border-gray-100">
         
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-200">
+          <div className="w-16 h-16 bg-primary-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-primary-200">
             <Lock className="text-white" size={28} />
           </div>
           <h1 className="text-2xl font-bold text-gray-900">Painel Administrativo</h1>
@@ -91,12 +91,12 @@ export default function AdminLoginPage() {
               E-mail Corporativo
             </label>
             <div className="relative group">
-              <Mail className="absolute left-3.5 top-3.5 text-gray-400 group-focus-within:text-blue-600 transition-colors" size={20} />
+              <Mail className="absolute left-3.5 top-3.5 text-gray-400 group-focus-within:text-primary-600 transition-colors" size={20} />
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-11 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 outline-none transition-all bg-gray-50 focus:bg-white"
+                className="w-full pl-11 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500/20 focus:border-primary-600 outline-none transition-all bg-gray-50 focus:bg-white"
                 placeholder="admin@reservaturismo.com"
                 required
               />
@@ -108,12 +108,12 @@ export default function AdminLoginPage() {
               Senha
             </label>
             <div className="relative group">
-              <Lock className="absolute left-3.5 top-3.5 text-gray-400 group-focus-within:text-blue-600 transition-colors" size={20} />
+              <Lock className="absolute left-3.5 top-3.5 text-gray-400 group-focus-within:text-primary-600 transition-colors" size={20} />
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-11 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 outline-none transition-all bg-gray-50 focus:bg-white"
+                className="w-full pl-11 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500/20 focus:border-primary-600 outline-none transition-all bg-gray-50 focus:bg-white"
                 placeholder="••••••••"
                 required
               />

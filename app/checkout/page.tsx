@@ -230,7 +230,7 @@ export default function CheckoutPage() {
                         <h2 className="text-xl font-bold text-gray-800">Pagamento</h2>
                       </div>
                       <div className="space-y-3">
-                        <label className={`flex items-center gap-4 p-4 border rounded-xl cursor-pointer transition-all ${paymentMethod === 'credit_card' ? 'border-primary bg-blue-50' : 'border-gray-200 hover:bg-gray-50'}`}>
+                        <label className={`flex items-center gap-4 p-4 border rounded-xl cursor-pointer transition-all ${paymentMethod === 'credit_card' ? 'border-primary bg-primary-50' : 'border-gray-200 hover:bg-gray-50'}`}>
                             <input type="radio" name="payment" value="credit_card" checked={paymentMethod === 'credit_card'} onChange={() => setPaymentMethod('credit_card')} className="w-5 h-5 text-primary" />
                             <CreditCard className="text-gray-600"/>
                             <div>
@@ -238,7 +238,7 @@ export default function CheckoutPage() {
                               <span className="text-xs text-gray-500">Pagamento seguro via Stripe</span>
                             </div>
                         </label>
-                        <label className={`flex items-center gap-4 p-4 border rounded-xl cursor-pointer transition-all ${paymentMethod === 'pix' ? 'border-primary bg-blue-50' : 'border-gray-200 hover:bg-gray-50'}`}>
+                        <label className={`flex items-center gap-4 p-4 border rounded-xl cursor-pointer transition-all ${paymentMethod === 'pix' ? 'border-primary bg-primary-50' : 'border-gray-200 hover:bg-gray-50'}`}>
                             <input type="radio" name="payment" value="pix" checked={paymentMethod === 'pix'} onChange={() => setPaymentMethod('pix')} className="w-5 h-5 text-primary" />
                             <div className="font-bold text-green-600">PIX</div>
                             <div>
@@ -321,7 +321,7 @@ export default function CheckoutPage() {
                 <div className="space-y-2 mb-6">
                    <div className="flex justify-between text-gray-600 text-sm"><span>Subtotal</span><span>{formatCurrency(cartTotal)}</span></div>
                    {appliedCoupon && (<div className="flex justify-between text-green-600 text-sm font-bold bg-green-50/50 p-1 rounded"><span>Desconto</span><span>- {formatCurrency(discountAmount)}</span></div>)}
-                   {paymentMethod === 'pix' && (<div className="flex justify-between text-blue-600 text-sm font-medium"><span>Desconto PIX (5%)</span><span>- {formatCurrency(pixDiscount)}</span></div>)}
+                   {paymentMethod === 'pix' && (<div className="flex justify-between text-primary-600 text-sm font-medium"><span>Desconto PIX (5%)</span><span>- {formatCurrency(pixDiscount)}</span></div>)}
                    <div className="flex justify-between text-xl font-black text-gray-900 pt-4 border-t border-gray-100"><span>Total</span><span>{formatCurrency(finalTotal)}</span></div>
                 </div>
 

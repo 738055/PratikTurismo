@@ -116,7 +116,7 @@ export default function ContentManagerPage() {
     setPosts(posts.filter((p: any) => p.id !== id));
   };
 
-  if (loading) return <div className="p-8 flex justify-center"><Loader2 className="animate-spin text-blue-600" size={40}/></div>;
+  if (loading) return <div className="p-8 flex justify-center"><Loader2 className="animate-spin text-primary-600" size={40}/></div>;
 
   return (
     <div className="pb-12">
@@ -137,7 +137,7 @@ export default function ContentManagerPage() {
            <button 
              key={tab.id}
              onClick={() => setActiveTab(tab.id)}
-             className={`pb-3 px-4 font-medium transition-colors border-b-2 ${activeTab === tab.id ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'}`}
+             className={`pb-3 px-4 font-medium transition-colors border-b-2 ${activeTab === tab.id ? 'border-primary-600 text-primary-600' : 'border-transparent text-gray-500 hover:text-gray-700'}`}
            >
               {tab.label}
            </button>
@@ -148,21 +148,21 @@ export default function ContentManagerPage() {
          <div className="space-y-6">
             <div className="flex justify-between items-center bg-gray-50 p-4 rounded-lg border border-gray-200">
                <h3 className="font-bold text-gray-800">Lista de Banners da Home</h3>
-               <button onClick={() => setEditingBanner({ title: '', subtitle: '', image_url: '', button_text: 'Saiba Mais', link: '', align: 'center', active: true, display_order: banners.length + 1 })} className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 font-bold transition-colors">
+               <button onClick={() => setEditingBanner({ title: '', subtitle: '', image_url: '', button_text: 'Saiba Mais', link: '', align: 'center', active: true, display_order: banners.length + 1 })} className="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 font-bold transition-colors">
                   <Plus size={18}/> Novo Banner
                </button>
             </div>
 
             {editingBanner && (
-               <div className="bg-white p-6 rounded-xl shadow-lg border border-blue-200 relative">
+               <div className="bg-white p-6 rounded-xl shadow-lg border border-primary-200 relative">
                   <button onClick={() => setEditingBanner(null)} className="absolute top-4 right-4 text-gray-400 hover:text-red-500"><X size={24}/></button>
                   <h3 className="font-bold mb-4 text-lg">Editando Banner</h3>
                   
-                  <div className="mb-6 bg-blue-50 border border-blue-100 p-4 rounded-lg flex items-start gap-3">
-                     <UploadCloud className="text-blue-500 mt-1" />
+                  <div className="mb-6 bg-primary-50 border border-primary-100 p-4 rounded-lg flex items-start gap-3">
+                     <UploadCloud className="text-primary-500 mt-1" />
                      <div>
-                        <p className="font-bold text-blue-800">Upload da Imagem</p>
-                        <p className="text-xs text-blue-600 mb-2">Tamanho recomendado: 1920x600px. Formatos: JPG, PNG ou WEBP.</p>
+                        <p className="font-bold text-primary-800">Upload da Imagem</p>
+                        <p className="text-xs text-primary-600 mb-2">Tamanho recomendado: 1920x600px. Formatos: JPG, PNG ou WEBP.</p>
                         <input type="file" accept="image/*" onChange={async (e) => {
                            if (!e.target.files || e.target.files.length === 0) return;
                            try {
@@ -170,7 +170,7 @@ export default function ContentManagerPage() {
                              const url = await handleFileUpload(e.target.files[0], 'general');
                              setEditingBanner({ ...editingBanner, image_url: url });
                            } catch (err) { alert('Erro no upload'); } finally { setSaving(false); }
-                        }} className="text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200" />
+                        }} className="text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary-100 file:text-primary-700 hover:file:bg-primary-200" />
                      </div>
                   </div>
 
@@ -199,7 +199,7 @@ export default function ContentManagerPage() {
                         <p className="text-sm text-gray-500">{banner.subtitle}</p>
                      </div>
                      <div className="flex items-center gap-2">
-                        <button onClick={() => setEditingBanner(banner)} className="p-2 text-blue-600 hover:bg-blue-100 rounded" title="Editar Banner"><Edit2 size={18}/></button>
+                        <button onClick={() => setEditingBanner(banner)} className="p-2 text-primary-600 hover:bg-primary-100 rounded" title="Editar Banner"><Edit2 size={18}/></button>
                         <button onClick={() => handleDeleteBanner(banner.id)} className="p-2 text-red-600 hover:bg-red-100 rounded" title="Excluir Banner"><Trash2 size={18}/></button>
                      </div>
                   </div>
@@ -242,12 +242,12 @@ export default function ContentManagerPage() {
 
       {activeTab === 'blog' && (
          <div className="space-y-6">
-             <div className="flex justify-between items-center bg-blue-50 p-4 rounded-lg border border-blue-100">
+             <div className="flex justify-between items-center bg-primary-50 p-4 rounded-lg border border-primary-100">
                 <div className="flex flex-col">
-                   <span className="font-bold text-blue-800 flex items-center gap-2"><Type size={20}/> Blog e SEO</span>
-                   <span className="text-xs text-blue-600">Artigos ajudam o seu site a ser encontrado no Google.</span>
+                   <span className="font-bold text-primary-800 flex items-center gap-2"><Type size={20}/> Blog e SEO</span>
+                   <span className="text-xs text-primary-600">Artigos ajudam o seu site a ser encontrado no Google.</span>
                 </div>
-                <button onClick={() => setEditingPost({ title: '', content: '', excerpt: '', cover_image: '', active: true, published: true })} className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2">
+                <button onClick={() => setEditingPost({ title: '', content: '', excerpt: '', cover_image: '', active: true, published: true })} className="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2">
                    <Plus size={18}/> Criar Post
                 </button>
              </div>
@@ -266,7 +266,7 @@ export default function ContentManagerPage() {
                              const url = await handleFileUpload(e.target.files[0], 'blog');
                              setEditingPost({ ...editingPost, cover_image: url });
                            } catch (err) { alert('Erro no upload'); } finally { setSaving(false); }
-                     }} className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700" />
+                     }} className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-primary-50 file:text-primary-700" />
                      {editingPost.cover_image && <img src={editingPost.cover_image} className="mt-2 h-32 rounded object-cover" />}
                   </div>
 
@@ -317,8 +317,8 @@ export default function ContentManagerPage() {
                          <h4 className="font-bold text-gray-800 mb-2 leading-tight">{post.title}</h4>
                          <p className="text-xs text-gray-500 mb-4 line-clamp-2">{post.excerpt}</p>
                          <div className="mt-auto flex justify-end gap-2 border-t pt-3">
-                            <button onClick={() => window.open(`/blog/${post.slug}`, '_blank')} className="p-1.5 text-gray-400 hover:text-blue-600 bg-gray-50 rounded" title="Ver no site"><Eye size={16}/></button>
-                            <button onClick={() => setEditingPost(post)} className="p-1.5 text-blue-600 hover:text-white hover:bg-blue-600 bg-blue-50 rounded" title="Editar Artigo"><Edit2 size={16}/></button>
+                            <button onClick={() => window.open(`/blog/${post.slug}`, '_blank')} className="p-1.5 text-gray-400 hover:text-primary-600 bg-gray-50 rounded" title="Ver no site"><Eye size={16}/></button>
+                            <button onClick={() => setEditingPost(post)} className="p-1.5 text-primary-600 hover:text-white hover:bg-primary-600 bg-primary-50 rounded" title="Editar Artigo"><Edit2 size={16}/></button>
                             <button onClick={() => handleDeletePost(post.id)} className="p-1.5 text-red-600 hover:text-white hover:bg-red-600 bg-red-50 rounded" title="Deletar Artigo"><Trash2 size={16}/></button>
                          </div>
                       </div>

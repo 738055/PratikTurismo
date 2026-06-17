@@ -245,7 +245,7 @@ export default function SuppliersPage() {
                         </td>
                         <td className="px-6 py-4 text-right">
                            <div className="flex justify-end gap-2">
-                              <button onClick={() => handleEdit(item)} className="p-2 text-blue-600 hover:bg-blue-50 rounded"><Edit2 size={16}/></button>
+                              <button onClick={() => handleEdit(item)} className="p-2 text-primary-600 hover:bg-primary-50 rounded"><Edit2 size={16}/></button>
                               <button onClick={() => handleDelete(item.id)} className="p-2 text-red-600 hover:bg-red-50 rounded"><Trash2 size={16}/></button>
                            </div>
                         </td>

@@ -36,9 +36,9 @@ export default function NewServiceOrderPage() {
         {/* OS / Escala */}
         <button
           onClick={() => setDocType('os')}
-          className="bg-white border-2 border-gray-200 hover:border-sky-400 hover:shadow-lg rounded-2xl p-6 text-left transition-all group"
+          className="bg-white border-2 border-gray-200 hover:border-primary-400 hover:shadow-lg rounded-2xl p-6 text-left transition-all group"
         >
-          <div className="bg-sky-100 text-sky-600 rounded-xl p-3 w-fit mb-4 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+          <div className="bg-primary-100 text-primary-600 rounded-xl p-3 w-fit mb-4 group-hover:bg-primary-600 group-hover:text-white transition-colors">
             <FileText size={28} />
           </div>
           <h3 className="font-bold text-gray-800 text-lg mb-1">Ordem de Servico / Escala</h3>
@@ -46,9 +46,9 @@ export default function NewServiceOrderPage() {
             Escala do guia/motorista com lista de pick-ups, veiculos e rota do dia.
           </p>
           <div className="mt-4 flex flex-wrap gap-1">
-            <span className="text-[10px] font-bold bg-sky-50 text-sky-600 px-2 py-0.5 rounded">Dados Gerais</span>
-            <span className="text-[10px] font-bold bg-sky-50 text-sky-600 px-2 py-0.5 rounded">Pick-ups</span>
-            <span className="text-[10px] font-bold bg-sky-50 text-sky-600 px-2 py-0.5 rounded">Alocacao</span>
+            <span className="text-[10px] font-bold bg-primary-50 text-primary-600 px-2 py-0.5 rounded">Dados Gerais</span>
+            <span className="text-[10px] font-bold bg-primary-50 text-primary-600 px-2 py-0.5 rounded">Pick-ups</span>
+            <span className="text-[10px] font-bold bg-primary-50 text-primary-600 px-2 py-0.5 rounded">Alocacao</span>
           </div>
         </button>
 

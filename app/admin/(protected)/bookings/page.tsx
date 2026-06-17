@@ -205,7 +205,7 @@ export default function BookingsPage() {
       paid: 'bg-green-100 text-green-800 border-green-200',
       pending: 'bg-yellow-100 text-yellow-800 border-yellow-200',
       cancelled: 'bg-red-100 text-red-800 border-red-200',
-      completed: 'bg-blue-100 text-blue-800 border-blue-200',
+      completed: 'bg-primary-100 text-primary-800 border-primary-200',
       refunded: 'bg-orange-100 text-orange-800 border-orange-200',
       disputed: 'bg-purple-100 text-purple-800 border-purple-200',
     };
@@ -366,7 +366,7 @@ export default function BookingsPage() {
                   </div>
                </div>
 
-               <div className="grid grid-cols-2 gap-4 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+               <div className="grid grid-cols-2 gap-4 bg-primary-50/50 p-4 rounded-xl border border-primary-100">
                   <div>
                      <p className="text-xs text-gray-500 uppercase font-bold mb-1">Data do Passeio Principal</p>
                      <p className="font-bold text-gray-800">{selectedBooking.tour_date ? format(new Date(selectedBooking.tour_date), 'dd/MM/yyyy') : 'A Combinar'}</p>
@@ -474,7 +474,7 @@ export default function BookingsPage() {
                   </tr>
               ) : (
                   filteredBookings.map((booking) => (
-                    <tr key={booking.id} className="hover:bg-blue-50/30 transition-colors">
+                    <tr key={booking.id} className="hover:bg-primary-50/30 transition-colors">
                       <td className="px-6 py-4">
                         <div className="font-mono text-xs font-bold text-gray-800">#{booking.id.slice(0, 8).toUpperCase()}</div>
                         <div className="text-[10px] text-gray-400 mt-1">{format(new Date(booking.created_at), 'dd/MM/yyyy')}</div>
@@ -487,7 +487,7 @@ export default function BookingsPage() {
                       </td>
                       <td className="px-6 py-4 max-w-[200px] truncate text-gray-600 text-xs font-medium" title={booking.productName}>
                           {booking.productName}
-                          {booking.booking_items.length > 1 && <span className="text-[10px] text-primary ml-2 bg-blue-50 px-1 rounded">+{booking.booking_items.length - 1} itens</span>}
+                          {booking.booking_items.length > 1 && <span className="text-[10px] text-primary ml-2 bg-primary-50 px-1 rounded">+{booking.booking_items.length - 1} itens</span>}
                       </td>
                       <td className="px-6 py-4 text-center text-gray-800 font-medium">
                           {booking.tour_date ? format(new Date(booking.tour_date), 'dd/MM/yyyy') : '-'}
@@ -500,7 +500,7 @@ export default function BookingsPage() {
                       </td>
                       <td className="px-6 py-4 text-right">
                         <div className="flex justify-end gap-2">
-                           <button onClick={() => setSelectedBooking(booking)} className="p-2 text-blue-600 hover:bg-blue-50 hover:shadow-sm rounded transition-all" title="Ver Detalhes">
+                           <button onClick={() => setSelectedBooking(booking)} className="p-2 text-primary-600 hover:bg-primary-50 hover:shadow-sm rounded transition-all" title="Ver Detalhes">
                               <Eye size={18} />
                            </button>
                            {(booking.status === 'paid' || booking.status === 'confirmed') && (

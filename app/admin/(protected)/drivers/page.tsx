@@ -17,7 +17,7 @@ const LANGUAGES = [
 
 const TYPE_CONFIG = {
   guide:  { label: 'Guia',      color: 'bg-purple-100 text-purple-700' },
-  driver: { label: 'Motorista', color: 'bg-blue-100 text-blue-700' },
+  driver: { label: 'Motorista', color: 'bg-primary-100 text-primary-700' },
   both:   { label: 'Ambos',     color: 'bg-emerald-100 text-emerald-700' },
 };
 
@@ -216,7 +216,7 @@ export default function DriversPage() {
                 </select>
               </div>
 
-              <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
+              <div className="bg-primary-50 p-4 rounded-lg border border-primary-100">
                 <label className="block text-xs font-bold text-gray-600 mb-3 uppercase">Idiomas Falados</label>
                 <div className="grid grid-cols-3 gap-2">
                   {LANGUAGES.map(lang => {
@@ -225,7 +225,7 @@ export default function DriversPage() {
                       <label
                         key={lang.value}
                         className={`flex items-center gap-2 p-2 rounded-lg cursor-pointer border transition-colors ${
-                          checked ? 'bg-white border-primary shadow-sm' : 'border-transparent hover:bg-blue-100'
+                          checked ? 'bg-white border-primary shadow-sm' : 'border-transparent hover:bg-primary-100'
                         }`}
                       >
                         <input
@@ -380,7 +380,7 @@ export default function DriversPage() {
                   </td>
                   <td className="px-6 py-4 text-right">
                     <div className="flex justify-end gap-2">
-                      <button onClick={() => handleEdit(item)} className="p-2 text-blue-600 hover:bg-blue-50 rounded"><Edit2 size={16} /></button>
+                      <button onClick={() => handleEdit(item)} className="p-2 text-primary-600 hover:bg-primary-50 rounded"><Edit2 size={16} /></button>
                       <button onClick={() => handleDelete(item.id)} className="p-2 text-red-600 hover:bg-red-50 rounded"><Trash2 size={16} /></button>
                     </div>
                   </td>

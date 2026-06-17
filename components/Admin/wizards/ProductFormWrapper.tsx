@@ -45,7 +45,7 @@ const TYPE_OPTIONS: { id: ProductTypeChoice; label: string; description: string;
     label: 'Ingresso / Atração',
     description: 'Ingressos para parques, shows, eventos e atrações turísticas.',
     icon: <Ticket size={32} />,
-    color: 'border-blue-400 bg-blue-50 text-blue-700',
+    color: 'border-primary-400 bg-primary-50 text-primary-700',
   },
   {
     id: 'package',

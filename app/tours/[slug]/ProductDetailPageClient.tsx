@@ -146,7 +146,7 @@ export const ProductDetailPageClient: React.FC<ProductDetailPageClientProps> = (
             {product.tags && product.tags.length > 0 && (
                <div className="flex flex-wrap gap-2 mb-3">
                   {product.tags.map((tag, idx) => (
-                    <span key={idx} className="bg-blue-50 text-blue-600 px-2 py-1 rounded text-xs font-bold uppercase tracking-wider flex items-center gap-1">
+                    <span key={idx} className="bg-primary-50 text-primary-600 px-2 py-1 rounded text-xs font-bold uppercase tracking-wider flex items-center gap-1">
                       <Tag size={10}/> {tag}
                     </span>
                   ))}
@@ -270,9 +270,9 @@ export const ProductDetailPageClient: React.FC<ProductDetailPageClientProps> = (
                
                {/* DETALHES DE TRANSFER (SE EXISTIR) */}
                {product.type === 'transfer' && product.transferDetails && (
-                 <div className="p-8 border-b border-gray-100 bg-blue-50/30">
+                 <div className="p-8 border-b border-gray-100 bg-primary-50/30">
                      <h2 className="text-xl font-bold mb-4 text-gray-800 flex items-center gap-2">
-                        <Bus className="text-blue-600"/> Detalhes do Transfer
+                        <Bus className="text-primary-600"/> Detalhes do Transfer
                      </h2>
                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                         {product.transferDetails.serviceType && (
@@ -474,9 +474,9 @@ export const ProductDetailPageClient: React.FC<ProductDetailPageClientProps> = (
                                 <>
                                   {hasRegular && (
                                     <div>
-                                      <div className={`flex items-center gap-2 mb-2 ${hasBoth ? 'pb-1 border-b border-emerald-100' : ''}`}>
-                                        <Users size={14} className="text-emerald-600" />
-                                        <label className="text-xs font-bold text-emerald-700 uppercase tracking-wide">
+                                      <div className={`flex items-center gap-2 mb-2 ${hasBoth ? 'pb-1 border-b border-primary-100' : ''}`}>
+                                        <Users size={14} className="text-primary" />
+                                        <label className="text-xs font-bold text-primary-dark uppercase tracking-wide">
                                           {hasBoth ? 'Regular — Por Pessoa' : 'Ingressos / Passageiros'}
                                         </label>
                                       </div>
@@ -494,9 +494,9 @@ export const ProductDetailPageClient: React.FC<ProductDetailPageClientProps> = (
 
                                   {hasVehicle && (
                                     <div>
-                                      <div className={`flex items-center gap-2 mb-2 ${hasBoth ? 'pb-1 border-b border-blue-100' : ''}`}>
-                                        <ShoppingBag size={14} className="text-blue-600" />
-                                        <label className="text-xs font-bold text-blue-700 uppercase tracking-wide">
+                                      <div className={`flex items-center gap-2 mb-2 ${hasBoth ? 'pb-1 border-b border-primary-100' : ''}`}>
+                                        <ShoppingBag size={14} className="text-primary-600" />
+                                        <label className="text-xs font-bold text-primary-700 uppercase tracking-wide">
                                           {hasBoth ? 'Privativo — Por Veículo' : 'Selecione o Veículo'}
                                         </label>
                                       </div>
@@ -540,10 +540,10 @@ export const ProductDetailPageClient: React.FC<ProductDetailPageClientProps> = (
                          </div>
                          
                          <div className="flex gap-2">
-                           <button onClick={handleAddToCart} className="flex-1 bg-white border-2 border-blue-600 text-blue-600 font-bold py-3 rounded-lg hover:bg-blue-50 transition-all flex items-center justify-center gap-2">
+                           <button onClick={handleAddToCart} className="flex-1 bg-white border-2 border-primary-600 text-primary-600 font-bold py-3 rounded-lg hover:bg-primary-50 transition-all flex items-center justify-center gap-2">
                               <ShoppingBag size={20}/> Adicionar
                            </button>
-                           <button onClick={handleBuyNow} className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg shadow-lg transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 uppercase tracking-wide">
+                           <button onClick={handleBuyNow} className="flex-1 bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 rounded-lg shadow-lg transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 uppercase tracking-wide">
                               Comprar
                            </button>
                          </div>

@@ -231,8 +231,8 @@ export default function VehiclesPage() {
               </div>
 
               {/* Motoristas/Guias vinculados */}
-              <div className="bg-sky-50 p-4 rounded-lg border border-sky-100">
-                <label className="block text-xs font-bold text-sky-700 mb-3 uppercase flex items-center gap-1">
+              <div className="bg-primary-50 p-4 rounded-lg border border-primary-100">
+                <label className="block text-xs font-bold text-primary-700 mb-3 uppercase flex items-center gap-1">
                   <UserCheck size={14} /> Motoristas / Guias vinculados
                 </label>
                 {drivers.length > 0 ? (
@@ -243,14 +243,14 @@ export default function VehiclesPage() {
                         <label
                           key={d.id}
                           className={`flex items-center gap-2 p-2 rounded-lg cursor-pointer border transition-colors ${
-                            checked ? 'bg-white border-sky-400 shadow-sm' : 'border-transparent hover:bg-sky-100'
+                            checked ? 'bg-white border-primary-400 shadow-sm' : 'border-transparent hover:bg-primary-100'
                           }`}
                         >
                           <input
                             type="checkbox"
                             checked={checked}
                             onChange={() => toggleDriver(d.id)}
-                            className="w-4 h-4 text-sky-600 rounded"
+                            className="w-4 h-4 text-primary-600 rounded"
                           />
                           <span className="text-sm font-medium text-gray-700 flex-1">{d.name}</span>
                           <span className="text-[10px] font-bold text-gray-400 uppercase">{TYPE_LABELS[d.type] || d.type}</span>
@@ -344,7 +344,7 @@ export default function VehiclesPage() {
                   return (
                     <tr key={v.id} className="hover:bg-gray-50 transition-colors">
                       <td className="px-6 py-4">
-                        <span className="font-mono font-bold text-primary bg-blue-50 px-2 py-1 rounded">
+                        <span className="font-mono font-bold text-primary bg-primary-50 px-2 py-1 rounded">
                           {v.plate}
                         </span>
                       </td>
@@ -359,7 +359,7 @@ export default function VehiclesPage() {
                         {linkedDrivers.length > 0 ? (
                           <div className="flex flex-wrap gap-1">
                             {linkedDrivers.map(d => (
-                              <span key={d.id} className="text-xs font-medium bg-sky-50 text-sky-700 border border-sky-200 px-2 py-0.5 rounded">
+                              <span key={d.id} className="text-xs font-medium bg-primary-50 text-primary-700 border border-primary-200 px-2 py-0.5 rounded">
                                 {d.name}
                               </span>
                             ))}
@@ -377,7 +377,7 @@ export default function VehiclesPage() {
                         <div className="flex justify-end gap-2">
                           <button
                             onClick={() => openEdit(v)}
-                            className="p-2 text-blue-600 hover:bg-blue-50 rounded"
+                            className="p-2 text-primary-600 hover:bg-primary-50 rounded"
                           >
                             <Edit2 size={16} />
                           </button>

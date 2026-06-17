@@ -288,7 +288,7 @@ export default function ProductsPage() {
                         <div className="flex justify-end gap-2">
                           <Link href={`/admin/products/edit/${product.id}`}>
                             <button
-                              className="p-1.5 text-blue-600 hover:bg-blue-50 rounded transition-colors"
+                              className="p-1.5 text-primary-600 hover:bg-primary-50 rounded transition-colors"
                               title="Editar"
                             >
                               <Edit size={16} />

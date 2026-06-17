@@ -153,7 +153,7 @@ export default function AvailabilityPage() {
   const getDayColor = (day: DayStatus) => {
     if (day.isBlocked) return 'bg-red-50 border-red-200 text-red-800'; // Bloqueado
     if (day.usedSlots >= day.totalSlots && day.totalSlots > 0) return 'bg-orange-50 border-orange-200 text-orange-800'; // Lotado
-    if (day.usedSlots > 0) return 'bg-blue-50 border-blue-200 text-blue-800'; // Vendendo
+    if (day.usedSlots > 0) return 'bg-primary-50 border-primary-200 text-primary-800'; // Vendendo
     return 'bg-white border-gray-100 text-gray-600 hover:bg-gray-50'; // Livre / Padrão
   };
 
@@ -256,7 +256,7 @@ export default function AvailabilityPage() {
                               {day.usedSlots > 0 && (
                                  <div className="mt-1 w-full bg-gray-200 rounded-full h-1.5 overflow-hidden">
                                     <div 
-                                       className="bg-blue-500 h-full" 
+                                       className="bg-primary-500 h-full" 
                                        style={{ width: `${Math.min(100, (day.usedSlots / day.totalSlots) * 100)}%` }}
                                     ></div>
                                  </div>

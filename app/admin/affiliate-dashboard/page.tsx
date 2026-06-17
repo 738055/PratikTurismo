@@ -100,7 +100,7 @@ export default function AffiliateDashboardPage() {
     return (
       <div className="flex h-screen items-center justify-center bg-gray-50">
         <div className="flex flex-col items-center gap-4">
-          <Loader2 className="animate-spin text-blue-600" size={40} />
+          <Loader2 className="animate-spin text-primary-600" size={40} />
           <p className="text-gray-500 font-medium">Carregando painel...</p>
         </div>
       </div>
@@ -114,7 +114,7 @@ export default function AffiliateDashboardPage() {
           <XCircle className="mx-auto text-red-500 mb-4" size={48} />
           <h2 className="text-xl font-bold text-gray-800 mb-2">Acesso Negado</h2>
           <p className="text-gray-500 mb-6">{error || 'Voce nao tem acesso ao painel de afiliados.'}</p>
-          <button onClick={() => router.push('/')} className="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold">
+          <button onClick={() => router.push('/')} className="bg-primary-600 text-white px-6 py-2 rounded-lg font-bold">
             Voltar
           </button>
         </div>
@@ -137,10 +137,10 @@ export default function AffiliateDashboardPage() {
       <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <span className="text-xl font-black text-blue-600 tracking-tighter">
+            <span className="text-xl font-black text-primary-600 tracking-tighter">
               RESERVA<span className="text-gray-800">TURISMO</span>
             </span>
-            <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-bold">PARCEIRO</span>
+            <span className="text-xs bg-primary-100 text-primary-700 px-2 py-1 rounded-full font-bold">PARCEIRO</span>
           </div>
           <div className="flex items-center gap-4">
             <span className="text-sm text-gray-600 hidden sm:block">
@@ -165,7 +165,7 @@ export default function AffiliateDashboardPage() {
           </div>
           <button
             onClick={copyAffiliateLink}
-            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-bold transition-colors shadow-sm"
+            className="flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg text-sm font-bold transition-colors shadow-sm"
           >
             {copied ? <Check size={16} /> : <Copy size={16} />}
             {copied ? 'Link Copiado!' : 'Copiar Meu Link'}
@@ -196,8 +196,8 @@ export default function AffiliateDashboardPage() {
 
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                <ShoppingBag className="text-blue-600" size={20} />
+              <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
+                <ShoppingBag className="text-primary-600" size={20} />
               </div>
               <p className="text-sm font-bold text-gray-500 uppercase">Reservas</p>
             </div>
@@ -218,12 +218,12 @@ export default function AffiliateDashboardPage() {
         </div>
 
         {/* Commission info banner */}
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div className="bg-primary-50 border border-primary-200 rounded-xl p-4 mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            <BarChart3 className="text-blue-600 shrink-0" size={24} />
+            <BarChart3 className="text-primary-600 shrink-0" size={24} />
             <div>
-              <p className="font-bold text-blue-900 text-sm">Sua taxa de comissao: {partner.commissionPercent}%</p>
-              <p className="text-xs text-blue-700">Taxa de conversao: {kpis.conversionRate}% das indicacoes viram reserva.</p>
+              <p className="font-bold text-primary-900 text-sm">Sua taxa de comissao: {partner.commissionPercent}%</p>
+              <p className="text-xs text-primary-700">Taxa de conversao: {kpis.conversionRate}% das indicacoes viram reserva.</p>
             </div>
           </div>
           {!partner.hasStripeAccount && (
@@ -238,19 +238,19 @@ export default function AffiliateDashboardPage() {
           <div className="flex gap-4">
             <button
               onClick={() => setActiveTab('overview')}
-              className={`py-2 px-4 text-sm font-bold transition-colors ${activeTab === 'overview' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
+              className={`py-2 px-4 text-sm font-bold transition-colors ${activeTab === 'overview' ? 'text-primary-600 border-b-2 border-primary-600' : 'text-gray-500 hover:text-gray-700'}`}
             >
               Visao Geral
             </button>
             <button
               onClick={() => setActiveTab('commissions')}
-              className={`py-2 px-4 text-sm font-bold transition-colors ${activeTab === 'commissions' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
+              className={`py-2 px-4 text-sm font-bold transition-colors ${activeTab === 'commissions' ? 'text-primary-600 border-b-2 border-primary-600' : 'text-gray-500 hover:text-gray-700'}`}
             >
               Comissoes ({commissions.length})
             </button>
             <button
               onClick={() => setActiveTab('bookings')}
-              className={`py-2 px-4 text-sm font-bold transition-colors ${activeTab === 'bookings' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
+              className={`py-2 px-4 text-sm font-bold transition-colors ${activeTab === 'bookings' ? 'text-primary-600 border-b-2 border-primary-600' : 'text-gray-500 hover:text-gray-700'}`}
             >
               Reservas ({bookings.length})
             </button>
@@ -334,7 +334,7 @@ export default function AffiliateDashboardPage() {
                         {formatCurrency(Number(c.booking_total))}
                       </td>
                       <td className="px-6 py-3 text-center">
-                        <span className="bg-blue-50 text-blue-700 text-xs font-bold px-2 py-1 rounded">
+                        <span className="bg-primary-50 text-primary-700 text-xs font-bold px-2 py-1 rounded">
                           {c.commission_percent}%
                         </span>
                       </td>

@@ -53,7 +53,7 @@ export default function PartnersManager() {
     setPartners(partners.filter(p => p.id !== id));
   };
 
-  if (loading) return <div className="flex justify-center p-8"><Loader2 className="animate-spin text-blue-600" /></div>;
+  if (loading) return <div className="flex justify-center p-8"><Loader2 className="animate-spin text-primary-600" /></div>;
 
   return (
     <div className="space-y-6">
@@ -62,20 +62,20 @@ export default function PartnersManager() {
             <h3 className="font-bold text-gray-800">Carrossel de Parceiros</h3>
             <p className="text-sm text-gray-500">Faça o upload de logos (fundo transparente) para aparecerem na Home.</p>
          </div>
-         <button onClick={() => setEditingPartner({ name: '', logo_url: '', is_active: true })} className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2 transition-colors">
+         <button onClick={() => setEditingPartner({ name: '', logo_url: '', is_active: true })} className="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2 transition-colors">
             <Plus size={18}/> Novo Parceiro
          </button>
       </div>
 
       {editingPartner && (
-         <div className="bg-white p-6 rounded-xl shadow-lg border border-blue-200 relative animate-fadeIn">
+         <div className="bg-white p-6 rounded-xl shadow-lg border border-primary-200 relative animate-fadeIn">
             <button onClick={() => setEditingPartner(null)} className="absolute top-4 right-4 text-gray-400 hover:text-red-500"><X size={24}/></button>
             <h4 className="font-bold mb-4 text-lg">{editingPartner.id ? 'Editar' : 'Adicionar'} Parceiro</h4>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-               <div className="bg-blue-50 p-4 rounded-lg border border-dashed border-blue-300 text-center">
-                  <UploadCloud className="mx-auto text-blue-500 mb-2" size={32} />
-                  <p className="text-sm font-bold text-blue-800 mb-2">Upload do Logo (PNG Transparente)</p>
+               <div className="bg-primary-50 p-4 rounded-lg border border-dashed border-primary-300 text-center">
+                  <UploadCloud className="mx-auto text-primary-500 mb-2" size={32} />
+                  <p className="text-sm font-bold text-primary-800 mb-2">Upload do Logo (PNG Transparente)</p>
                   <input type="file" accept="image/png, image/webp" onChange={async (e) => {
                      if (!e.target.files?.length) return;
                      try {
@@ -83,7 +83,7 @@ export default function PartnersManager() {
                         const url = await handleFileUpload(e.target.files[0]);
                         setEditingPartner({ ...editingPartner, logo_url: url });
                      } catch(err) { alert('Erro no upload'); } finally { setSaving(false); }
-                  }} className="text-xs text-blue-600 file:mr-2 file:py-1 file:px-3 file:rounded file:border-0 file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer" />
+                  }} className="text-xs text-primary-600 file:mr-2 file:py-1 file:px-3 file:rounded file:border-0 file:bg-primary-600 file:text-white hover:file:bg-primary-700 cursor-pointer" />
                </div>
 
                <div className="space-y-4">
@@ -114,7 +114,7 @@ export default function PartnersManager() {
                <p className="text-[10px] font-bold text-gray-500 mt-2 truncate w-full text-center">{partner.name}</p>
                
                <div className="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 rounded-xl">
-                  <button onClick={() => setEditingPartner(partner)} className="p-2 bg-blue-100 text-blue-600 rounded-full hover:bg-blue-600 hover:text-white transition-colors" title="Editar"><Edit2 size={16}/></button>
+                  <button onClick={() => setEditingPartner(partner)} className="p-2 bg-primary-100 text-primary-600 rounded-full hover:bg-primary-600 hover:text-white transition-colors" title="Editar"><Edit2 size={16}/></button>
                   <button onClick={() => handleDelete(partner.id)} className="p-2 bg-red-100 text-red-600 rounded-full hover:bg-red-600 hover:text-white transition-colors" title="Deletar"><Trash2 size={16}/></button>
                </div>
             </div>

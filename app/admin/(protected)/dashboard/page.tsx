@@ -143,11 +143,11 @@ export default function DashboardPage() {
           <div>
             <p className="text-sm text-gray-500 font-medium uppercase">Base de Clientes</p>
             <h3 className="text-2xl font-black text-gray-800 mt-1">{stats.activeCustomers}</h3>
-            <span className="text-xs text-blue-500 flex items-center gap-1 mt-1 font-bold">
+            <span className="text-xs text-primary-500 flex items-center gap-1 mt-1 font-bold">
                Cadastrados
             </span>
           </div>
-          <div className="bg-blue-100 p-3 rounded-full text-blue-600 group-hover:scale-110 transition-transform">
+          <div className="bg-primary-100 p-3 rounded-full text-primary-600 group-hover:scale-110 transition-transform">
             <Users size={24} />
           </div>
         </div>
@@ -193,7 +193,7 @@ export default function DashboardPage() {
             <h3 className="font-bold text-gray-800 mb-4">Ações Rápidas</h3>
             <div className="space-y-3">
                <button onClick={() => window.location.href='/admin/products/new'} className="w-full text-left p-3 rounded-lg hover:bg-gray-50 border border-gray-100 flex items-center gap-3 transition-colors">
-                  <div className="bg-blue-100 p-2 rounded text-blue-600"><ShoppingBag size={18}/></div>
+                  <div className="bg-primary-100 p-2 rounded text-primary-600"><ShoppingBag size={18}/></div>
                   <span className="font-medium text-gray-700">Cadastrar Produto</span>
                </button>
                <button onClick={() => window.location.href='/admin/bookings'} className="w-full text-left p-3 rounded-lg hover:bg-gray-50 border border-gray-100 flex items-center gap-3 transition-colors">

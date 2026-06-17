@@ -153,7 +153,7 @@ export default function SettingsPage() {
       case 'general':
         return (
           <div className="space-y-5 animate-fadeIn">
-            <p className="text-xs text-gray-400 bg-blue-50 border border-blue-100 rounded-lg px-4 py-2">
+            <p className="text-xs text-gray-400 bg-primary-50 border border-primary-100 rounded-lg px-4 py-2">
               Estes dados aparecem no rodapé, na página de contato e nos e-mails enviados.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -163,7 +163,7 @@ export default function SettingsPage() {
                   type="text"
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none"
                   placeholder="Reserva Turismo"
                 />
               </div>
@@ -173,7 +173,7 @@ export default function SettingsPage() {
                   type="text"
                   value={cnpj}
                   onChange={(e) => setCnpj(e.target.value)}
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none"
                   placeholder="00.000.000/0001-00"
                 />
               </div>
@@ -183,7 +183,7 @@ export default function SettingsPage() {
                   type="email"
                   value={contactEmail}
                   onChange={(e) => setContactEmail(e.target.value)}
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none"
                   placeholder="contato@reservaturismo.com.br"
                 />
               </div>
@@ -193,7 +193,7 @@ export default function SettingsPage() {
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none"
                   placeholder="+55 45 99999-9999"
                 />
               </div>
@@ -204,7 +204,7 @@ export default function SettingsPage() {
                 type="text"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
-                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none"
                 placeholder="Av. Brasil, 1234 - Centro, Foz do Iguaçu - PR"
               />
             </div>
@@ -232,7 +232,7 @@ export default function SettingsPage() {
                     type="text"
                     value={stripePublicKey}
                     onChange={(e) => setStripePublicKey(e.target.value)}
-                    className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm font-mono outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm font-mono outline-none focus:ring-2 focus:ring-primary-500"
                   />
                 </div>
                 <div>
@@ -243,7 +243,7 @@ export default function SettingsPage() {
                     type="password"
                     value={stripeSecretKey}
                     onChange={(e) => setStripeSecretKey(e.target.value)}
-                    className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm font-mono outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm font-mono outline-none focus:ring-2 focus:ring-primary-500"
                     placeholder="Digite a nova chave para alterar"
                   />
                 </div>
@@ -255,7 +255,7 @@ export default function SettingsPage() {
                     type="password"
                     value={stripeWebhookSecret}
                     onChange={(e) => setStripeWebhookSecret(e.target.value)}
-                    className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm font-mono outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm font-mono outline-none focus:ring-2 focus:ring-primary-500"
                     placeholder="Digite a nova chave para alterar"
                   />
                 </div>
@@ -277,7 +277,7 @@ export default function SettingsPage() {
                   type="text"
                   value={googleTagManagerId}
                   onChange={(e) => setGoogleTagManagerId(e.target.value)}
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm font-mono outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm font-mono outline-none focus:ring-2 focus:ring-primary-500"
                   placeholder="GTM-XXXXXXX"
                 />
               </div>
@@ -289,7 +289,7 @@ export default function SettingsPage() {
                   type="text"
                   value={googleAnalyticsId}
                   onChange={(e) => setGoogleAnalyticsId(e.target.value)}
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm font-mono outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm font-mono outline-none focus:ring-2 focus:ring-primary-500"
                   placeholder="G-XXXXXXXXXX"
                 />
               </div>
@@ -299,7 +299,7 @@ export default function SettingsPage() {
                   type="text"
                   value={metaPixelId}
                   onChange={(e) => setMetaPixelId(e.target.value)}
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm font-mono outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm font-mono outline-none focus:ring-2 focus:ring-primary-500"
                   placeholder="1234567890123456"
                 />
               </div>
@@ -311,7 +311,7 @@ export default function SettingsPage() {
                   type="password"
                   value={metaConversionsApiToken}
                   onChange={(e) => setMetaConversionsApiToken(e.target.value)}
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm font-mono outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm font-mono outline-none focus:ring-2 focus:ring-primary-500"
                   placeholder="Digite para alterar"
                 />
               </div>
@@ -333,7 +333,7 @@ export default function SettingsPage() {
                   type="text"
                   value={smtpHost}
                   onChange={(e) => setSmtpHost(e.target.value)}
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm font-mono outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm font-mono outline-none focus:ring-2 focus:ring-primary-500"
                   placeholder="smtp.gmail.com"
                 />
               </div>
@@ -345,7 +345,7 @@ export default function SettingsPage() {
                   type="number"
                   value={smtpPort}
                   onChange={(e) => setSmtpPort(e.target.value)}
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm font-mono outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm font-mono outline-none focus:ring-2 focus:ring-primary-500"
                   placeholder="587"
                 />
               </div>
@@ -357,7 +357,7 @@ export default function SettingsPage() {
                   type="email"
                   value={smtpUser}
                   onChange={(e) => setSmtpUser(e.target.value)}
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary-500"
                   placeholder="noreply@reservaturismo.com.br"
                 />
               </div>
@@ -369,7 +369,7 @@ export default function SettingsPage() {
                   type="password"
                   value={smtpPass}
                   onChange={(e) => setSmtpPass(e.target.value)}
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary-500"
                   placeholder="Digite para alterar"
                 />
               </div>
@@ -385,13 +385,13 @@ export default function SettingsPage() {
                   type="email"
                   value={testEmailTarget}
                   onChange={(e) => setTestEmailTarget(e.target.value)}
-                  className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500"
+                  className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary-500"
                   placeholder="seu@email.com"
                 />
                 <button
                   onClick={handleTestEmail}
                   disabled={testEmailStatus === 'sending'}
-                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-sm flex items-center gap-2 transition-colors disabled:opacity-60 shrink-0"
+                  className="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-lg text-sm flex items-center gap-2 transition-colors disabled:opacity-60 shrink-0"
                 >
                   {testEmailStatus === 'sending' ? (
                     <Loader2 size={16} className="animate-spin" />
@@ -446,7 +446,7 @@ export default function SettingsPage() {
                   type="text"
                   value={promoTitle}
                   onChange={(e) => setPromoTitle(e.target.value)}
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary-500"
                   placeholder="Ex: Oferta Especial de Verão!"
                 />
               </div>
@@ -457,7 +457,7 @@ export default function SettingsPage() {
                 <textarea
                   value={promoText}
                   onChange={(e) => setPromoText(e.target.value)}
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary-500"
                   rows={3}
                   placeholder="Descreva a oferta..."
                 />
@@ -470,7 +470,7 @@ export default function SettingsPage() {
                   type="text"
                   value={promoCoupon}
                   onChange={(e) => setPromoCoupon(e.target.value.toUpperCase())}
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm font-mono uppercase outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm font-mono uppercase outline-none focus:ring-2 focus:ring-primary-500"
                   placeholder="VERAO20"
                 />
               </div>
@@ -506,7 +506,7 @@ export default function SettingsPage() {
                 onClick={() => setActiveTab(item.id)}
                 className={`w-full text-left px-6 py-4 flex items-center gap-3 font-medium transition-colors border-l-4 ${
                   activeTab === item.id
-                    ? 'bg-blue-50 border-primary text-primary'
+                    ? 'bg-primary-50 border-primary text-primary'
                     : 'border-transparent text-gray-600 hover:bg-gray-50'
                 }`}
               >
@@ -537,7 +537,7 @@ export default function SettingsPage() {
             <button
               onClick={handleSave}
               disabled={saveStatus === 'saving'}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-xl shadow-sm flex items-center gap-2 transition-colors disabled:opacity-60 ml-auto"
+              className="bg-primary-600 hover:bg-primary-700 text-white font-bold py-2.5 px-6 rounded-xl shadow-sm flex items-center gap-2 transition-colors disabled:opacity-60 ml-auto"
             >
               {saveStatus === 'saving' ? (
                 <><Loader2 size={18} className="animate-spin" /> Salvando...</>

@@ -101,18 +101,18 @@ function SuccessContent() {
                             
                             <div className="flex flex-wrap gap-4 text-sm text-gray-500">
                                <div className="flex items-center gap-1">
-                                  <Calendar size={14} className="text-blue-500"/>
+                                  <Calendar size={14} className="text-primary-500"/>
                                   <span>{item.date ? new Date(item.date + 'T12:00:00').toLocaleDateString('pt-BR') : 'N/A'}</span>
                                </div>
                                <div className="flex items-center gap-1">
-                                  <Users size={14} className="text-blue-500"/>
+                                  <Users size={14} className="text-primary-500"/>
                                   <span>{item.adults + item.children} Pessoas</span>
                                </div>
                             </div>
                          </div>
                          <div className="text-right">
                              {/* CORREÇÃO: Preço pode vir de subtotal ou cálculo manual */}
-                            <span className="block font-black text-lg text-blue-600">
+                            <span className="block font-black text-lg text-primary-600">
                                {(item.subtotal || item.price || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                             </span>
                          </div>
@@ -121,19 +121,19 @@ function SuccessContent() {
                 </div>
 
                 {/* Info Box */}
-                <div className="bg-blue-50 p-6 rounded-xl border border-blue-100 mb-8">
-                   <h4 className="font-bold text-blue-900 mb-2">O que acontece agora?</h4>
-                   <ul className="space-y-2 text-sm text-blue-800">
+                <div className="bg-primary-50 p-6 rounded-xl border border-primary-100 mb-8">
+                   <h4 className="font-bold text-primary-900 mb-2">O que acontece agora?</h4>
+                   <ul className="space-y-2 text-sm text-primary-800">
                       <li className="flex items-start gap-2">
-                         <span className="mt-1 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                         <span className="mt-1 w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
                          Você receberá um e-mail com os vouchers das atividades.
                       </li>
                       <li className="flex items-start gap-2">
-                         <span className="mt-1 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                         <span className="mt-1 w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
                          Apresente o voucher (digital ou impresso) no local da atividade.
                       </li>
                       <li className="flex items-start gap-2">
-                         <span className="mt-1 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                         <span className="mt-1 w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
                          Em caso de dúvidas, nossa equipe de suporte está à disposição.
                       </li>
                    </ul>
@@ -143,7 +143,7 @@ function SuccessContent() {
                    <button className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-100 text-gray-700 font-bold rounded-xl hover:bg-gray-200 transition-colors">
                       <Printer size={18} /> Imprimir Vouchers
                    </button>
-                   <Link href="/" className="flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200">
+                   <Link href="/" className="flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white font-bold rounded-xl hover:bg-primary-700 transition-colors shadow-lg shadow-primary-200">
                       <Home size={18} /> Voltar ao Início
                    </Link>
                 </div>

@@ -118,7 +118,7 @@ export default function CalendarPage() {
             onClick={() => setSelectedDate(dateObj)}
             className={`h-10 md:h-12 flex flex-col items-center justify-center rounded-lg text-sm font-medium transition-all relative border border-transparent
                ${isSelected ? 'bg-primary text-white shadow-md' : 'bg-white hover:border-gray-300 text-gray-700'}
-               ${isToday && !isSelected ? 'text-primary font-black bg-blue-50' : ''}
+               ${isToday && !isSelected ? 'text-primary font-black bg-primary-50' : ''}
             `}
         >
            {day}
@@ -164,7 +164,7 @@ export default function CalendarPage() {
                 </div>
              </div>
 
-             <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 text-sm text-blue-800">
+             <div className="bg-primary-50 border border-primary-100 rounded-xl p-4 text-sm text-primary-800">
                 <p className="font-bold flex items-center gap-2 mb-1"><FileText size={16}/> Resumo do Mês</p>
                 <p>Use o calendário para navegar. Dias com uma bolinha laranja possuem atividades agendadas e confirmadas.</p>
              </div>
@@ -231,7 +231,7 @@ export default function CalendarPage() {
                                   </thead>
                                   <tbody className="divide-y divide-gray-50">
                                      {group.bookings.map((booking, bIdx) => (
-                                        <tr key={bIdx} className="hover:bg-blue-50/30 transition-colors">
+                                        <tr key={bIdx} className="hover:bg-primary-50/30 transition-colors">
                                            <td className="px-4 py-3">
                                               <div className="font-bold text-gray-800">{booking.customer_name}</div>
                                               <div className="text-[10px] text-gray-400 font-mono">#{booking.id.slice(0,6).toUpperCase()}</div>

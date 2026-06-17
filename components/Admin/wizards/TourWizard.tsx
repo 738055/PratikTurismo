@@ -395,14 +395,14 @@ export default function TourWizard({ initialData, mode }: TourWizardProps) {
 
                 {/* Tags */}
                 <div className="col-span-2">
-                  <label className="block text-sm font-bold text-gray-700 mb-1 flex items-center gap-1"><Tag size={14} className="text-blue-600" /> Tags (Selos no Card)</label>
+                  <label className="block text-sm font-bold text-gray-700 mb-1 flex items-center gap-1"><Tag size={14} className="text-primary-600" /> Tags (Selos no Card)</label>
                   <div className="flex gap-2 mb-2">
                     <input value={tempTag} onChange={(e) => setTempTag(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addToArray('tags', tempTag, () => setTempTag('')); } }} className="flex-1 border p-2 rounded-lg text-sm" placeholder="Ex: Imperdível, Família, Aventura..." />
                     <button type="button" onClick={() => addToArray('tags', tempTag, () => setTempTag(''))} className="bg-gray-100 px-3 rounded-lg hover:bg-gray-200 text-sm font-bold">Add</button>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {tags.map((tag, i) => (
-                      <span key={i} className="bg-blue-50 text-blue-700 border border-blue-200 px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                      <span key={i} className="bg-primary-50 text-primary-700 border border-primary-200 px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
                         {tag} <X size={12} className="cursor-pointer" onClick={() => removeFromArray('tags', i)} />
                       </span>
                     ))}
@@ -417,7 +417,7 @@ export default function TourWizard({ initialData, mode }: TourWizardProps) {
                     <input value={tempItinerary.title} onChange={(e) => setTempItinerary({ ...tempItinerary, title: e.target.value })} className="border p-2 rounded text-sm" placeholder="Título da Etapa *" />
                     <input value={tempItinerary.description} onChange={(e) => setTempItinerary({ ...tempItinerary, description: e.target.value })} className="border p-2 rounded text-sm" placeholder="Descrição breve" />
                   </div>
-                  <button type="button" onClick={addItinerary} className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-1 hover:bg-blue-700">
+                  <button type="button" onClick={addItinerary} className="bg-primary-600 text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-1 hover:bg-primary-700">
                     <Plus size={14} /> Adicionar Etapa
                   </button>
                   <div className="mt-3 space-y-2">
@@ -554,10 +554,10 @@ export default function TourWizard({ initialData, mode }: TourWizardProps) {
                   </div>
 
                   {/* ── PRIVATIVO (Por Veículo) ── */}
-                  <div className="border-2 border-blue-200 rounded-xl overflow-hidden">
-                    <div className="bg-blue-50 px-4 py-3 flex items-center gap-2 border-b border-blue-200">
-                      <Car size={18} className="text-blue-600" />
-                      <span className="font-bold text-blue-800 text-sm">Privativo — Por Veículo</span>
+                  <div className="border-2 border-primary-200 rounded-xl overflow-hidden">
+                    <div className="bg-primary-50 px-4 py-3 flex items-center gap-2 border-b border-primary-200">
+                      <Car size={18} className="text-primary-600" />
+                      <span className="font-bold text-primary-800 text-sm">Privativo — Por Veículo</span>
                     </div>
                     <div className="p-4 space-y-3">
                       <div className="space-y-2">
@@ -572,13 +572,13 @@ export default function TourWizard({ initialData, mode }: TourWizardProps) {
                             <CurrencyInput value={tempTierPrivate.costPrice} onChange={(v) => setTempTierPrivate({ ...tempTierPrivate, costPrice: v })} className="w-full border p-2 rounded text-sm" />
                           </div>
                         </div>
-                        <button type="button" onClick={() => addTier('per_vehicle')} className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-blue-700 text-sm flex items-center justify-center gap-1">
+                        <button type="button" onClick={() => addTier('per_vehicle')} className="w-full bg-primary-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-primary-700 text-sm flex items-center justify-center gap-1">
                           <Plus size={14} /> Adicionar Veículo
                         </button>
                       </div>
                       <div className="space-y-2 mt-3">
                         {pricingTiers.filter(t => t.mode === 'per_vehicle').map((tier, i) => (
-                          <div key={tier.id} className="flex justify-between items-center bg-blue-50/50 border border-blue-100 p-2.5 rounded-lg">
+                          <div key={tier.id} className="flex justify-between items-center bg-primary-50/50 border border-primary-100 p-2.5 rounded-lg">
                             <div>
                               <span className="font-bold text-gray-800 text-sm">{tier.name}</span>
                               <div className="text-xs text-gray-500 flex gap-3 mt-0.5">
@@ -639,13 +639,13 @@ export default function TourWizard({ initialData, mode }: TourWizardProps) {
                 </label>
                 <label className="flex items-center gap-3 cursor-pointer">
                   <Controller name="isFeatured" control={control} render={({ field }) => (
-                    <input type="checkbox" checked={field.value} onChange={field.onChange} className="w-5 h-5 accent-blue-600" />
+                    <input type="checkbox" checked={field.value} onChange={field.onChange} className="w-5 h-5 accent-primary-600" />
                   )} />
                   <span className="text-sm font-bold text-gray-700">Destaque na Home</span>
                 </label>
                 <label className="flex items-center gap-3 cursor-pointer">
                   <Controller name="active" control={control} render={({ field }) => (
-                    <input type="checkbox" checked={field.value} onChange={field.onChange} className="w-5 h-5 accent-blue-600" />
+                    <input type="checkbox" checked={field.value} onChange={field.onChange} className="w-5 h-5 accent-primary-600" />
                   )} />
                   <span className="text-sm font-bold text-gray-700">Produto Ativo</span>
                 </label>
@@ -665,7 +665,7 @@ export default function TourWizard({ initialData, mode }: TourWizardProps) {
           </button>
 
           {step < TOTAL_STEPS ? (
-            <button key="next" type="button" onClick={advanceStep} className="bg-blue-600 text-white px-8 py-2 rounded-lg font-bold flex items-center gap-2 hover:bg-blue-700">
+            <button key="next" type="button" onClick={advanceStep} className="bg-primary-600 text-white px-8 py-2 rounded-lg font-bold flex items-center gap-2 hover:bg-primary-700">
               Próximo <ArrowRight size={18} />
             </button>
           ) : (

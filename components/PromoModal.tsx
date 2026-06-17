@@ -59,7 +59,7 @@ export default function PromoModal() {
                 <p className="text-gray-600 mb-4">{settings.promo_modal_text}</p>
                 <div className="mb-6">
                   <p className="text-xs text-gray-400 font-bold uppercase mb-2">Use o cupom no carrinho:</p>
-                  <div className="inline-block border-2 border-dashed border-primary bg-blue-50 text-primary font-mono font-black text-xl px-4 py-2 rounded-lg tracking-widest">
+                  <div className="inline-block border-2 border-dashed border-primary bg-primary-50 text-primary font-mono font-black text-xl px-4 py-2 rounded-lg tracking-widest">
                     {settings.promo_modal_coupon_code}
                   </div>
                 </div>

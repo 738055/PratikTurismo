@@ -262,7 +262,7 @@ export default function ReportsPage() {
                   </div>
                )}
 
-               <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${report.type === 'finance' ? 'bg-green-100 text-green-600' : 'bg-blue-100 text-blue-600'}`}>
+               <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${report.type === 'finance' ? 'bg-green-100 text-green-600' : 'bg-primary-100 text-primary-600'}`}>
                   <report.icon size={24} />
                </div>
                <h3 className="font-bold text-lg text-gray-800 mb-2 group-hover:text-primary transition-colors">{report.title}</h3>
@@ -279,7 +279,7 @@ export default function ReportsPage() {
                   <button 
                     onClick={() => handleDownloadExcel(report)}
                     disabled={loadingReport !== null}
-                    className="flex-1 bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold py-2 rounded-lg text-sm flex items-center justify-center gap-2 transition-colors border border-blue-200"
+                    className="flex-1 bg-primary-50 hover:bg-primary-100 text-primary-700 font-bold py-2 rounded-lg text-sm flex items-center justify-center gap-2 transition-colors border border-primary-200"
                   >
                      <Download size={16}/> Excel CSV
                   </button>

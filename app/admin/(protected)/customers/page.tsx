@@ -162,10 +162,10 @@ export default function CustomersPage() {
                       </tr>
                    ) : (
                       filteredCustomers.map((customer) => (
-                         <tr key={customer.id} className="hover:bg-blue-50/30 transition-colors group">
+                         <tr key={customer.id} className="hover:bg-primary-50/30 transition-colors group">
                             <td className="px-6 py-4">
                                <div className="flex items-center gap-3">
-                                  <div className="w-10 h-10 rounded-full bg-blue-100 text-primary flex items-center justify-center font-bold shrink-0">
+                                  <div className="w-10 h-10 rounded-full bg-primary-100 text-primary flex items-center justify-center font-bold shrink-0">
                                      {customer.name.substring(0,2).toUpperCase()}
                                   </div>
                                   <div>
@@ -192,7 +192,7 @@ export default function CustomersPage() {
                             </td>
                             <td className="px-6 py-4">
                                <div className="flex flex-col gap-1 text-sm">
-                                  <span className="bg-blue-50 border border-blue-100 text-primary px-2 py-1 rounded font-bold flex items-center gap-1 w-fit text-xs">
+                                  <span className="bg-primary-50 border border-primary-100 text-primary px-2 py-1 rounded font-bold flex items-center gap-1 w-fit text-xs">
                                      <ShoppingBag size={12}/> {customer.bookingsCount} reserva(s)
                                   </span>
                                   {customer.lastBooking && (

@@ -9,6 +9,7 @@ import PromoModal from '@/components/PromoModal';
 import { ProductCard } from '@/components/ProductCard';
 import { PratikNavbar } from '@/components/Frontend/PratikNavbar';
 import { PratikHero } from '@/components/Frontend/PratikHero';
+import { PratikSocialProof } from '@/components/Frontend/PratikSocialProof';
 import { PratikFooter } from '@/components/Frontend/PratikFooter';
 
 export default function HomePage() {
@@ -123,6 +124,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* --- PROVA SOCIAL / DEPOIMENTOS --- */}
+      <PratikSocialProof />
+
       {/* --- WHY CHOOSE US REDESIGNED --- */}
       <section className="py-24 bg-secondary relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
@@ -152,7 +156,7 @@ export default function HomePage() {
                     <p className="text-white/50 font-medium leading-relaxed">Nossa equipe em Foz está sempre pronta para ajudar você em qualquer momento.</p>
                 </div>
                 <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-10 rounded-[2rem] flex flex-col items-center text-center group hover:bg-white/10 transition-colors">
-                    <div className="w-20 h-20 rounded-3xl bg-green-500/20 flex items-center justify-center text-green-500 mb-8 group-hover:scale-110 transition-transform">
+                    <div className="w-20 h-20 rounded-3xl bg-primary/20 flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform">
                       <CreditCard size={40} />
                     </div>
                     <h4 className="font-black text-white text-2xl mb-4 tracking-tight">Parcelamento Fácil</h4>

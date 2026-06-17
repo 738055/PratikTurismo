@@ -70,11 +70,11 @@ const Navbar = () => {
             {/* Logo */}
             <div className="flex flex-shrink-0 items-center">
               <Link href="/" className="flex items-center gap-2 cursor-pointer">
-                <div className="text-blue-600 font-black text-2xl tracking-tighter flex items-center">
-                   <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-800 rounded-tr-xl rounded-bl-xl mr-2 shadow-md"></div>
+                <div className="text-primary-600 font-black text-2xl tracking-tighter flex items-center">
+                   <div className="w-8 h-8 bg-gradient-to-br from-primary-600 to-primary-800 rounded-tr-xl rounded-bl-xl mr-2 shadow-md"></div>
                    <div className="flex flex-col leading-none">
                      <span className="text-gray-800 text-xl">RESERVA</span>
-                     <span className="text-blue-600 text-xs font-bold tracking-[0.2em]">TURISMO</span>
+                     <span className="text-primary-600 text-xs font-bold tracking-[0.2em]">TURISMO</span>
                    </div>
                 </div>
               </Link>
@@ -88,7 +88,7 @@ const Navbar = () => {
                   href={link.href}
                   className={`inline-flex items-center px-1 pt-1 text-sm font-medium border-b-2 transition-colors ${
                     pathname === link.href
-                      ? 'border-blue-500 text-gray-900'
+                      ? 'border-primary-500 text-gray-900'
                       : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
                   }`}
                 >
@@ -100,30 +100,30 @@ const Navbar = () => {
             {/* Ações da Direita */}
             <div className="hidden md:flex items-center space-x-6">
               <div className="flex items-center space-x-4 text-sm text-gray-600">
-                <button className="flex items-center hover:text-blue-600 transition-colors">
+                <button className="flex items-center hover:text-primary-600 transition-colors">
                   <Globe className="h-4 w-4 mr-1" />
                   <span className="uppercase">{language}</span>
                 </button>
-                <button className="flex items-center hover:text-blue-600 font-medium transition-colors">
+                <button className="flex items-center hover:text-primary-600 font-medium transition-colors">
                   <span>{currency}</span>
                   <ChevronDown className="h-3 w-3 ml-1" />
                 </button>
               </div>
 
               <div className="flex items-center space-x-4">
-                <button className="p-2 text-gray-400 hover:text-blue-600 transition-colors">
+                <button className="p-2 text-gray-400 hover:text-primary-600 transition-colors">
                   <Search className="h-5 w-5" />
                 </button>
-                <Link href="/minhas-reservas" className="p-2 text-gray-400 hover:text-blue-600 transition-colors">
+                <Link href="/minhas-reservas" className="p-2 text-gray-400 hover:text-primary-600 transition-colors">
                   <User className="h-5 w-5" />
                 </Link>
                 <button 
                   onClick={handleOpenCart}
-                  className="relative p-2 text-gray-400 hover:text-blue-600 transition-colors"
+                  className="relative p-2 text-gray-400 hover:text-primary-600 transition-colors"
                 >
                   <ShoppingCart className="h-6 w-6" />
                   {cartCount > 0 && (
-                    <span className="absolute top-0 right-0 flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-[10px] font-bold text-white">
+                    <span className="absolute top-0 right-0 flex h-5 w-5 items-center justify-center rounded-full bg-primary-600 text-[10px] font-bold text-white">
                       {cartCount}
                     </span>
                   )}
@@ -136,7 +136,7 @@ const Navbar = () => {
               <button onClick={handleOpenCart} className="relative p-2 text-gray-400">
                 <ShoppingCart className="h-6 w-6" />
                 {cartCount > 0 && (
-                  <span className="absolute top-0 right-0 flex h-4 w-4 items-center justify-center rounded-full bg-blue-600 text-[10px] font-bold text-white">
+                  <span className="absolute top-0 right-0 flex h-4 w-4 items-center justify-center rounded-full bg-primary-600 text-[10px] font-bold text-white">
                     {cartCount}
                   </span>
                 )}
@@ -158,7 +158,7 @@ const Navbar = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className="block py-3 text-base font-medium text-gray-700 hover:text-blue-600 border-b border-gray-50"
+                className="block py-3 text-base font-medium text-gray-700 hover:text-primary-600 border-b border-gray-50"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.name}
@@ -173,7 +173,7 @@ const Navbar = () => {
                          onClick={() => handleCategoryClick(cat.slug)}
                          className="flex items-center gap-2 p-2 text-sm text-left hover:bg-gray-50 rounded"
                       >
-                         {renderIcon(cat.icon, "text-blue-500")}
+                         {renderIcon(cat.icon, "text-primary-500")}
                          {cat.label}
                       </button>
                    ))}
@@ -184,7 +184,7 @@ const Navbar = () => {
       </nav>
 
       {/* 2. FAIXA AZUL (CATEGORIAS) - Agora parte fixa do Navbar */}
-      <div className="bg-blue-600 shadow-md border-t border-blue-400/30 w-full z-40 relative">
+      <div className="bg-primary-600 shadow-md border-t border-primary-400/30 w-full z-40 relative">
          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <ul className="flex items-center justify-start md:justify-center gap-4 md:gap-8 overflow-x-auto scrollbar-hide py-3 text-white no-scrollbar">
                {categories.length > 0 ? (
@@ -203,7 +203,7 @@ const Navbar = () => {
                    ))
                ) : (
                  // Fallback visual caso categorias não carreguem
-                 <li className="text-xs text-blue-200 py-1">Carregando categorias...</li>
+                 <li className="text-xs text-primary-200 py-1">Carregando categorias...</li>
                )}
             </ul>
          </div>
