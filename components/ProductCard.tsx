@@ -174,33 +174,40 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     <div
       className={
         isVertical
-          ? 'mt-auto p-4 border-t border-gray-200 bg-gray-50/30 flex flex-col items-start'
-          : 'w-full sm:w-[240px] p-5 flex flex-col justify-center items-start shrink-0 border-t sm:border-t-0 sm:border-l border-gray-200 bg-gray-50/30'
+          ? 'mt-auto p-5 border-t border-gray-100 bg-gray-50/50 flex flex-col items-start'
+          : 'w-full sm:w-[260px] p-6 flex flex-col justify-center items-start shrink-0 border-t sm:border-t-0 sm:border-l border-gray-100 bg-gray-50/50'
       }
     >
-      <span className="text-xs text-gray-500 font-medium mb-1">
-        {isTransfer
-          ? `Total ${isRoundtrip ? '(Ida e Volta)' : 'a partir de'}`
-          : 'Preço por adulto a partir de'}
-      </span>
-
-      {product.compareAtPrice && product.compareAtPrice > displayPrice && (
-        <span className="text-xs text-gray-400 line-through mb-0.5">
-          {formatCurrency(product.compareAtPrice)}
+      <div className="mb-4">
+        <span className="text-[10px] text-gray-400 font-black uppercase tracking-widest block mb-1">
+          {isTransfer
+            ? `Total ${isRoundtrip ? '(Ida e Volta)' : 'a partir de'}`
+            : 'Por pessoa a partir de'}
         </span>
-      )}
 
-      <span className="text-2xl font-black text-gray-900 leading-none mb-1">
-        {formatCurrency(displayPrice)}
-      </span>
-
-      <span className="text-xs text-[#00a650] font-bold mb-3">Até 10x sem juros</span>
+        <div className="flex items-baseline gap-2">
+          {product.compareAtPrice && product.compareAtPrice > displayPrice && (
+            <span className="text-sm text-gray-400 line-through font-medium">
+              {formatCurrency(product.compareAtPrice)}
+            </span>
+          )}
+          <span className="text-3xl font-black text-secondary tracking-tighter leading-none">
+            {formatCurrency(displayPrice)}
+          </span>
+        </div>
+        
+        <div className="flex items-center gap-1.5 mt-1 text-success font-bold text-xs uppercase tracking-tight">
+          <CreditCard size={12} />
+          <span>Até 10x sem juros</span>
+        </div>
+      </div>
 
       <button
         onClick={handleClick}
-        className="w-full bg-[#00a650] hover:bg-[#008c44] text-white text-sm font-bold py-2.5 px-4 rounded-lg transition-colors"
+        className="w-full bg-primary hover:bg-primary-dark text-white text-sm font-black py-4 px-6 rounded-2xl transition-all shadow-lg shadow-primary/20 hover:shadow-primary/40 active:scale-[0.98] flex items-center justify-center gap-2 group/btn"
       >
-        Comprar agora
+        <span>RESERVAR AGORA</span>
+        <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
       </button>
     </div>
   );
@@ -212,41 +219,51 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     return (
       <div
         onClick={handleClick}
-        className="w-[280px] md:w-[300px] flex flex-col bg-white rounded-2xl shadow-sm border border-gray-200 snap-center hover:shadow-md transition-shadow duration-300 group cursor-pointer overflow-hidden"
+        className="w-[280px] md:w-[320px] h-full flex flex-col bg-white rounded-3xl shadow-soft border border-gray-100 snap-center hover:shadow-premium transition-all duration-500 group cursor-pointer overflow-hidden"
       >
         {/* Imagem */}
         <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-100 shrink-0">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+          
           <button
             onClick={(e) => e.stopPropagation()}
-            className="absolute top-3 right-3 text-white hover:text-red-500 z-10 transition-colors drop-shadow-md"
+            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md text-white hover:bg-white hover:text-red-500 z-20 transition-all shadow-lg flex items-center justify-center"
           >
-            <Heart size={22} strokeWidth={2} />
+            <Heart size={20} strokeWidth={2.5} />
           </button>
+          
           {product.imageUrl ? (
             <Image
               src={product.imageUrl}
               alt={product.name}
               fill
-              sizes="(max-width: 768px) 280px, 300px"
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              sizes="(max-width: 768px) 280px, 320px"
+              className="object-cover transition-transform duration-1000 group-hover:scale-110"
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-gray-300">
               <MapPin size={48} />
             </div>
           )}
+
+          {product.is_free_cancellation && (
+            <div className="absolute bottom-4 left-4 z-20 bg-success/90 backdrop-blur-sm text-white text-[10px] font-black px-3 py-1.5 rounded-lg uppercase tracking-widest shadow-lg">
+              Cancelamento Grátis
+            </div>
+          )}
         </div>
 
         {/* Conteúdo Central */}
-        <div className="p-4 flex flex-col flex-1">
+        <div className="p-6 flex flex-col flex-1">
           <CategoryTag />
-          <h3 className="text-lg font-bold text-gray-800 line-clamp-2 mb-2 group-hover:text-blue-600 transition-colors">
+          <h3 className="text-xl font-black text-secondary line-clamp-2 mb-3 leading-tight group-hover:text-primary transition-colors">
             {product.name}
           </h3>
           <RatingBadge />
-          <LocationLine />
-          <TypeDetails />
-          <Benefits />
+          <div className="mt-2 space-y-3">
+            <LocationLine />
+            <TypeDetails />
+          </div>
         </div>
 
         {/* Pricing Box — base */}
@@ -261,41 +278,51 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <div
       onClick={handleClick}
-      className="flex flex-col sm:flex-row bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow group cursor-pointer"
+      className="flex flex-col sm:flex-row bg-white rounded-3xl shadow-soft border border-gray-100 overflow-hidden hover:shadow-premium transition-all duration-500 group cursor-pointer"
     >
       {/* Imagem */}
-      <div className="relative w-full sm:w-[280px] h-60 shrink-0 overflow-hidden bg-gray-100">
+      <div className="relative w-full sm:w-[320px] h-64 sm:h-auto shrink-0 overflow-hidden bg-gray-100">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+        
         <button
           onClick={(e) => e.stopPropagation()}
-          className="absolute top-3 right-3 text-white hover:text-red-500 z-10 transition-colors drop-shadow-md"
+          className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md text-white hover:bg-white hover:text-red-500 z-20 transition-all shadow-lg flex items-center justify-center"
         >
-          <Heart size={22} strokeWidth={2} />
+          <Heart size={20} strokeWidth={2.5} />
         </button>
+
         {product.imageUrl ? (
           <Image
             src={product.imageUrl}
             alt={product.name}
             fill
-            sizes="(max-width: 640px) 100vw, 280px"
-            className="object-cover group-hover:scale-105 transition-transform duration-700"
+            sizes="(max-width: 640px) 100vw, 320px"
+            className="object-cover group-hover:scale-110 transition-transform duration-1000"
           />
         ) : (
           <div className="flex items-center justify-center h-full text-gray-300">
             <MapPin size={48} />
           </div>
         )}
+
+        {product.is_free_cancellation && (
+          <div className="absolute bottom-4 left-4 z-20 bg-success/90 backdrop-blur-sm text-white text-[10px] font-black px-3 py-1.5 rounded-lg uppercase tracking-widest shadow-lg">
+            Cancelamento Grátis
+          </div>
+        )}
       </div>
 
       {/* Informações (Centro) */}
-      <div className="flex-1 p-5 flex flex-col justify-start">
+      <div className="flex-1 p-6 sm:p-8 flex flex-col justify-start">
         <CategoryTag />
-        <h3 className="text-lg font-bold text-gray-800 line-clamp-2 mb-2 group-hover:text-blue-600 transition-colors">
+        <h3 className="text-2xl font-black text-secondary line-clamp-2 mb-4 leading-tight group-hover:text-primary transition-colors">
           {product.name}
         </h3>
         <RatingBadge />
-        <LocationLine />
-        <TypeDetails />
-        <Benefits />
+        <div className="mt-4 space-y-4 max-w-lg">
+          <LocationLine />
+          <TypeDetails />
+        </div>
       </div>
 
       {/* Bloco de Preço (Direita) */}

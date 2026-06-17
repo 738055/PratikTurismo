@@ -17,6 +17,12 @@ const config: Config = {
         },
         secondary: {
           DEFAULT: '#0f172a', // Slate 900
+          light: '#1e293b',
+        },
+        accent: {
+          DEFAULT: '#f97316', // Orange 500
+          dark: '#ea580c',
+          light: '#ffedd5',
         },
         urgent: {
           DEFAULT: '#f97316', // Orange 500
@@ -26,6 +32,15 @@ const config: Config = {
           DEFAULT: '#84cc16', // Lime 500
           dark: '#65a30d',
         },
+      },
+      boxShadow: {
+        'premium': '0 10px 30px -10px rgba(0, 0, 0, 0.1)',
+        'premium-hover': '0 20px 40px -15px rgba(0, 0, 0, 0.15)',
+        'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+      },
+      borderRadius: {
+        '2xl': '1rem',
+        '3xl': '1.5rem',
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

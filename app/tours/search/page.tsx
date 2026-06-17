@@ -200,28 +200,45 @@ function ToursSearchContent() {
   );
 
   return (
-    <div className="bg-gray-50 min-h-screen">
-      {/* Header da Página */}
-      <div className="bg-white border-b border-gray-200">
-        <div className="container mx-auto px-4 py-8">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+    <div className="bg-gray-50/50 min-h-screen">
+      {/* Header da Página Redesigned */}
+      <div className="bg-secondary relative overflow-hidden pt-32 pb-16">
+        <div className="absolute inset-0 z-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center" />
+        <div className="absolute inset-0 z-0 bg-gradient-to-b from-secondary/80 to-secondary" />
+        
+        <div className="container mx-auto px-4 relative z-10 text-center md:text-left">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-gray-900">Passeios e Experiências</h1>
-              <p className="text-gray-500 text-sm mt-1">Explore o melhor de Foz do Iguaçu</p>
+              <nav className="flex items-center gap-2 text-white/40 text-xs font-bold uppercase tracking-widest mb-4">
+                <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                <ChevronRight size={12} />
+                <span className="text-white">Explorar</span>
+              </nav>
+              <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter leading-tight">
+                Passeios e <span className="text-primary italic">Experiências</span>
+              </h1>
+              <p className="text-white/60 text-lg font-medium mt-2">Encontre a aventura perfeita em Foz do Iguaçu</p>
             </div>
-            <div className="text-sm text-gray-500">
-              <strong>{filteredTours.length}</strong> resultados encontrados
+            <div className="bg-white/10 backdrop-blur-md px-8 py-4 rounded-[2rem] border border-white/10">
+              <span className="text-white/40 text-[10px] font-black uppercase tracking-[0.2em] block mb-1">Resultados</span>
+              <div className="text-3xl font-black text-white tracking-tighter">
+                {filteredTours.length}
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col lg:flex-row gap-8">
+      <div className="container mx-auto px-4 py-12">
+        <div className="flex flex-col lg:flex-row gap-10">
           
-          {/* Sidebar Desktop */}
-          <aside className="hidden lg:block w-64 flex-shrink-0">
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 sticky top-24">
+          {/* Sidebar Desktop Redesigned */}
+          <aside className="hidden lg:block w-72 flex-shrink-0">
+            <div className="bg-white p-8 rounded-[2.5rem] shadow-soft border border-gray-100 sticky top-28">
+              <div className="flex items-center gap-2 mb-8 border-b border-gray-50 pb-4">
+                <Filter size={20} className="text-primary" />
+                <h2 className="font-black text-secondary text-lg uppercase tracking-tight">Filtros</h2>
+              </div>
               <FilterPanel />
             </div>
           </aside>
@@ -229,50 +246,50 @@ function ToursSearchContent() {
           {/* Conteúdo Principal */}
           <main className="flex-1">
             
-            {/* Barra de Ferramentas (Mobile Filter + Sort) */}
-            <div className="flex justify-between items-center mb-6">
+            {/* Toolbar Redesigned */}
+            <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4 bg-white p-4 rounded-3xl border border-gray-100 shadow-soft">
               <button 
                 onClick={() => setIsMobileFilterOpen(true)}
-                className="lg:hidden flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-gray-200 text-sm font-medium text-gray-700 shadow-sm"
+                className="lg:hidden w-full sm:w-auto flex items-center justify-center gap-3 bg-secondary text-white px-6 py-3 rounded-2xl font-bold shadow-lg shadow-secondary/20"
               >
-                <SlidersHorizontal size={18} /> Filtros
+                <SlidersHorizontal size={20} /> FILTRAR
               </button>
 
-              <div className="flex items-center gap-2 ml-auto">
-                <span className="text-sm text-gray-500 hidden sm:inline">Ordenar por:</span>
-                <div className="relative">
+              <div className="flex items-center gap-4 w-full sm:w-auto">
+                <span className="text-xs font-black text-gray-400 uppercase tracking-widest hidden sm:inline">Ordenar:</span>
+                <div className="relative flex-1 sm:flex-initial">
                   <select 
                     value={sortOption}
                     onChange={(e) => setSortOption(e.target.value)}
-                    className="appearance-none bg-white border border-gray-200 text-gray-700 py-2 pl-4 pr-8 rounded-lg text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer"
+                    className="w-full sm:w-48 appearance-none bg-gray-50 border border-gray-100 text-secondary py-3.5 pl-5 pr-10 rounded-2xl text-sm font-bold focus:outline-none focus:ring-4 focus:ring-primary/10 cursor-pointer transition-all hover:bg-white"
                   >
                     <option value="relevance">Relevância</option>
                     <option value="price_asc">Menor Preço</option>
                     <option value="price_desc">Maior Preço</option>
                     <option value="name_asc">Nome (A-Z)</option>
                   </select>
-                  <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+                  <ChevronDown size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
                 </div>
               </div>
             </div>
 
-            {/* Lista de Resultados */}
+            {/* Resultados Grid/List */}
             {filteredTours.length === 0 ? (
-              <div className="text-center py-20 bg-white rounded-xl border border-gray-100 shadow-sm">
-                <div className="mx-auto w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mb-4">
-                  <Search size={32} className="text-gray-300" />
+              <div className="text-center py-24 bg-white rounded-[3rem] border border-gray-100 shadow-soft">
+                <div className="mx-auto w-24 h-24 bg-gray-50 rounded-full flex items-center justify-center mb-6">
+                  <Search size={40} className="text-gray-300" />
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-1">Nenhum passeio encontrado</h3>
-                <p className="text-gray-500 text-sm mb-6">Tente ajustar seus filtros ou buscar por outro termo.</p>
+                <h3 className="text-2xl font-black text-secondary mb-2 tracking-tight">Ops! Nada encontrado</h3>
+                <p className="text-gray-500 font-medium mb-8">Não encontramos passeios com esses critérios.</p>
                 <button 
                   onClick={clearFilters}
-                  className="text-primary font-medium hover:underline"
+                  className="bg-primary text-white font-black py-4 px-10 rounded-2xl shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all active:scale-95"
                 >
-                  Limpar todos os filtros
+                  LIMPAR TUDO
                 </button>
               </div>
             ) : (
-              <div className="space-y-4">
+              <div className="grid grid-cols-1 gap-6">
                 {filteredTours.map((tour) => (
                   <ProductCard 
                     key={tour.id} 
@@ -283,14 +300,18 @@ function ToursSearchContent() {
               </div>
             )}
 
-            {/* Paginação (Visual) */}
+            {/* Paginação Redesigned */}
             {filteredTours.length > 0 && (
-               <div className="mt-12 flex justify-center">
-                  <div className="flex gap-2">
-                     <button className="px-4 py-2 border rounded-lg text-gray-400 hover:bg-gray-50 disabled:opacity-50" disabled>Anterior</button>
-                     <button className="px-4 py-2 bg-primary text-white rounded-lg font-bold">1</button>
-                     <button className="px-4 py-2 border rounded-lg text-gray-600 hover:bg-gray-50">2</button>
-                     <button className="px-4 py-2 border rounded-lg text-gray-600 hover:bg-gray-50">Próximo</button>
+               <div className="mt-16 flex justify-center">
+                  <div className="flex gap-3 bg-white p-2 rounded-2xl border border-gray-100 shadow-soft">
+                     <button className="w-12 h-12 flex items-center justify-center rounded-xl text-gray-300 hover:bg-gray-50 disabled:opacity-50" disabled>
+                       <ChevronLeft size={20} />
+                     </button>
+                     <button className="w-12 h-12 flex items-center justify-center bg-primary text-white rounded-xl font-black shadow-lg shadow-primary/20">1</button>
+                     <button className="w-12 h-12 flex items-center justify-center text-secondary font-bold hover:bg-gray-50 rounded-xl">2</button>
+                     <button className="w-12 h-12 flex items-center justify-center rounded-xl text-secondary hover:bg-gray-50">
+                       <ChevronRight size={20} />
+                     </button>
                   </div>
                </div>
             )}
