@@ -32,29 +32,27 @@ export const PratikNavbar = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled 
-        ? 'bg-white/80 backdrop-blur-lg shadow-soft py-3' 
-        : 'bg-transparent py-5'
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-lg border-b ${
+      scrolled
+        ? 'shadow-soft border-gray-100 py-3'
+        : 'border-transparent py-4'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <BrandLogo height={scrolled ? 38 : 42} onDark={!scrolled} priority />
+            <BrandLogo height={scrolled ? 40 : 46} priority />
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-1 items-center">
             {navLinks.map((link) => (
-              <Link 
+              <Link
                 key={link.name}
-                href={link.href} 
-                className={`px-4 py-2 rounded-full text-sm font-semibold transition-all hover:bg-white/10 ${
-                  scrolled 
-                    ? 'text-secondary hover:text-primary' 
-                    : 'text-secondary md:text-white hover:text-white/80'
-                } ${pathname === link.href ? 'text-primary' : ''}`}
+                href={link.href}
+                className={`px-4 py-2 rounded-full text-sm font-semibold transition-all hover:bg-primary/5 text-secondary hover:text-primary ${
+                  pathname === link.href ? 'text-primary' : ''
+                }`}
               >
                 {link.name}
               </Link>
@@ -63,11 +61,9 @@ export const PratikNavbar = () => {
 
           {/* Ações (Carrinho e Login) */}
           <div className="hidden md:flex items-center space-x-3">
-            <Link 
-              href="/checkout" 
-              className={`relative p-2 transition-all rounded-full hover:bg-white/10 ${
-                scrolled ? 'text-secondary' : 'text-secondary md:text-white'
-              }`}
+            <Link
+              href="/checkout"
+              className="relative p-2 transition-all rounded-full hover:bg-primary/5 text-secondary"
             >
               <ShoppingCart size={22} />
               {cartCount > 0 && (
@@ -76,13 +72,9 @@ export const PratikNavbar = () => {
                 </span>
               )}
             </Link>
-            <Link 
-              href="/login" 
-              className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-bold transition-all shadow-premium hover:shadow-premium-hover active:scale-95 ${
-                scrolled
-                  ? 'bg-primary text-white hover:bg-primary-dark'
-                  : 'bg-white text-secondary hover:bg-gray-100'
-              }`}
+            <Link
+              href="/login"
+              className="flex items-center gap-2 px-6 py-2.5 rounded-full font-bold transition-all shadow-premium hover:shadow-premium-hover active:scale-95 bg-primary text-white hover:bg-primary-dark"
             >
               <User size={18} />
               Entrar
@@ -91,8 +83,8 @@ export const PratikNavbar = () => {
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center gap-4">
-            <Link 
-              href="/checkout" 
+            <Link
+              href="/checkout"
               className="relative p-2 text-secondary"
             >
               <ShoppingCart size={24} />
@@ -102,11 +94,9 @@ export const PratikNavbar = () => {
                 </span>
               )}
             </Link>
-            <button 
-              onClick={() => setIsOpen(!isOpen)} 
-              className={`p-2 rounded-xl transition-colors ${
-                scrolled ? 'text-secondary bg-gray-100' : 'text-secondary md:text-white bg-white/20'
-              }`}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 rounded-xl transition-colors text-secondary bg-gray-100 hover:bg-gray-200"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>

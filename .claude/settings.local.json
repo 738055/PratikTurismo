@@ -27,7 +27,9 @@
       "Bash(sed -i 's/bg-\\\\[#00A3AD\\\\]/bg-primary/g; s/hover:bg-\\\\[#008A93\\\\]/hover:bg-primary-dark/g; s/shadow-teal-500\\\\/20/shadow-primary\\\\/20/g' app/categories/page.tsx)",
       "Bash(sed -i 's/bg-purple-100 text-purple-600/bg-accent\\\\/10 text-accent/g' app/tickets/search/page.tsx)",
       "Bash(sed -i 's/border-emerald-100/border-primary-100/g; s/text-emerald-600/text-primary/g; s/text-emerald-700/text-primary-dark/g' \"app/tours/[slug]/ProductDetailPageClient.tsx\")",
-      "Bash(sed -i 's/bg-purple-100 text-purple-700/bg-accent\\\\/10 text-accent-dark/g; s/bg-purple-600 text-white/bg-accent text-white/g; s/text-purple-600/text-accent-dark/g' app/transfers/search/page.tsx)"
+      "Bash(sed -i 's/bg-purple-100 text-purple-700/bg-accent\\\\/10 text-accent-dark/g; s/bg-purple-600 text-white/bg-accent text-white/g; s/text-purple-600/text-accent-dark/g' app/transfers/search/page.tsx)",
+      "WebFetch(domain:www.pratikturismo.com.br)",
+      "Bash(echo \"EXIT: $?\")"
     ]
   }
 }

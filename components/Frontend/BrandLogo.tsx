@@ -1,9 +1,8 @@
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 
-const LOGO_SRC = '/brand/logo.png';
-const RATIO = 641 / 264; // proporção original do arquivo
+const LOGO_SRC = '/brand/logopratik.svg';
+const RATIO = 3000 / 1350; // proporção do viewBox do SVG
 
 interface BrandLogoProps {
   /** Altura do logo em px (a largura é calculada pela proporção original). */
@@ -26,13 +25,16 @@ export const BrandLogo = ({
   const width = Math.round(height * RATIO);
 
   const img = (
-    <Image
+    // SVG vetorial servido direto de /public (sem otimizador do Next).
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
       src={LOGO_SRC}
       alt="Pratik Turismo"
       width={width}
       height={height}
-      priority={priority}
-      className="h-auto w-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+      loading={priority ? 'eager' : 'lazy'}
+      decoding="async"
+      className="object-contain transition-transform duration-300 group-hover:scale-[1.03]"
       style={{ height, width: 'auto' }}
     />
   );

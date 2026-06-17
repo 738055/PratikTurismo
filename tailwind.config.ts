@@ -83,9 +83,14 @@ const config: Config = {
       backgroundImage: {
         'sun-gradient': 'linear-gradient(135deg, #FFD15C 0%, #FBB034 45%, #F39200 100%)',
         'hill-gradient': 'linear-gradient(135deg, #76B82F 0%, #5E9E20 100%)',
+        // Assinatura da marca: colinas (verde) nascendo para o sol (laranja)
+        'brand-gradient': 'linear-gradient(120deg, #5E9E20 0%, #76B82F 35%, #FBB034 75%, #F39200 100%)',
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        // Corpo de texto
+        sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+        // Títulos / wordmark da marca (geométrica arredondada, ecoa o logo "Pratik")
+        display: ['var(--font-poppins)', 'var(--font-inter)', 'sans-serif'],
       },
       keyframes: {
         fadeIn: {

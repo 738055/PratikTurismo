@@ -3,7 +3,8 @@ const nextConfig = {
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
-      { protocol: 'https', hostname: 'aypnzthhjekaodearxdb.supabase.co' },
+      // Aceita o Storage de qualquer projeto Supabase (evita quebrar ao trocar de projeto)
+      { protocol: 'https', hostname: '**.supabase.co' },
     ],
   },
   serverExternalPackages: ['@react-pdf/renderer'],

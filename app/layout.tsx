@@ -1,11 +1,25 @@
 // app/layout.tsx
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Poppins } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
 import TrackingProvider from './TrackingProvider';
 
-const inter = Inter({ subsets: ['latin'] });
+// Corpo de texto — neutro, altamente legível.
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+
+// Tipografia de marca (títulos) — geométrica e arredondada,
+// ecoando o wordmark "Pratik" do logo (colinas + sol).
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['500', '600', '700', '800', '900'],
+  display: 'swap',
+  variable: '--font-poppins',
+});
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://reservaturismo.com.br';
 
@@ -68,7 +82,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className={`${inter.variable} ${poppins.variable}`}>
       <body className={inter.className}>
         <Providers>
           {children}

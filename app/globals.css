@@ -19,10 +19,31 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
   color: var(--brand-charcoal);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Identidade tipográfica Pratik
+   Títulos usam a display (Poppins) — geométrica e arredondada,
+   ecoando o wordmark do logo. Corpo permanece em Inter (legível).
+   Aplicado por herança para não exigir classe em cada componente.
+   ────────────────────────────────────────────────────────────── */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-poppins), var(--font-inter), sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Texto com a assinatura de cor da marca (colinas → sol) */
+.text-brand-gradient {
+  background-image: linear-gradient(120deg, #5E9E20 0%, #76B82F 35%, #FBB034 75%, #F39200 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Seleção de texto com a cor da marca */

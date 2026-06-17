@@ -20,7 +20,7 @@ export const PratikHero = () => {
             Experiências Inesquecíveis em Foz
           </span>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter mb-8 leading-[0.9] animate-slide-in-right">
-            Sua viagem de forma <span className="text-accent italic">Pratik.</span>
+            Sua viagem de forma <span className="text-brand-gradient italic">Pratik.</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto mb-12 font-medium leading-relaxed">
             Reserve passeios, experiências e transfers com segurança. A melhor agência local agora no seu bolso.
