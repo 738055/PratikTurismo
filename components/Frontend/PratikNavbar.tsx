@@ -7,10 +7,12 @@ import { ShoppingCart, Menu, X, User, ChevronRight } from 'lucide-react';
 import { useCart } from '@/app/contexts/CartContext';
 
 export const PratikNavbar = () => {
-  const { cart } = useCart();
+  const { items = [] } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  const cartCount = items.reduce((sum, item) => sum + (item.adults + (item.children || 0)), 0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -73,9 +75,9 @@ export const PratikNavbar = () => {
               }`}
             >
               <ShoppingCart size={22} />
-              {cart?.length > 0 && (
+              {cartCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-accent text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full shadow-md animate-bounce-in">
-                  {cart.length}
+                  {cartCount}
                 </span>
               )}
             </Link>
@@ -99,9 +101,9 @@ export const PratikNavbar = () => {
               className="relative p-2 text-secondary"
             >
               <ShoppingCart size={24} />
-              {cart?.length > 0 && (
+              {cartCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-accent text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full shadow-md">
-                  {cart.length}
+                  {cartCount}
                 </span>
               )}
             </Link>

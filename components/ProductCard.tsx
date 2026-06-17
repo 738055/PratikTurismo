@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { Check, MapPin, Clock, Heart, Users, Luggage, Star, ArrowRight } from 'lucide-react';
+import { Check, MapPin, Clock, Heart, Users, Luggage, Star, ArrowRight, CreditCard } from 'lucide-react';
 import { Product } from '@/app/types';
 import { calculateBasePrice, getRatingLabel, formatCurrency } from '@/app/lib/productUtils';
 import { trackSelectItem } from '@/app/lib/tracking';

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useCart } from '@/app/contexts/CartContext';
-import { X, Trash2, Calendar, Users, ArrowRight, ShoppingBag, ShoppingCart, Plus, Clock } from 'lucide-react';
+import { X, Trash2, Calendar, Users, ArrowRight, ShoppingBag, ShoppingCart, Plus, Clock, CreditCard } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { formatCurrency } from '@/app/lib/productUtils';
 
@@ -58,9 +58,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
      if (extrasList.length === 0) return null;
 
      return (
-         <div className="mb-2 flex flex-wrap gap-1">
+         <div className="mt-2 flex flex-wrap gap-1">
            {extrasList.map((ex, i) => (
-              <span key={i} className="text-primary text-[10px] font-bold bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-md flex items-center gap-1">
+              <span key={i} className="text-primary text-[10px] font-black bg-primary/5 border border-primary/10 px-2 py-0.5 rounded-lg flex items-center gap-1">
                 <Plus size={10} /> {ex}
               </span>
            ))}
@@ -72,59 +72,61 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
     <div className="fixed inset-0 z-[100] flex justify-end">
       {/* Backdrop */}
       <div 
-        className="absolute inset-0 bg-secondary/40 backdrop-blur-sm transition-opacity"
+        className="absolute inset-0 bg-secondary/60 backdrop-blur-sm transition-opacity duration-500"
         onClick={handleClose}
       ></div>
 
       {/* Drawer */}
       <div className="relative w-full max-w-md bg-white h-full shadow-2xl flex flex-col animate-slide-in-right">
         
-        {/* Header */}
-        <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-primary text-white">
-           <div className="flex items-center gap-3">
-              <div className="bg-white/20 p-2 rounded-xl">
-                <ShoppingCart size={24} />
+        {/* Header Redesigned */}
+        <div className="p-8 border-b border-gray-100 flex justify-between items-center bg-white relative overflow-hidden">
+           <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+           <div className="flex items-center gap-4 relative z-10">
+              <div className="bg-primary/10 text-primary p-3 rounded-2xl">
+                <ShoppingCart size={24} strokeWidth={2.5} />
               </div>
               <div>
-                <h2 className="font-black text-xl leading-none">Seu Carrinho</h2>
-                <p className="text-[10px] font-bold uppercase tracking-widest opacity-70 mt-1">{items.length} itens selecionados</p>
+                <h2 className="font-black text-2xl text-secondary tracking-tighter leading-none">Seu Carrinho</h2>
+                <div className="flex items-center gap-2 mt-1.5">
+                  <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                  <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{items.length} {items.length === 1 ? 'item' : 'itens'}</p>
+                </div>
               </div>
            </div>
            <button 
             onClick={handleClose} 
-            className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-black/10 transition-colors"
+            className="w-12 h-12 rounded-2xl flex items-center justify-center bg-gray-50 text-secondary hover:bg-gray-100 transition-all active:scale-90 relative z-10"
            >
-              <X size={24} />
+              <X size={24} strokeWidth={2.5} />
            </button>
         </div>
 
-        {/* Content */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-6">
+        {/* Content Redesigned */}
+        <div className="flex-1 overflow-y-auto p-8 space-y-8 no-scrollbar">
            {items.length === 0 ? (
               <div className="h-full flex flex-col items-center justify-center text-center px-6">
-                 <div className="w-24 h-24 bg-gray-50 rounded-full flex items-center justify-center mb-6">
+                 <div className="w-24 h-24 bg-gray-50 rounded-[2.5rem] flex items-center justify-center mb-8 shadow-soft">
                     <ShoppingBag size={48} className="text-gray-200" />
                  </div>
-                 <h3 className="text-xl font-bold text-gray-800 mb-2">O carrinho está vazio</h3>
-                 <p className="text-gray-500 text-sm mb-8">Que tal adicionar algumas experiências incríveis em Foz do Iguaçu agora?</p>
+                 <h3 className="text-2xl font-black text-secondary mb-3 tracking-tight">O carrinho está vazio</h3>
+                 <p className="text-gray-500 font-medium text-sm leading-relaxed mb-10">Que tal adicionar algumas experiências incríveis em Foz do Iguaçu agora?</p>
                  <button 
                    onClick={handleClose}
-                   className="w-full bg-secondary text-white font-bold py-4 rounded-2xl hover:bg-gray-800 transition-all shadow-lg"
+                   className="w-full bg-secondary text-white font-black py-5 rounded-2xl hover:bg-secondary-light transition-all shadow-premium active:scale-95 uppercase tracking-widest text-xs"
                  >
                    Explorar Passeios
                  </button>
               </div>
            ) : (
               items.map(item => (
-                 <div key={item.internalId} className="flex gap-4 group">
-                    <div className="w-24 h-24 rounded-2xl overflow-hidden bg-gray-100 shrink-0 shadow-sm border border-gray-100">
-                       {/* CORREÇÃO: Acesso via item.product */}
-                       <img src={item.product.imageUrl} alt={item.product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                 <div key={item.internalId} className="flex gap-5 group relative">
+                    <div className="w-24 h-24 rounded-[1.5rem] overflow-hidden bg-gray-100 shrink-0 shadow-soft border border-gray-100">
+                       <img src={item.product.imageUrl} alt={item.product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
                     </div>
                     <div className="flex-1 flex flex-col">
-                       <div className="flex justify-between items-start gap-2 mb-1">
-                          {/* CORREÇÃO: Acesso via item.product */}
-                          <h3 className="font-bold text-sm text-gray-800 leading-snug line-clamp-2">{item.product.name}</h3>
+                       <div className="flex justify-between items-start gap-3 mb-2">
+                          <h3 className="font-black text-sm text-secondary leading-tight line-clamp-2 group-hover:text-primary transition-colors">{item.product.name}</h3>
                           <button 
                              onClick={() => removeFromCart(item.internalId)}
                              className="text-gray-300 hover:text-red-500 transition-colors p-1"
@@ -134,18 +136,29 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
                           </button>
                        </div>
                        
-                       <div className="flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-gray-500 mb-2">
-                          <span className="flex items-center gap-1 font-medium"><Calendar size={12} className="text-primary"/> {item.date}</span>
-                          {item.time && <span className="flex items-center gap-1 font-medium"><Clock size={12} className="text-primary"/> {item.time}</span>}
-                          <span className="flex items-center gap-1 font-medium"><Users size={12} className="text-primary"/> {renderPassengers(item)}</span>
+                       <div className="flex flex-col gap-1.5 mb-3">
+                          <div className="flex items-center gap-2 text-[11px] font-bold text-gray-500 uppercase tracking-tight">
+                            <Calendar size={12} className="text-primary" /> 
+                            <span>{item.date}</span>
+                            {item.time && (
+                              <>
+                                <span className="w-1 h-1 rounded-full bg-gray-300" />
+                                <Clock size={12} className="text-primary" />
+                                <span>{item.time}</span>
+                              </>
+                            )}
+                          </div>
+                          <div className="flex items-center gap-2 text-[11px] font-bold text-gray-400">
+                            <Users size={12} className="text-primary" />
+                            <span>{renderPassengers(item)}</span>
+                          </div>
                        </div>
 
-                       {/* Extras dinâmicos */}
                        {renderExtras(item)}
 
-                       <div className="mt-auto flex justify-between items-end">
-                          <span className="text-[10px] text-gray-400 font-bold uppercase">Subtotal</span>
-                          <span className="font-black text-secondary">{formatCurrency(item.subtotal || 0)}</span>
+                       <div className="mt-4 flex justify-between items-end">
+                          <span className="text-[10px] text-gray-400 font-black uppercase tracking-widest">Subtotal</span>
+                          <span className="font-black text-secondary text-lg tracking-tighter">{formatCurrency(item.subtotal || 0)}</span>
                        </div>
                     </div>
                  </div>
@@ -153,29 +166,36 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
            )}
         </div>
 
-        {/* Footer */}
+        {/* Footer Redesigned */}
         {items.length > 0 && (
-           <div className="p-6 border-t border-gray-100 bg-gray-50/50">
-              <div className="flex justify-between items-center mb-6">
-                 <div>
-                    <span className="block text-xs font-bold text-gray-400 uppercase tracking-widest">Valor Total</span>
-                    <span className="text-3xl font-black text-secondary">{formatCurrency(cartTotal)}</span>
-                 </div>
-                 <div className="text-right">
-                    <span className="inline-block px-2 py-1 bg-success/10 text-success text-[10px] font-bold rounded uppercase">Melhor Preço</span>
-                 </div>
+           <div className="p-8 border-t border-gray-100 bg-gray-50/50">
+              <div className="bg-white rounded-3xl p-6 shadow-soft mb-8 border border-gray-100/50">
+                <div className="flex justify-between items-center mb-4">
+                   <div className="flex flex-col">
+                      <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-1">Valor Total</span>
+                      <span className="text-4xl font-black text-secondary tracking-tighter leading-none">{formatCurrency(cartTotal)}</span>
+                   </div>
+                   <div className="bg-success/10 text-success p-2.5 rounded-2xl flex flex-col items-center gap-0.5">
+                      <CreditCard size={18} />
+                      <span className="text-[8px] font-black uppercase tracking-tight">Até 10x</span>
+                   </div>
+                </div>
+                <p className="text-[11px] font-bold text-gray-400 leading-tight">
+                  Taxas inclusas. Pagamento seguro com criptografia SSL de 256 bits.
+                </p>
               </div>
               
               <button 
                 onClick={handleCheckout}
-                className="w-full bg-primary hover:bg-primary-dark text-white font-black py-4 rounded-2xl shadow-xl shadow-blue-200 flex items-center justify-center gap-3 transition-all transform hover:-translate-y-1 active:scale-95 uppercase tracking-widest text-sm"
+                className="w-full bg-primary hover:bg-primary-dark text-white font-black py-5 rounded-3xl shadow-premium shadow-primary/20 flex items-center justify-center gap-3 transition-all transform hover:-translate-y-1 active:scale-95 uppercase tracking-[0.2em] text-xs group"
               >
-                Finalizar Compra <ArrowRight size={20} />
+                <span>FINALIZAR COMPRA</span>
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </button>
               
               <button 
                  onClick={handleClose}
-                 className="w-full text-center text-gray-400 text-xs font-bold mt-4 hover:text-primary transition-colors"
+                 className="w-full text-center text-gray-400 text-[10px] font-black uppercase tracking-widest mt-6 hover:text-secondary transition-colors"
               >
                  Continuar Comprando
               </button>

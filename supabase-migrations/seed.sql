@@ -30,6 +30,30 @@ CREATE TABLE IF NOT EXISTS public.posts (
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
+CREATE TABLE IF NOT EXISTS public.vehicles (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  plate VARCHAR(20) NOT NULL UNIQUE,
+  model VARCHAR(100) NOT NULL,
+  capacity INTEGER NOT NULL DEFAULT 4,
+  status VARCHAR(20) NOT NULL DEFAULT 'active',
+  notes TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS public.drivers_guides (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  name VARCHAR(200) NOT NULL,
+  phone VARCHAR(30),
+  languages_spoken TEXT[] DEFAULT '{}',
+  type VARCHAR(20) NOT NULL DEFAULT 'driver',
+  document_number VARCHAR(50),
+  status VARCHAR(20) NOT NULL DEFAULT 'active',
+  notes TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
 -- 2. LIMPEZA (Opcional - remova se quiser manter dados existentes)
 -- TRUNCATE categories, products, banners, posts CASCADE;
 
