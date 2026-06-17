@@ -1,4 +1,4 @@
-# Reserva Turismo — ERP + E-commerce
+# Pratik Turismo — ERP + E-commerce
 
 Plataforma de turismo (Next.js 16 + Supabase + Stripe) com loja pública de
 passeios/ingressos/transfers e um ERP administrativo (reservas, financeiro,

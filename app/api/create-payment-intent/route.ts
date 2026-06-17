@@ -122,7 +122,7 @@ export async function POST(request: Request) {
         pending_booking_ids: pendingBookingIds.join(','),
         order_group_id: orderGroupId,
       },
-      description: `Reserva Turismo - ${items.length} item(s)`,
+      description: `Pratik Turismo - ${items.length} item(s)`,
     });
 
     await supabaseAdmin

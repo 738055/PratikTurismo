@@ -75,7 +75,7 @@ export default function AdminLoginPage() {
             <Lock className="text-white" size={28} />
           </div>
           <h1 className="text-2xl font-bold text-gray-900">Painel Administrativo</h1>
-          <p className="text-gray-500 text-sm mt-2">Reserva Turismo - Acesso Seguro</p>
+          <p className="text-gray-500 text-sm mt-2">Pratik Turismo - Acesso Seguro</p>
         </div>
 
         {errorMsg && (
@@ -97,7 +97,7 @@ export default function AdminLoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full pl-11 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500/20 focus:border-primary-600 outline-none transition-all bg-gray-50 focus:bg-white"
-                placeholder="admin@reservaturismo.com"
+                placeholder="admin@pratikturismo.com.br"
                 required
               />
             </div>

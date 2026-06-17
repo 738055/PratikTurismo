@@ -64,7 +64,7 @@ export async function GET(request: Request) {
 
       try {
         await transporter.sendMail({
-          from: `"Equipe Reserva Turismo" <${settings.smtp_user}>`,
+          from: `"Equipe Pratik Turismo" <${settings.smtp_user}>`,
           to: booking.customer_email,
           subject: `${booking.customer_name?.split(' ')[0] || 'Viajante'}, ocorreu tudo bem com sua reserva?`,
           html: `
@@ -108,7 +108,7 @@ export async function GET(request: Request) {
 
       try {
         await transporter.sendMail({
-          from: `"Reserva Turismo" <${settings.smtp_user}>`,
+          from: `"Pratik Turismo" <${settings.smtp_user}>`,
           to: booking.customer_email,
           subject: `Última chance: ${discountValue}% OFF para você fechar as malas! ✈️`,
           html: `

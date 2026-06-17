@@ -32,7 +32,7 @@ async function getSmtpTransporter() {
 }
 
 async function generateQRCode(bookingId: string): Promise<string> {
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://reservaturismo.com.br';
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://pratikturismo.com.br';
   const validationUrl = `${appUrl}/voucher/validate/${bookingId}`;
   return QRCode.toDataURL(validationUrl, { width: 200, margin: 1 });
 }
@@ -74,13 +74,13 @@ export async function POST(request: Request) {
     const { transporter, fromAddress } = await getSmtpTransporter();
 
     const mailOptions: nodemailer.SendMailOptions = {
-      from: `"Reserva Turismo" <${fromAddress}>`,
+      from: `"Pratik Turismo" <${fromAddress}>`,
       to: email,
     };
 
     if (type === 'welcome') {
       // ── E-MAIL DE CRIAÇÃO DE CONTA AUTOMÁTICA ────────────────────────
-      mailOptions.subject = 'Sua conta na Reserva Turismo foi criada!';
+      mailOptions.subject = 'Sua conta na Pratik Turismo foi criada!';
       mailOptions.html = `
         <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
           <h2 style="color: #0284c7;">Olá, ${name}!</h2>
@@ -198,7 +198,7 @@ export async function POST(request: Request) {
       // 6. Monta o email com PDF(s) anexo(s)
       const refCode = targetBookingId.slice(0, 6).toUpperCase();
       mailOptions.to = recipientEmail;
-      mailOptions.subject = `Seu Voucher - Pedido #${refCode} | Reserva Turismo`;
+      mailOptions.subject = `Seu Voucher - Pedido #${refCode} | Pratik Turismo`;
       mailOptions.attachments = attachments;
       mailOptions.html = `
         <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
@@ -215,11 +215,11 @@ export async function POST(request: Request) {
           <ul style="padding-left: 20px; line-height: 1.8;">
             <li>Apresente o voucher em PDF (digital ou impresso) no local da atividade.</li>
             <li>Chegue com 15 minutos de antecedência.</li>
-            <li>Você também pode acessar seus vouchers em <a href="${process.env.NEXT_PUBLIC_APP_URL || 'https://reservaturismo.com.br'}/minhas-reservas" style="color: #0284c7;">Minhas Reservas</a>.</li>
+            <li>Você também pode acessar seus vouchers em <a href="${process.env.NEXT_PUBLIC_APP_URL || 'https://pratikturismo.com.br'}/minhas-reservas" style="color: #0284c7;">Minhas Reservas</a>.</li>
           </ul>
 
           <p style="margin-top: 30px; font-size: 12px; color: #666;">Em caso de dúvidas, entre em contato com nosso suporte.</p>
-          <p style="font-size: 12px; color: #999;">Reserva Turismo — Foz do Iguaçu, PR</p>
+          <p style="font-size: 12px; color: #999;">Pratik Turismo — Foz do Iguaçu, PR</p>
         </div>
       `;
     } else {

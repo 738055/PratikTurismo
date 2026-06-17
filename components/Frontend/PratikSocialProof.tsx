@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Star, Quote, Users, MapPin, CalendarCheck } from 'lucide-react';
+import { Star, Users, MapPin, CalendarCheck } from 'lucide-react';
 
 interface Testimonial {
   name: string;
@@ -40,61 +40,54 @@ const STATS = [
 
 export const PratikSocialProof = () => {
   return (
-    <section className="py-20 md:py-28 bg-primary-50/60">
-      <div className="container mx-auto px-4">
-        {/* Cabeçalho */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="inline-block px-3 py-1 rounded-lg bg-accent/10 text-accent font-black text-[10px] uppercase tracking-widest mb-4">
-            Quem viaja, recomenda
-          </span>
-          <h2 className="text-3xl md:text-5xl font-black text-secondary tracking-tighter mb-4">
-            Experiências reais de quem <span className="text-primary italic">conheceu Foz</span>
-          </h2>
-          <p className="text-gray-500 text-lg font-medium leading-relaxed">
-            Receptivo local, guias credenciados e transporte seguro — do aeroporto às Cataratas.
-          </p>
-        </div>
-
+    <section className="py-14 md:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Métricas de confiança */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-4xl mx-auto mb-16">
+        <div className="grid grid-cols-3 gap-4 md:gap-8 mb-12 border-b border-gray-100 pb-12">
           {STATS.map(({ icon: Icon, value, label }) => (
-            <div
-              key={label}
-              className="bg-white rounded-3xl p-8 text-center shadow-soft border border-primary-100/60 transition-all duration-300 hover:shadow-premium hover:-translate-y-1"
-            >
-              <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-primary/10 text-primary flex items-center justify-center">
-                <Icon size={26} />
+            <div key={label} className="flex flex-col items-center text-center md:flex-row md:items-center md:gap-4 md:text-left md:justify-center">
+              <div className="w-11 h-11 mb-2 md:mb-0 rounded-lg bg-primary-50 text-primary flex items-center justify-center shrink-0">
+                <Icon size={22} />
               </div>
-              <p className="text-3xl font-black text-secondary tracking-tight">{value}</p>
-              <p className="text-sm font-semibold text-gray-500 mt-1">{label}</p>
+              <div>
+                <p className="text-xl md:text-2xl font-bold text-secondary leading-none">{value}</p>
+                <p className="text-[13px] text-gray-500 mt-1">{label}</p>
+              </div>
             </div>
           ))}
         </div>
 
+        {/* Cabeçalho */}
+        <div className="mb-8">
+          <p className="text-primary-700 font-semibold text-sm mb-1.5">Quem viaja, recomenda</p>
+          <h2 className="text-2xl md:text-3xl font-bold text-secondary">
+            O que dizem nossos viajantes
+          </h2>
+        </div>
+
         {/* Depoimentos */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {TESTIMONIALS.map((t) => (
             <figure
               key={t.name}
-              className="relative bg-white rounded-[2rem] p-8 shadow-soft border border-gray-100 transition-all duration-300 hover:shadow-premium hover:-translate-y-1 flex flex-col"
+              className="bg-white border border-gray-200 rounded-xl p-6 flex flex-col"
             >
-              <Quote size={36} className="text-primary/15 absolute top-6 right-6" aria-hidden="true" />
-              <div className="flex items-center gap-1 mb-5 text-accent" aria-label="5 de 5 estrelas">
+              <div className="flex items-center gap-0.5 mb-4 text-accent" aria-label="5 de 5 estrelas">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={18} className="fill-accent" aria-hidden="true" />
+                  <Star key={i} size={16} className="fill-accent" aria-hidden="true" />
                 ))}
               </div>
-              <blockquote className="text-secondary/90 font-medium leading-relaxed mb-8 relative z-10">
+              <blockquote className="text-secondary/90 leading-relaxed mb-6">
                 “{t.text}”
               </blockquote>
-              <figcaption className="mt-auto flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-hill-gradient text-white flex items-center justify-center font-black text-lg shrink-0">
+              <figcaption className="mt-auto flex items-center gap-3 pt-4 border-t border-gray-100">
+                <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold shrink-0">
                   {t.name.charAt(0)}
                 </div>
                 <div>
-                  <p className="font-black text-secondary tracking-tight leading-tight">{t.name}</p>
-                  <p className="text-xs font-semibold text-gray-400">
-                    {t.origin} · <span className="text-primary">{t.service}</span>
+                  <p className="font-semibold text-secondary leading-tight">{t.name}</p>
+                  <p className="text-[12px] text-gray-400">
+                    {t.origin} · <span className="text-primary-700">{t.service}</span>
                   </p>
                 </div>
               </figcaption>

@@ -108,7 +108,7 @@ export const VoucherTemplate = ({ booking }: { booking: VoucherData }) => (
       {/* Header */}
       <View style={styles.header}>
         <View>
-          <Text style={styles.logo}>Reserva Turismo</Text>
+          <Text style={styles.logo}>Pratik Turismo</Text>
           <Text style={{ fontSize: 10, color: '#666' }}>Seu parceiro de viagens</Text>
         </View>
         <View style={styles.titleDetails}>
@@ -201,7 +201,7 @@ export const VoucherTemplate = ({ booking }: { booking: VoucherData }) => (
 
       {/* Footer */}
       <View style={styles.footer}>
-        <Text>Reserva Turismo Ltda - CNPJ: 34.563.274/0001-00</Text>
+        <Text>Pratik Turismo Ltda - CNPJ: 34.563.274/0001-00</Text>
         <Text>Foz do Iguaçu - PR | Suporte: +55 45-99101-7224</Text>
       </View>
     </Page>

@@ -1,7 +1,7 @@
 // app/robots.ts
 import { MetadataRoute } from 'next';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://reservaturismo.com.br';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://pratikturismo.com.br';
 
 export default function robots(): MetadataRoute.Robots {
   return {

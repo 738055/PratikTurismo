@@ -21,7 +21,7 @@ const poppins = Poppins({
   variable: '--font-poppins',
 });
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://reservaturismo.com.br';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://pratikturismo.com.br';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -42,16 +42,16 @@ export const metadata: Metadata = {
     'itaipu binacional',
     'compras paraguai',
   ],
-  authors: [{ name: 'Reserva Turismo', url: BASE_URL }],
-  creator: 'Reserva Turismo',
-  publisher: 'Reserva Turismo',
+  authors: [{ name: 'Pratik Turismo', url: BASE_URL }],
+  creator: 'Pratik Turismo',
+  publisher: 'Pratik Turismo',
   formatDetection: { telephone: true, email: true, address: true },
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
     url: BASE_URL,
-    siteName: 'Reserva Turismo',
-    title: 'Reserva Turismo | Passeios e Transfers em Foz do Iguaçu',
+    siteName: 'Pratik Turismo',
+    title: 'Pratik Turismo | Passeios e Transfers em Foz do Iguaçu',
     description:
       'Reserve passeios nas Cataratas, transfers e atrações em Foz do Iguaçu. Cancelamento grátis e parcelamento em até 10x.',
     images: [
@@ -59,13 +59,13 @@ export const metadata: Metadata = {
         url: '/images/og-default.jpg',
         width: 1200,
         height: 630,
-        alt: 'Reserva Turismo — Foz do Iguaçu',
+        alt: 'Pratik Turismo — Foz do Iguaçu',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Reserva Turismo | Foz do Iguaçu',
+    title: 'Pratik Turismo | Foz do Iguaçu',
     description: 'Reserve passeios, transfers e atrações em Foz do Iguaçu.',
     images: ['/images/og-default.jpg'],
   },

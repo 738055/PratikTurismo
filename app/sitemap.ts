@@ -8,7 +8,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder'
   );
 
-  const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://reservaturismo.com.br';
+  const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://pratikturismo.com.br';
 
   // Páginas estáticas
   const staticPages: MetadataRoute.Sitemap = [

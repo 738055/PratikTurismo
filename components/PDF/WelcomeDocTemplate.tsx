@@ -257,8 +257,8 @@ export const WelcomeDocTemplate = ({ data, lang = 'en' }: { data: WelcomeDocPDFD
 
         {/* Footer */}
         <View style={styles.footer}>
-          <Text>Reserva Turismo / Maia Tours</Text>
-          <Text>Foz do Iguaçu - PR, Brazil | www.reservaturismo.com</Text>
+          <Text>Pratik Turismo / Maia Tours</Text>
+          <Text>Foz do Iguaçu - PR, Brazil | www.pratikturismo.com.br</Text>
         </View>
       </Page>
     </Document>

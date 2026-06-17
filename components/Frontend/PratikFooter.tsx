@@ -29,7 +29,7 @@ export const PratikFooter = () => {
               <a href="#" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-accent hover:text-white transition-all duration-300 group">
                 <Facebook size={20} className="group-hover:scale-110 transition-transform" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-accent hover:text-white transition-all duration-300 group">
+              <a href="https://wa.me/5545999406579" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-accent hover:text-white transition-all duration-300 group">
                 <Phone size={20} className="group-hover:scale-110 transition-transform" />
               </a>
             </div>
@@ -37,7 +37,7 @@ export const PratikFooter = () => {
           
           {/* Links Columns */}
           <div className="md:col-span-2">
-            <h4 className="text-white font-black uppercase tracking-widest text-xs mb-8">Serviços</h4>
+            <h4 className="text-white font-semibold uppercase tracking-wide text-xs mb-6">Serviços</h4>
             <ul className="space-y-4 text-sm font-medium">
               <li>
                 <Link href="/tours/search" className="hover:text-accent transition-colors flex items-center gap-2 group">
@@ -67,7 +67,7 @@ export const PratikFooter = () => {
           </div>
 
           <div className="md:col-span-2">
-            <h4 className="text-white font-black uppercase tracking-widest text-xs mb-8">Institucional</h4>
+            <h4 className="text-white font-semibold uppercase tracking-wide text-xs mb-6">Institucional</h4>
             <ul className="space-y-4 text-sm font-medium">
               <li>
                 <Link href="/about" className="hover:text-accent transition-colors flex items-center gap-2 group">
@@ -98,7 +98,7 @@ export const PratikFooter = () => {
 
           {/* Contact Column */}
           <div className="md:col-span-4">
-            <h4 className="text-white font-black uppercase tracking-widest text-xs mb-8">Fale Conosco</h4>
+            <h4 className="text-white font-semibold uppercase tracking-wide text-xs mb-6">Fale Conosco</h4>
             <ul className="space-y-5 text-sm">
               <li className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0">
@@ -116,8 +116,8 @@ export const PratikFooter = () => {
                 <div>
                   <p className="text-xs font-black text-gray-500 uppercase tracking-tighter mb-1">Localização</p>
                   <p className="text-white font-bold tracking-tight leading-relaxed">
-                    Av. Jorge Schimmelpfeng, 800<br/>
-                    Foz do Iguaçu, PR - 85851-110
+                    Av. Juscelino Kubitscheck, 874<br/>
+                    Foz do Iguaçu, PR
                   </p>
                 </div>
               </li>

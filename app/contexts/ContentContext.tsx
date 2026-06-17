@@ -27,9 +27,9 @@ interface ContentContextType {
 }
 
 const defaultCompanyInfo: CompanyInfo = {
-  company_name: 'Reserva Turismo Ltda',
+  company_name: 'Pratik Turismo Ltda',
   cnpj: '34.563.274/0001-00',
-  contact_email: 'contato@reservaturismo.com',
+  contact_email: 'contato@pratikturismo.com.br',
   phone: '+55 45-99101-7224',
   address: 'R. Jorge Sanwais, 724 - Centro, Foz do Iguaçu - PR, 85851-150',
 };

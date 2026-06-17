@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { Check, MapPin, Clock, Heart, Users, Luggage, Star, ArrowRight, CreditCard } from 'lucide-react';
+import { Check, MapPin, Clock, Users, Luggage, Star, ArrowRight } from 'lucide-react';
 import { Product } from '@/app/types';
 import { calculateBasePrice, getRatingLabel, formatCurrency } from '@/app/lib/productUtils';
 import { trackSelectItem } from '@/app/lib/tracking';
@@ -54,7 +54,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const CategoryTag = () => {
     const label = product.tags?.[0] ?? product.type;
     return (
-      <span className="text-[10px] uppercase font-bold text-gray-500 tracking-wider mb-1 block">
+      <span className="text-[11px] uppercase font-semibold text-primary-700 tracking-wide">
         {label}
       </span>
     );
@@ -62,34 +62,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   const RatingBadge = () => {
     const displayRating = product.rating ?? 0;
-    const displayLabel = hasRating ? ratingLabel : null;
     const displayCount = product.reviewsCount ?? 0;
-    const fullStars = Math.floor(displayRating / 2);
-    const hasHalfStar = (displayRating / 2) % 1 >= 0.5;
-
+    if (!hasRating) {
+      return <span className="text-[13px] text-gray-400">Novo na agência</span>;
+    }
     return (
-      <div className="flex items-center gap-2 mb-2">
-        <div className="bg-[#11224D] text-white font-bold text-sm px-2 py-1 rounded-md leading-none">
-          {displayRating.toFixed(1)}
-        </div>
-        <div className="flex items-center gap-0.5">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <Star
-              key={i}
-              size={12}
-              className={
-                i < fullStars
-                  ? 'text-yellow-400 fill-yellow-400'
-                  : i === fullStars && hasHalfStar
-                  ? 'text-yellow-400 fill-yellow-400/50'
-                  : 'text-gray-300'
-              }
-            />
-          ))}
-        </div>
-        {displayLabel && <span className="text-sm font-bold text-[#11224D]">{displayLabel}</span>}
-        <span className="text-xs text-gray-500">
-          {displayCount > 0 ? `${displayCount} avaliações` : 'Sem avaliações'}
+      <div className="flex items-center gap-1.5 text-[13px]">
+        <Star size={14} className="text-accent fill-accent" />
+        <span className="font-semibold text-secondary">{displayRating.toFixed(1)}</span>
+        {ratingLabel && <span className="text-gray-500">{ratingLabel}</span>}
+        <span className="text-gray-400">
+          {displayCount > 0 ? `(${displayCount})` : ''}
         </span>
       </div>
     );
@@ -101,8 +84,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       : (product.location ?? null);
     if (!locationText) return null;
     return (
-      <div className="flex items-center gap-1.5 text-sm text-gray-600 mb-2">
-        <MapPin size={13} className="text-gray-400 shrink-0" />
+      <div className="flex items-center gap-1.5 text-[13px] text-gray-600">
+        <MapPin size={14} className="text-gray-400 shrink-0" />
         <span className="line-clamp-1">{locationText}</span>
       </div>
     );
@@ -113,12 +96,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       {isTransfer ? (
         <>
           {routeLabel && (
-            <div className="flex items-center gap-1.5 text-sm text-gray-700 font-medium">
+            <div className="flex items-center gap-1.5 text-[13px] text-gray-700 font-medium">
               <ArrowRight size={14} className="text-accent shrink-0" />
               <span className="line-clamp-1">{routeLabel}</span>
             </div>
           )}
-          <div className="flex items-center gap-3 text-sm text-gray-500">
+          <div className="flex items-center gap-3 text-[13px] text-gray-500">
             {product.transferDetails?.passengerCapacity && (
               <span className="flex items-center gap-1">
                 <Users size={14} /> Até {product.transferDetails.passengerCapacity} pax
@@ -130,26 +113,29 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               </span>
             )}
           </div>
-          <div className="text-xs text-primary-600 font-bold uppercase tracking-wide">
+          <div className="text-[12px] text-primary-700 font-semibold uppercase tracking-wide">
             Transfer {isPrivate ? 'Privativo' : 'Compartilhado'}
           </div>
         </>
       ) : (
         <>
           {product.duration && (
-            <div className="flex items-center gap-1.5 text-sm text-gray-600">
+            <div className="flex items-center gap-1.5 text-[13px] text-gray-600">
               <Clock size={14} className="text-gray-400" /> {product.duration}
             </div>
           )}
           {product.guideLanguages && product.guideLanguages.length > 0 && (
-            <div className="text-sm text-gray-500">
+            <div className="text-[13px] text-gray-500">
               <span className="text-gray-400">Idiomas:</span> {product.guideLanguages.join(', ')}
             </div>
           )}
           {product.features && product.features.length > 0 && (
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap gap-1.5 pt-0.5">
               {product.features.slice(0, 3).map((f, i) => (
-                <span key={i} className="text-xs text-green-700 bg-green-50 px-2 py-0.5 rounded flex items-center gap-1">
+                <span
+                  key={i}
+                  className="text-[12px] text-primary-800 bg-primary-50 border border-primary-100 px-2 py-0.5 rounded flex items-center gap-1"
+                >
                   <Check size={11} /> {f}
                 </span>
               ))}
@@ -160,54 +146,48 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     </div>
   );
 
-  const Benefits = () => (
-    <>
-      {product.is_free_cancellation && (
-        <div className="flex items-center gap-1.5 text-sm text-[#00a650] font-semibold mt-2">
-          <Check size={16} strokeWidth={3} /> Cancelamento grátis
-        </div>
-      )}
-    </>
-  );
+  const Benefits = () =>
+    product.is_free_cancellation ? (
+      <div className="flex items-center gap-1.5 text-[13px] text-success font-medium">
+        <Check size={15} strokeWidth={2.5} /> Cancelamento grátis
+      </div>
+    ) : null;
 
   const PricingBox = ({ isVertical }: { isVertical: boolean }) => (
     <div
       className={
         isVertical
-          ? 'mt-auto p-5 border-t border-gray-100 bg-gray-50/50 flex flex-col items-start'
-          : 'w-full sm:w-[260px] p-6 flex flex-col justify-center items-start shrink-0 border-t sm:border-t-0 sm:border-l border-gray-100 bg-gray-50/50'
+          ? 'mt-auto p-4 border-t border-gray-100 flex flex-col items-start'
+          : 'w-full sm:w-[240px] p-5 flex flex-col justify-center items-start shrink-0 border-t sm:border-t-0 sm:border-l border-gray-100'
       }
     >
-      <div className="mb-4">
-        <span className="text-[10px] text-gray-400 font-black uppercase tracking-widest block mb-1">
+      <div className="mb-3">
+        <span className="text-[11px] text-gray-500 font-medium block">
           {isTransfer
-            ? `Total ${isRoundtrip ? '(Ida e Volta)' : 'a partir de'}`
-            : 'Por pessoa a partir de'}
+            ? `Total ${isRoundtrip ? '(ida e volta)' : 'a partir de'}`
+            : 'Por pessoa, a partir de'}
         </span>
 
         <div className="flex items-baseline gap-2">
           {product.compareAtPrice && product.compareAtPrice > displayPrice && (
-            <span className="text-sm text-gray-400 line-through font-medium">
+            <span className="text-[13px] text-gray-400 line-through">
               {formatCurrency(product.compareAtPrice)}
             </span>
           )}
-          <span className="text-3xl font-black text-secondary tracking-tighter leading-none">
+          <span className="text-2xl font-bold text-secondary leading-none">
             {formatCurrency(displayPrice)}
           </span>
         </div>
-        
-        <div className="flex items-center gap-1.5 mt-1 text-success font-bold text-xs uppercase tracking-tight">
-          <CreditCard size={12} />
-          <span>Até 10x sem juros</span>
-        </div>
+
+        <span className="text-[12px] text-gray-500 mt-0.5 block">ou 10x sem juros</span>
       </div>
 
       <button
         onClick={handleClick}
-        className="w-full bg-primary hover:bg-primary-dark text-white text-sm font-black py-4 px-6 rounded-2xl transition-all shadow-lg shadow-primary/20 hover:shadow-primary/40 active:scale-[0.98] flex items-center justify-center gap-2 group/btn"
+        className="w-full bg-primary hover:bg-primary-dark text-white text-sm font-semibold py-2.5 px-5 rounded-lg transition-colors flex items-center justify-center gap-2"
       >
-        <span>RESERVAR AGORA</span>
-        <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+        <span>{isTransfer ? 'Reservar' : 'Ver detalhes'}</span>
+        <ArrowRight size={16} />
       </button>
     </div>
   );
@@ -219,54 +199,46 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     return (
       <div
         onClick={handleClick}
-        className="w-[280px] md:w-[320px] h-full flex flex-col bg-white rounded-3xl shadow-soft border border-gray-100 snap-center hover:shadow-premium transition-all duration-500 group cursor-pointer overflow-hidden"
+        className="w-[280px] md:w-[300px] h-full flex flex-col bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-200 group cursor-pointer overflow-hidden"
       >
         {/* Imagem */}
-        <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-100 shrink-0">
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
-          
-          <button
-            onClick={(e) => e.stopPropagation()}
-            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md text-white hover:bg-white hover:text-red-500 z-20 transition-all shadow-lg flex items-center justify-center"
-          >
-            <Heart size={20} strokeWidth={2.5} />
-          </button>
-          
+        <div className="relative aspect-[3/2] w-full overflow-hidden bg-gray-100 shrink-0">
           {product.imageUrl ? (
             <Image
               src={product.imageUrl}
               alt={product.name}
               fill
-              sizes="(max-width: 768px) 280px, 320px"
-              className="object-cover transition-transform duration-1000 group-hover:scale-110"
+              sizes="(max-width: 768px) 280px, 300px"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-gray-300">
-              <MapPin size={48} />
+              <MapPin size={40} />
             </div>
           )}
 
           {product.is_free_cancellation && (
-            <div className="absolute bottom-4 left-4 z-20 bg-success/90 backdrop-blur-sm text-white text-[10px] font-black px-3 py-1.5 rounded-lg uppercase tracking-widest shadow-lg">
-              Cancelamento Grátis
+            <div className="absolute bottom-3 left-3 bg-white/95 text-success text-[11px] font-semibold px-2 py-1 rounded border border-gray-100 shadow-sm flex items-center gap-1">
+              <Check size={12} strokeWidth={2.5} /> Cancelamento grátis
             </div>
           )}
         </div>
 
-        {/* Conteúdo Central */}
-        <div className="p-6 flex flex-col flex-1">
-          <CategoryTag />
-          <h3 className="text-xl font-black text-secondary line-clamp-2 mb-3 leading-tight group-hover:text-primary transition-colors">
+        {/* Conteúdo */}
+        <div className="p-4 flex flex-col flex-1">
+          <div className="flex items-center justify-between mb-1.5">
+            <CategoryTag />
+            <RatingBadge />
+          </div>
+          <h3 className="text-[15px] font-bold text-secondary line-clamp-2 mb-2 leading-snug group-hover:text-primary transition-colors">
             {product.name}
           </h3>
-          <RatingBadge />
-          <div className="mt-2 space-y-3">
+          <div className="space-y-2">
             <LocationLine />
             <TypeDetails />
           </div>
         </div>
 
-        {/* Pricing Box — base */}
         <PricingBox isVertical={true} />
       </div>
     );
@@ -278,54 +250,48 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <div
       onClick={handleClick}
-      className="flex flex-col sm:flex-row bg-white rounded-3xl shadow-soft border border-gray-100 overflow-hidden hover:shadow-premium transition-all duration-500 group cursor-pointer"
+      className="flex flex-col sm:flex-row bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all duration-200 group cursor-pointer"
     >
       {/* Imagem */}
-      <div className="relative w-full sm:w-[320px] h-64 sm:h-auto shrink-0 overflow-hidden bg-gray-100">
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
-        
-        <button
-          onClick={(e) => e.stopPropagation()}
-          className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md text-white hover:bg-white hover:text-red-500 z-20 transition-all shadow-lg flex items-center justify-center"
-        >
-          <Heart size={20} strokeWidth={2.5} />
-        </button>
-
+      <div className="relative w-full sm:w-[280px] h-56 sm:h-auto shrink-0 overflow-hidden bg-gray-100">
         {product.imageUrl ? (
           <Image
             src={product.imageUrl}
             alt={product.name}
             fill
-            sizes="(max-width: 640px) 100vw, 320px"
-            className="object-cover group-hover:scale-110 transition-transform duration-1000"
+            sizes="(max-width: 640px) 100vw, 280px"
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
           />
         ) : (
           <div className="flex items-center justify-center h-full text-gray-300">
-            <MapPin size={48} />
+            <MapPin size={40} />
           </div>
         )}
 
         {product.is_free_cancellation && (
-          <div className="absolute bottom-4 left-4 z-20 bg-success/90 backdrop-blur-sm text-white text-[10px] font-black px-3 py-1.5 rounded-lg uppercase tracking-widest shadow-lg">
-            Cancelamento Grátis
+          <div className="absolute bottom-3 left-3 bg-white/95 text-success text-[11px] font-semibold px-2 py-1 rounded border border-gray-100 shadow-sm flex items-center gap-1">
+            <Check size={12} strokeWidth={2.5} /> Cancelamento grátis
           </div>
         )}
       </div>
 
-      {/* Informações (Centro) */}
-      <div className="flex-1 p-6 sm:p-8 flex flex-col justify-start">
-        <CategoryTag />
-        <h3 className="text-2xl font-black text-secondary line-clamp-2 mb-4 leading-tight group-hover:text-primary transition-colors">
+      {/* Informações */}
+      <div className="flex-1 p-5 flex flex-col justify-start">
+        <div className="flex items-center gap-3 mb-1.5">
+          <CategoryTag />
+          <span className="text-gray-300">·</span>
+          <RatingBadge />
+        </div>
+        <h3 className="text-lg font-bold text-secondary line-clamp-2 mb-3 leading-snug group-hover:text-primary transition-colors">
           {product.name}
         </h3>
-        <RatingBadge />
-        <div className="mt-4 space-y-4 max-w-lg">
+        <div className="space-y-2.5 max-w-lg">
           <LocationLine />
           <TypeDetails />
+          <Benefits />
         </div>
       </div>
 
-      {/* Bloco de Preço (Direita) */}
       <PricingBox isVertical={false} />
     </div>
   );

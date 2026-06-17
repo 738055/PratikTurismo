@@ -214,7 +214,7 @@ export interface PassengerAgendaPDFData {
 
 export const PassengerAgendaTemplate = ({ data, lang = 'pt' }: { data: PassengerAgendaPDFData; lang?: Language }) => {
   const i = t(lang);
-  const companyName = data.companyName || 'Reserva Turismo / Maia Tours';
+  const companyName = data.companyName || 'Pratik Turismo / Maia Tours';
   const safeItems = Array.isArray(data.items) ? data.items : [];
   const now = new Date();
   const issuedAt = `${now.toLocaleDateString(lang === 'en' ? 'en-US' : lang === 'es' ? 'es-ES' : 'pt-BR')} ${now.toLocaleTimeString(lang === 'en' ? 'en-US' : lang === 'es' ? 'es-ES' : 'pt-BR', { hour: '2-digit', minute: '2-digit' })}`;

@@ -1,86 +1,111 @@
 'use client';
 
-import React from 'react';
-import { Search, MapPin, Calendar, ArrowRight, ShieldCheck, CreditCard, Clock } from 'lucide-react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Search, MapPin, Calendar, Star, ShieldCheck, BadgeCheck, Users } from 'lucide-react';
 
 export const PratikHero = () => {
+  const router = useRouter();
+  const [query, setQuery] = useState('');
+  const [date, setDate] = useState('');
+
+  const handleSearch = () => {
+    const params = new URLSearchParams();
+    if (query.trim()) params.set('q', query.trim());
+    if (date) params.set('date', date);
+    const qs = params.toString();
+    router.push(qs ? `/tours/search?${qs}` : '/tours/search');
+  };
+
   return (
-    <section className="relative pt-32 pb-20 lg:pt-56 lg:pb-40 bg-secondary overflow-hidden">
-      {/* Background Image with optimized overlay */}
-      <div className="absolute inset-0 z-0 opacity-40 bg-[url('https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center animate-fadeIn" />
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-secondary/80 via-secondary/40 to-secondary" />
+    <section className="relative bg-secondary overflow-hidden">
+      {/* Imagem das Cataratas + tratamento editorial (gradiente sólido, sem "orbs") */}
+      <div className="absolute inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1597466599360-3b9775841aec?q=80&w=2400&auto=format&fit=crop')] bg-cover bg-center" />
+      <div className="absolute inset-0 z-0 bg-gradient-to-r from-secondary via-secondary/85 to-secondary/30" />
+      <div className="absolute inset-0 z-0 bg-gradient-to-t from-secondary via-transparent to-secondary/40" />
 
-      {/* Decorative elements */}
-      <div className="absolute top-1/4 -left-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-20 lg:pt-48 lg:pb-28">
+        <div className="max-w-3xl">
+          {/* Credencial — sinal de agência de verdade */}
+          <div className="flex flex-wrap items-center gap-3 mb-7">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[11px] font-semibold uppercase tracking-[0.18em] border border-white/15">
+              <BadgeCheck size={14} className="text-sun" />
+              Agência receptiva · Foz do Iguaçu
+            </span>
+            <span className="inline-flex items-center gap-1.5 text-white/80 text-sm font-semibold">
+              <Star size={15} className="text-sun fill-sun" />
+              4,9 <span className="text-white/50 font-medium">· +12.000 viajantes</span>
+            </span>
+          </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center mb-12">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-xs font-bold uppercase tracking-[0.2em] mb-6 animate-fadeIn">
-            Experiências Inesquecíveis em Foz
-          </span>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter mb-8 leading-[0.9] animate-slide-in-right">
-            Sua viagem de forma <span className="text-brand-gradient italic">Pratik.</span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.02] mb-6">
+            Conheça as Cataratas com quem é{' '}
+            <span className="text-brand-gradient">de Foz.</span>
           </h1>
-          <p className="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto mb-12 font-medium leading-relaxed">
-            Reserve passeios, experiências e transfers com segurança. A melhor agência local agora no seu bolso.
+
+          <p className="text-lg md:text-xl text-white/75 max-w-xl mb-10 leading-relaxed">
+            Passeios, ingressos e transfers organizados por uma equipe local.
+            Reserva online, confirmação imediata e atendimento de quem conhece a região.
           </p>
 
-          {/* Search Card Redesigned */}
-          <div className="max-w-3xl mx-auto bg-white p-2 rounded-3xl shadow-premium flex flex-col md:flex-row gap-2 transition-all hover:shadow-premium-hover">
-            <div className="flex-[1.5] flex items-center bg-gray-50 rounded-2xl px-5 py-4 group transition-colors hover:bg-white border border-transparent hover:border-gray-100">
-              <MapPin className="text-primary mr-4" size={22} />
+          {/* Barra de busca — formato de agência de viagem */}
+          <div className="bg-white rounded-2xl shadow-premium p-2 flex flex-col sm:flex-row gap-2 max-w-2xl">
+            <div className="flex-[1.4] flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors">
+              <MapPin className="text-primary shrink-0" size={20} />
               <div className="text-left w-full">
-                <label className="block text-[10px] uppercase font-black text-gray-400 tracking-wider">Destino</label>
-                <input 
-                  type="text" 
-                  placeholder="Para onde você quer ir?" 
-                  className="w-full bg-transparent outline-none text-secondary font-bold placeholder-gray-400"
+                <label className="block text-[10px] uppercase font-bold text-gray-400 tracking-wider">
+                  Passeio ou destino
+                </label>
+                <input
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+                  placeholder="Cataratas, Itaipu, City Tour…"
+                  className="w-full bg-transparent outline-none text-secondary font-semibold placeholder-gray-400"
                 />
               </div>
             </div>
-            <div className="flex-1 flex items-center bg-gray-50 rounded-2xl px-5 py-4 group transition-colors hover:bg-white border border-transparent hover:border-gray-100">
-              <Calendar className="text-primary mr-4" size={22} />
+            <div className="hidden sm:block w-px bg-gray-100 my-2" />
+            <div className="flex-1 flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors">
+              <Calendar className="text-primary shrink-0" size={20} />
               <div className="text-left w-full">
-                <label className="block text-[10px] uppercase font-black text-gray-400 tracking-wider">Quando</label>
-                <input 
-                  type="text" 
-                  placeholder="Selecione a data"
-                  onFocus={(e) => (e.target.type = "date")}
-                  onBlur={(e) => (e.target.type = "text")}
-                  className="w-full bg-transparent outline-none text-secondary font-bold placeholder-gray-400"
+                <label className="block text-[10px] uppercase font-bold text-gray-400 tracking-wider">
+                  Data
+                </label>
+                <input
+                  type="date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                  className="w-full bg-transparent outline-none text-secondary font-semibold placeholder-gray-400 [color-scheme:light]"
                 />
               </div>
             </div>
-            <button className="bg-accent hover:bg-accent-dark text-white px-10 py-5 rounded-2xl font-black transition-all flex items-center justify-center gap-3 shadow-lg shadow-accent/20 hover:shadow-accent/40 active:scale-95 group">
-              <Search size={22} className="group-hover:scale-110 transition-transform" />
-              <span>EXPLORAR</span>
+            <button
+              onClick={handleSearch}
+              className="bg-accent hover:bg-accent-dark text-white px-7 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-accent/20 hover:shadow-accent/40 active:scale-[0.98]"
+            >
+              <Search size={20} />
+              <span>Buscar</span>
             </button>
           </div>
-        </div>
 
-        {/* Trust features */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto pt-8">
-            <div className="flex items-center justify-center gap-3 text-white/60 hover:text-white transition-colors cursor-default">
-                <ShieldCheck size={20} className="text-accent" />
-                <span className="text-sm font-bold tracking-tight">Pagamento 100% Seguro</span>
-            </div>
-            <div className="flex items-center justify-center gap-3 text-white/60 hover:text-white transition-colors cursor-default">
-                <Clock size={20} className="text-accent" />
-                <span className="text-sm font-bold tracking-tight">Confirmação Imediata</span>
-            </div>
-            <div className="flex items-center justify-center gap-3 text-white/60 hover:text-white transition-colors cursor-default">
-                <CreditCard size={20} className="text-accent" />
-                <span className="text-sm font-bold tracking-tight">Até 10x sem Juros</span>
-            </div>
+          {/* Selos de confiança — credibilidade de empresa */}
+          <div className="flex flex-wrap items-center gap-x-7 gap-y-3 mt-9 text-white/70">
+            <span className="flex items-center gap-2 text-sm font-medium">
+              <ShieldCheck size={18} className="text-primary-300" />
+              Cadastur ativo
+            </span>
+            <span className="flex items-center gap-2 text-sm font-medium">
+              <Users size={18} className="text-primary-300" />
+              Guias credenciados
+            </span>
+            <span className="flex items-center gap-2 text-sm font-medium">
+              <BadgeCheck size={18} className="text-primary-300" />
+              Pagamento em até 10x
+            </span>
+          </div>
         </div>
-      </div>
-      
-      {/* Wave bottom decoration */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10 translate-y-px">
-        <svg className="relative block w-full h-[60px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V120c67.85-23.1,144.33-30.62,214.34-12.17,79,20.8,161.88,61.81,241.87,78.25" className="fill-gray-50"></path>
-        </svg>
       </div>
     </section>
   );

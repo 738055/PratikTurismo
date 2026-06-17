@@ -406,7 +406,7 @@ export default function ManifestoWizard({ initialData, mode }: ManifestoWizardPr
           language: 'es',
           pdfBase64: btoa(binary),
           filename: `Manifesto-${manifestNumber}.pdf`,
-          subject: `Manifesto de Fronteira ${manifestNumber} | Reserva Turismo`,
+          subject: `Manifesto de Fronteira ${manifestNumber} | Pratik Turismo`,
           osNumber: manifestNumber,
           leadPassengerName: passengers.find(p => p.name)?.name || '-',
         }),

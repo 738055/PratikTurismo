@@ -262,7 +262,7 @@ export interface ServiceOrderPDFData {
 
 export const ServiceOrderTemplate = ({ data, lang = 'pt' }: { data: ServiceOrderPDFData; lang?: Language }) => {
   const i = t(lang);
-  const companyName = data.companyName || 'Reserva Turismo / Maia Tours';
+  const companyName = data.companyName || 'Pratik Turismo / Maia Tours';
   const totalPax = (data.paxCount || 0) + (data.childrenCount || 0);
   const safePassengers = Array.isArray(data.passengers) ? data.passengers : [];
   const safeItems = Array.isArray(data.items) ? data.items : [];

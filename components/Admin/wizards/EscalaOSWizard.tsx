@@ -311,7 +311,7 @@ export default function EscalaOSWizard({ initialData, mode }: EscalaOSWizardProp
     doc.line(20, pageHeight - 30, 80, pageHeight - 30);
     doc.text('Motorista / Guia', 50, pageHeight - 25, { align: 'center' });
     doc.line(120, pageHeight - 30, 185, pageHeight - 30);
-    doc.text('Responsável Reserva Turismo', 152, pageHeight - 25, { align: 'center' });
+    doc.text('Responsável Pratik Turismo', 152, pageHeight - 25, { align: 'center' });
     doc.setFontSize(8);
     doc.setTextColor(150);
     doc.text(`Emitido em: ${new Date().toLocaleDateString('pt-BR')}`, 14, pageHeight - 10);
@@ -344,10 +344,10 @@ export default function EscalaOSWizard({ initialData, mode }: EscalaOSWizardProp
           pdfBase64: btoa(binary),
           filename: `OS-${osNumber}.pdf`,
           subject: pdfLang === 'en'
-            ? `Service Order ${osNumber} | Reserva Turismo`
+            ? `Service Order ${osNumber} | Pratik Turismo`
             : pdfLang === 'es'
-              ? `Orden de Servicio ${osNumber} | Reserva Turismo`
-              : `Ordem de Serviço ${osNumber} | Reserva Turismo`,
+              ? `Orden de Servicio ${osNumber} | Pratik Turismo`
+              : `Ordem de Serviço ${osNumber} | Pratik Turismo`,
           osNumber,
           leadPassengerName: services.find(s => s.pax_name)?.pax_name || '-',
         }),

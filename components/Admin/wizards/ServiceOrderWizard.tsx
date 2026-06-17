@@ -477,7 +477,7 @@ export default function ServiceOrderWizard({ initialData, mode, docType }: Servi
             : null;
 
         const pdfData = {
-          companyName: 'Reserva Turismo / Maia Tours',
+          companyName: 'Pratik Turismo / Maia Tours',
           vehiclePlate: mVehicle?.plate || '___________',
           driverName: guide?.name || '___________',
           driverDocument: guide?.document_number || '___________',
@@ -572,7 +572,7 @@ export default function ServiceOrderWizard({ initialData, mode, docType }: Servi
               vehicleModel: it.vehicleModel,
             })),
             notes: data.notes,
-            companyName: 'Reserva Turismo / Maia Tours',
+            companyName: 'Pratik Turismo / Maia Tours',
             vehiclePlate: manifestoVehicleId
               ? vehicles.find(v => v.id === manifestoVehicleId)?.plate || ''
               : items[0]?.assigned_vehicle_id ? vehicles.find(v => v.id === items[0].assigned_vehicle_id)?.plate || '' : '',

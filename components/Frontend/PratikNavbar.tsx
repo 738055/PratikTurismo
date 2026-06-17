@@ -50,7 +50,7 @@ export const PratikNavbar = () => {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`px-4 py-2 rounded-full text-sm font-semibold transition-all hover:bg-primary/5 text-secondary hover:text-primary ${
+                className={`px-3.5 py-2 rounded-md text-sm font-semibold transition-colors hover:bg-primary-50 text-secondary hover:text-primary ${
                   pathname === link.href ? 'text-primary' : ''
                 }`}
               >
@@ -74,7 +74,7 @@ export const PratikNavbar = () => {
             </Link>
             <Link
               href="/login"
-              className="flex items-center gap-2 px-6 py-2.5 rounded-full font-bold transition-all shadow-premium hover:shadow-premium-hover active:scale-95 bg-primary text-white hover:bg-primary-dark"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold transition-colors bg-primary text-white hover:bg-primary-dark"
             >
               <User size={18} />
               Entrar

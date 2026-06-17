@@ -72,7 +72,7 @@ export const manifestoSchema = z.object({
   veiculo_marca_modelo: z.string().min(1, 'Marca/Modelo é obrigatório'),
   veiculo_placa: z.string().min(1, 'Placa é obrigatória'),
   veiculo_ano: z.string().optional(),
-  veiculo_empresa: z.string().optional().default('Reserva Turismo / Maia Tours'),
+  veiculo_empresa: z.string().optional().default('Pratik Turismo / Maia Tours'),
 
   // Motorista
   motorista_nome: z.string().min(1, 'Nome do motorista é obrigatório'),

@@ -10,7 +10,7 @@ import { supabase } from '@/lib/supabase';
 import { ProductDetailPageClient } from './ProductDetailPageClient';
 import { Product } from '@/app/types';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://reservaturismo.com.br';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://pratikturismo.com.br';
 
 // ── Metadados dinâmicos ──────────────────────────────────────────────────────
 export async function generateMetadata({
@@ -26,9 +26,9 @@ export async function generateMetadata({
     .eq('slug', slug)
     .single();
 
-  if (!p) return { title: 'Produto não encontrado | Reserva Turismo' };
+  if (!p) return { title: 'Produto não encontrado | Pratik Turismo' };
 
-  const title = `${p.title} | Reserva Turismo`;
+  const title = `${p.title} | Pratik Turismo`;
   const description =
     p.description?.substring(0, 160) ||
     'Passeio incrível em Foz do Iguaçu. Reserve agora com cancelamento grátis.';
@@ -45,7 +45,7 @@ export async function generateMetadata({
       title,
       description,
       locale: 'pt_BR',
-      siteName: 'Reserva Turismo',
+      siteName: 'Pratik Turismo',
       images: [{ url: image, width: 1200, height: 630, alt: p.title }],
     },
     twitter: {
@@ -148,7 +148,7 @@ export default async function ProductDetailPage({
       price: productData.price.toFixed(2),
       availability: 'https://schema.org/InStock',
       url: `${BASE_URL}/tours/${productData.slug}`,
-      seller: { '@type': 'Organization', name: 'Reserva Turismo' },
+      seller: { '@type': 'Organization', name: 'Pratik Turismo' },
     },
     ...(productData.rating != null && {
       aggregateRating: {
@@ -159,7 +159,7 @@ export default async function ProductDetailPage({
         worstRating: '1',
       },
     }),
-    provider: { '@type': 'Organization', name: 'Reserva Turismo', url: BASE_URL },
+    provider: { '@type': 'Organization', name: 'Pratik Turismo', url: BASE_URL },
   };
 
   return (

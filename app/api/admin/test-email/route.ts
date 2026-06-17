@@ -40,7 +40,7 @@ export async function POST(request: Request) {
     // Verifica a conexão antes de enviar
     await transporter.verify();
 
-    const companyName = settings.company_name || 'Reserva Turismo';
+    const companyName = settings.company_name || 'Pratik Turismo';
 
     await transporter.sendMail({
       from: `"${companyName}" <${settings.smtp_user}>`,

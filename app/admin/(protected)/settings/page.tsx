@@ -164,7 +164,7 @@ export default function SettingsPage() {
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
                   className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none"
-                  placeholder="Reserva Turismo"
+                  placeholder="Pratik Turismo"
                 />
               </div>
               <div>
@@ -184,7 +184,7 @@ export default function SettingsPage() {
                   value={contactEmail}
                   onChange={(e) => setContactEmail(e.target.value)}
                   className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none"
-                  placeholder="contato@reservaturismo.com.br"
+                  placeholder="contato@pratikturismo.com.br"
                 />
               </div>
               <div>
@@ -358,7 +358,7 @@ export default function SettingsPage() {
                   value={smtpUser}
                   onChange={(e) => setSmtpUser(e.target.value)}
                   className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary-500"
-                  placeholder="noreply@reservaturismo.com.br"
+                  placeholder="noreply@pratikturismo.com.br"
                 />
               </div>
               <div>

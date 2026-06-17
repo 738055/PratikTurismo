@@ -30,9 +30,9 @@ async function getSmtpTransporter() {
 }
 
 const LANG_LABELS: Record<Language, Record<string, string>> = {
-  pt: { docAttached: 'Documento Anexo', greeting: 'Olá', body: 'Segue em anexo o documento referente à', regards: 'Reserva Turismo — Foz do Iguaçu, PR' },
-  en: { docAttached: 'Document Attached', greeting: 'Hello', body: 'Please find attached the document for', regards: 'Reserva Turismo — Foz do Iguaçu, PR, Brazil' },
-  es: { docAttached: 'Documento Adjunto', greeting: 'Hola', body: 'Adjuntamos el documento referente a', regards: 'Reserva Turismo — Foz do Iguaçu, PR, Brasil' },
+  pt: { docAttached: 'Documento Anexo', greeting: 'Olá', body: 'Segue em anexo o documento referente à', regards: 'Pratik Turismo — Foz do Iguaçu, PR' },
+  en: { docAttached: 'Document Attached', greeting: 'Hello', body: 'Please find attached the document for', regards: 'Pratik Turismo — Foz do Iguaçu, PR, Brazil' },
+  es: { docAttached: 'Documento Adjunto', greeting: 'Hola', body: 'Adjuntamos el documento referente a', regards: 'Pratik Turismo — Foz do Iguaçu, PR, Brasil' },
 };
 
 export async function POST(request: Request) {
@@ -62,7 +62,7 @@ export async function POST(request: Request) {
     if (body.pdfBase64) {
       pdfBuffer = Buffer.from(body.pdfBase64, 'base64');
       filename = body.filename || 'documento.pdf';
-      subject = body.subject || `Documento | Reserva Turismo`;
+      subject = body.subject || `Documento | Pratik Turismo`;
       osNumber = body.osNumber || '';
       leadPassengerName = body.leadPassengerName || '';
 
@@ -91,16 +91,16 @@ export async function POST(request: Request) {
           flightTime: it.flightTime,
           notes: it.notes,
         })),
-        companyName: osData.companyName || 'Reserva Turismo / Maia Tours',
+        companyName: osData.companyName || 'Pratik Turismo / Maia Tours',
         companyPhone: osData.companyPhone,
       };
       pdfBuffer = await renderToBuffer(<PassengerAgendaTemplate data={pdfData} lang={lang} />);
       filename = `Agenda-${osData.leadPassengerName?.replace(/\s/g, '_') || 'Pax'}.pdf`;
       subject = lang === 'en'
-        ? `Service Schedule — ${osData.leadPassengerName} | Reserva Turismo`
+        ? `Service Schedule — ${osData.leadPassengerName} | Pratik Turismo`
         : lang === 'es'
-          ? `Agenda de Servicios — ${osData.leadPassengerName} | Reserva Turismo`
-          : `Agenda de Serviços — ${osData.leadPassengerName} | Reserva Turismo`;
+          ? `Agenda de Servicios — ${osData.leadPassengerName} | Pratik Turismo`
+          : `Agenda de Serviços — ${osData.leadPassengerName} | Pratik Turismo`;
       osNumber = osData.osNumber || '';
       leadPassengerName = osData.leadPassengerName || '';
 
@@ -111,7 +111,7 @@ export async function POST(request: Request) {
     const labels = LANG_LABELS[lang];
 
     await transporter.sendMail({
-      from: `"Reserva Turismo" <${fromAddress}>`,
+      from: `"Pratik Turismo" <${fromAddress}>`,
       to: body.email,
       subject,
       html: `
