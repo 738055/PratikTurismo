@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { ProductCard } from '@/components/ProductCard';
 import { 
   Map, Clock, Star, ArrowRight, Filter, X, 
-  ChevronDown, Search, SlidersHorizontal, MapPin, Check
+  ChevronDown, ChevronRight, Search, SlidersHorizontal, MapPin, Check
 } from 'lucide-react';
 import { Product } from '@/app/types';
 
