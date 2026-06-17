@@ -1,15 +1,12 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import { createClient } from '@supabase/supabase-js';
 import { renderToBuffer } from '@react-pdf/renderer';
 import { PassengerAgendaTemplate } from '@/components/PDF/PassengerAgendaTemplate';
 import type { PassengerAgendaPDFData } from '@/components/PDF/PassengerAgendaTemplate';
 import type { Language } from '@/components/PDF/translations';
+import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
 
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+const supabaseAdmin = getSupabaseAdmin();
 
 async function getSmtpTransporter() {
   const { data: settings } = await supabaseAdmin

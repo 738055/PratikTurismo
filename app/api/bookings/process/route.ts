@@ -1,43 +1,14 @@
 import { createServerClient } from '@supabase/ssr';
-import { createClient } from '@supabase/supabase-js';
+import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
 export const dynamic = 'force-dynamic';
 
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
-
-const orderAttempts = new Map<string, { count: number; resetAt: number }>();
-const ORDER_RATE_LIMIT_WINDOW = 60_000;
-const ORDER_RATE_LIMIT_MAX = 10;
-
-function checkOrderRateLimit(ip: string): boolean {
-  const now = Date.now();
-  const entry = orderAttempts.get(ip);
-  if (!entry || now > entry.resetAt) {
-    orderAttempts.set(ip, { count: 1, resetAt: now + ORDER_RATE_LIMIT_WINDOW });
-    return true;
-  }
-  if (entry.count >= ORDER_RATE_LIMIT_MAX) return false;
-  entry.count++;
-  return true;
-}
-
-function sanitizeString(input: unknown, maxLength = 255): string {
-  if (typeof input !== 'string') return '';
-  return input.trim().slice(0, maxLength).replace(/<[^>]*>/g, '');
-}
-
-function isValidEmail(email: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && email.length <= 254;
-}
-
 export async function POST(request: Request) {
   let currentStep = 'init';
+  const supabaseAdmin = getSupabaseAdmin();
 
   try {
     const clientIp = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
@@ -90,8 +61,8 @@ export async function POST(request: Request) {
     try {
       const cookieStore = await cookies();
       const supabase = createServerClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co',
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder',
         {
           cookies: {
             getAll() { return cookieStore.getAll(); },

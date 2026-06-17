@@ -1,51 +1,10 @@
 import { headers } from 'next/headers';
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { createClient } from '@supabase/supabase-js';
-
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
-
-// Idempotency: prevent duplicate webhook processing
-const processedEvents = new Set<string>();
-const MAX_PROCESSED_CACHE = 1000;
-
-function markEventProcessed(eventId: string) {
-  if (processedEvents.size > MAX_PROCESSED_CACHE) {
-    const firstKey = processedEvents.values().next().value;
-    if (firstKey) processedEvents.delete(firstKey);
-  }
-  processedEvents.add(eventId);
-}
-
-// Cache Stripe instance (fetched from DB on first use)
-let stripeInstance: Stripe | null = null;
-
-async function getStripe(): Promise<Stripe> {
-  if (stripeInstance) return stripeInstance;
-  const { data: settings } = await supabaseAdmin
-    .from('system_settings')
-    .select('stripe_secret_key')
-    .single();
-  if (!settings?.stripe_secret_key) throw new Error('Stripe key not configured');
-  stripeInstance = new Stripe(settings.stripe_secret_key, { apiVersion: '2023-10-16' });
-  return stripeInstance;
-}
-
-interface BookingItemData {
-  quantity: number;
-  unit_price: number;
-  products: {
-    id: string;
-    cost_price: number;
-    supplier_id: string;
-    suppliers: { stripe_account_id: string; commission_rate: number } | null;
-  } | null;
-}
+import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
 
 export async function POST(request: Request) {
+  const supabaseAdmin = getSupabaseAdmin();
   const body = await request.text();
   const reqHeaders = await headers();
   const sig = reqHeaders.get('stripe-signature');
@@ -117,6 +76,7 @@ export async function POST(request: Request) {
 // ==========================================
 async function handlePaymentSucceeded(paymentIntent: Stripe.PaymentIntent) {
   const stripe = await getStripe();
+  const supabaseAdmin = getSupabaseAdmin();
 
   // 1. Update booking status
   const { data: updatedBooking } = await supabaseAdmin
@@ -267,6 +227,7 @@ async function handlePaymentSucceeded(paymentIntent: Stripe.PaymentIntent) {
 // PAYMENT FAILED / CANCELED
 // ==========================================
 async function handlePaymentFailed(paymentIntent: Stripe.PaymentIntent, eventType: string) {
+  const supabaseAdmin = getSupabaseAdmin();
   const lastError = paymentIntent.last_payment_error;
   const failureMessage = lastError?.message || 'Pagamento recusado';
   const failureCode = lastError?.code || 'unknown';
@@ -341,6 +302,7 @@ async function handlePaymentFailed(paymentIntent: Stripe.PaymentIntent, eventTyp
 // CHARGE REFUNDED (from Stripe dashboard or API)
 // ==========================================
 async function handleChargeRefunded(charge: Stripe.Charge) {
+  const supabaseAdmin = getSupabaseAdmin();
   const paymentIntentId = typeof charge.payment_intent === 'string'
     ? charge.payment_intent
     : charge.payment_intent?.id;
@@ -415,6 +377,7 @@ async function handleChargeRefunded(charge: Stripe.Charge) {
 // ==========================================
 async function handleDisputeCreated(dispute: Stripe.Dispute) {
   const stripe = await getStripe();
+  const supabaseAdmin = getSupabaseAdmin();
   const chargeId = typeof dispute.charge === 'string' ? dispute.charge : dispute.charge?.id;
   if (!chargeId) return;
 
@@ -466,6 +429,7 @@ async function handleDisputeCreated(dispute: Stripe.Dispute) {
 // ==========================================
 async function handleDisputeClosed(dispute: Stripe.Dispute) {
   const stripe = await getStripe();
+  const supabaseAdmin = getSupabaseAdmin();
   const chargeId = typeof dispute.charge === 'string' ? dispute.charge : dispute.charge?.id;
   if (!chargeId) return;
 

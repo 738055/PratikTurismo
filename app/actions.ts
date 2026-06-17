@@ -1,12 +1,7 @@
 'use server';
 
-import { createClient } from '@supabase/supabase-js';
+import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
 import { revalidatePath } from 'next/cache';
-
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
 
 /**
  * Revalidates cache for tour-related pages.
@@ -33,6 +28,8 @@ export async function markTransactionAsPaid(transactionId: string) {
   if (!transactionId) {
     return { error: 'Transaction ID is required.' };
   }
+
+  const supabaseAdmin = getSupabaseAdmin();
 
   try {
     const { data, error } = await supabaseAdmin

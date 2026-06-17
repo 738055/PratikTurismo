@@ -6,12 +6,7 @@ import { renderToBuffer } from '@react-pdf/renderer';
 import QRCode from 'qrcode';
 import { VoucherTemplate } from '@/components/PDF/VoucherTemplate';
 import type { VoucherData } from '@/components/PDF/VoucherTemplate';
-
-// Instanciamos dentro de uma função com fallback vazio para não quebrar o build do Next.js
-const getSupabaseAdmin = () => createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co',
-  process.env.SUPABASE_SERVICE_ROLE_KEY || 'placeholder_key'
-);
+import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
