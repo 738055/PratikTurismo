@@ -2,6 +2,38 @@ import { headers } from 'next/headers';
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
+import { getStripe } from '@/lib/stripe';
+
+// ==========================================
+// IDEMPOTÊNCIA (dedupe de eventos do Stripe)
+// In-memory por instância. Para múltiplas instâncias, mover para tabela/Redis.
+// ==========================================
+const processedEvents = new Set<string>();
+const processedOrder: string[] = [];
+const MAX_PROCESSED = 1000;
+
+function markEventProcessed(eventId: string): void {
+  processedEvents.add(eventId);
+  processedOrder.push(eventId);
+  if (processedOrder.length > MAX_PROCESSED) {
+    const oldest = processedOrder.shift();
+    if (oldest) processedEvents.delete(oldest);
+  }
+}
+
+// ==========================================
+// TIPOS
+// ==========================================
+interface BookingItemData {
+  quantity: number;
+  unit_price: number;
+  products: {
+    id: string;
+    cost_price: number | null;
+    supplier_id: string | null;
+    suppliers: { stripe_account_id: string | null; commission_rate: number | null } | null;
+  } | null;
+}
 
 export async function POST(request: Request) {
   const supabaseAdmin = getSupabaseAdmin();

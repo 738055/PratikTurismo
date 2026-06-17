@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClientComponentClient } from '@/lib/supabaseBrowser';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { useCompanyInfo } from './useCompanyInfo';

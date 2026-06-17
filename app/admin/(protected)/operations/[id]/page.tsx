@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClientComponentClient } from '@/lib/supabaseBrowser';
 import EscalaOSWizard from '@/components/Admin/wizards/EscalaOSWizard';
 import ManifestoWizard from '@/components/Admin/wizards/ManifestoWizard';
 import AgendaPaxWizard from '@/components/Admin/wizards/AgendaPaxWizard';

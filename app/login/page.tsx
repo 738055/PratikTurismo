@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClientComponentClient } from '@/lib/supabaseBrowser';
 import { Mail, Lock, User, Loader2, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { PublicLayout } from '@/components/Layout/PublicLayout';

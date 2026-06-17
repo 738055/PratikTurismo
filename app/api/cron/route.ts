@@ -4,7 +4,13 @@ import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
 
 const supabaseAdmin = getSupabaseAdmin();
 
-export async function GET() {
+export async function GET(request: Request) {
+  // Segurança do Cron: o Vercel envia "Authorization: Bearer $CRON_SECRET".
+  const authHeader = request.headers.get('authorization');
+  if (process.env.CRON_SECRET && authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
     const fifteenMinutesAgo = new Date(Date.now() - 15 * 60 * 1000).toISOString();
 

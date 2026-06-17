@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClientComponentClient } from '@/lib/supabaseBrowser';
 import { Vehicle, DriverGuide } from '@/app/types';
 import { Plus, Edit2, Trash2, Save, X, Search, Truck, UserCheck } from 'lucide-react';
 

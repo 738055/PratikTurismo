@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClientComponentClient } from '@/lib/supabaseBrowser';
 import { Product, Supplier, Category } from '@/app/types';
 import { formatCurrency } from '@/app/lib/productUtils';
 import { Save, ArrowLeft, ArrowRight, Upload, Check, X, Image as ImageIcon, MapPin, Tag, Users, Luggage, Plane, Car, Plus } from 'lucide-react';

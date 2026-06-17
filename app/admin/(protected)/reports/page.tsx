@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClientComponentClient } from '@/lib/supabaseBrowser';
 import { FileText, Download, Filter, BarChart2, PieChart, TrendingUp, Loader2 } from 'lucide-react';
 import { pdf, Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 

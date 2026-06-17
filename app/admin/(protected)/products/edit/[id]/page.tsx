@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClientComponentClient } from '@/lib/supabaseBrowser';
 import ProductFormWrapper from '@/components/Admin/wizards/ProductFormWrapper';
 import { Loader2 } from 'lucide-react';
 import { Product } from '@/app/types';

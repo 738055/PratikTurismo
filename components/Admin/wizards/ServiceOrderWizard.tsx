@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClientComponentClient } from '@/lib/supabaseBrowser';
 import { serviceOrderSchema, ServiceOrderFormData, PassengerFormData, ServiceItemFormData } from './serviceOrderSchema';
 import type { Vehicle, DriverGuide, ServiceOrder } from '@/app/types';
 import {

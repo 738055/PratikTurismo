@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { AdminLayout } from '@/components/Layout/AdminLayout';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClientComponentClient } from '@/lib/supabaseBrowser';
 import { useRouter } from 'next/navigation';
 
 export default function Layout({

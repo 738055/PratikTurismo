@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import PartnersManager from '@/components/Admin/PartnersManager';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClientComponentClient } from '@/lib/supabaseBrowser';
 import { Trash2, Plus, Edit2, Eye, Type, UploadCloud, X, Loader2 } from 'lucide-react';
 
 // O wrapper QuillEditor já encapsula o CSS internamente — nunca importar react-quill/dist/quill.snow.css aqui

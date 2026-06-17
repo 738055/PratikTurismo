@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClientComponentClient } from '@/lib/supabaseBrowser';
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, Users, MapPin, Phone, CheckCircle, Clock, XCircle, Search, FileText } from 'lucide-react';
 
 export default function CalendarPage() {

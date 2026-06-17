@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClientComponentClient } from '@/lib/supabaseBrowser';
 import { tourSchema, TourFormData } from './schemas';
 import { Supplier, Category, Product, ItineraryItem, PricingTier } from '@/app/types';
 import { revalidateTourCache } from '@/app/actions';

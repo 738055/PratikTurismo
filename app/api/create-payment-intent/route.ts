@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
+import { checkPaymentRateLimit } from '@/lib/validation';
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 

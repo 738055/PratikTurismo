@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClientComponentClient } from '@/lib/supabaseBrowser';
 import {
   Search, Calendar, Filter, Download, Eye, FileEdit, Trash2,
   CheckCircle, XCircle, Clock, X, MapPin, CreditCard, RotateCcw, Loader2, AlertTriangle

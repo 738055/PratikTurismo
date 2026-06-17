@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClientComponentClient } from '@/lib/supabaseBrowser';
 import { Search, Mail, Phone, CreditCard, ShoppingBag, MoreHorizontal, Loader2, User } from 'lucide-react';
 
 interface CustomerData {

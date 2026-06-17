@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClientComponentClient } from '@/lib/supabaseBrowser';
 import { Plus, Trash2, Edit2, UploadCloud, X, Loader2 } from 'lucide-react';
 
 export default function PartnersManager() {

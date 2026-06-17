@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { PublicLayout } from '@/components/Layout/PublicLayout';
 import { MapPin, Ticket, Download, Search, AlertCircle, CheckCircle, XCircle, Loader, LogOut } from 'lucide-react';
 import Link from 'next/link';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClientComponentClient } from '@/lib/supabaseBrowser';
 import { pdf } from '@react-pdf/renderer';
 import { VoucherTemplate } from '@/components/PDF/VoucherTemplate';
 import { Booking } from '@/app/types';
