@@ -7,15 +7,16 @@ import QRCode from 'qrcode';
 import { VoucherTemplate } from '@/components/PDF/VoucherTemplate';
 import type { VoucherData } from '@/components/PDF/VoucherTemplate';
 
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
+// Instanciamos dentro de uma função com fallback vazio para não quebrar o build do Next.js
+const getSupabaseAdmin = () => createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co',
+  process.env.SUPABASE_SERVICE_ROLE_KEY || 'placeholder_key'
 );
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
 async function getSmtpTransporter() {
-  const { data: settings } = await supabaseAdmin
+  const { data: settings } = await getSupabaseAdmin()
     .from('system_settings')
     .select('smtp_host, smtp_port, smtp_user, smtp_pass')
     .single();
@@ -110,7 +111,7 @@ export async function POST(request: Request) {
       }
 
       // 1. Busca a booking completa
-      const { data: booking, error: bookingError } = await supabaseAdmin
+      const { data: booking, error: bookingError } = await getSupabaseAdmin()
         .from('bookings')
         .select('*')
         .eq('id', targetBookingId)
@@ -121,7 +122,7 @@ export async function POST(request: Request) {
       }
 
       // 2. Busca os itens da booking para obter product_ids
-      const { data: bookingItems } = await supabaseAdmin
+      const { data: bookingItems } = await getSupabaseAdmin()
         .from('booking_items')
         .select('product_id, product_title, quantity, unit_price, date, pickup_location, metadata')
         .eq('booking_id', targetBookingId);
@@ -133,7 +134,7 @@ export async function POST(request: Request) {
 
       let importantInfoMap: Record<string, string> = {};
       if (productIds.length > 0) {
-        const { data: products } = await supabaseAdmin
+        const { data: products } = await getSupabaseAdmin()
           .from('products')
           .select('id, important_info, metadata')
           .in('id', productIds);
