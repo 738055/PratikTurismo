@@ -17,6 +17,7 @@ import { useLanguage } from '@/app/contexts/LanguageContext';
 import { useCart } from '@/app/contexts/CartContext';
 import { useContent } from '@/app/contexts/ContentContext'; // Consumindo categorias
 import CartDrawer from '../Cart/CartDrawer';
+import { BrandLogo } from '@/components/Frontend/BrandLogo';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -69,15 +70,7 @@ const Navbar = () => {
           <div className="flex h-20 justify-between items-center">
             {/* Logo */}
             <div className="flex flex-shrink-0 items-center">
-              <Link href="/" className="flex items-center gap-2 cursor-pointer">
-                <div className="text-primary-600 font-black text-2xl tracking-tighter flex items-center">
-                   <div className="w-8 h-8 bg-gradient-to-br from-primary-600 to-primary-800 rounded-tr-xl rounded-bl-xl mr-2 shadow-md"></div>
-                   <div className="flex flex-col leading-none">
-                     <span className="text-gray-800 text-xl">RESERVA</span>
-                     <span className="text-primary-600 text-xs font-bold tracking-[0.2em]">TURISMO</span>
-                   </div>
-                </div>
-              </Link>
+              <BrandLogo height={34} />
             </div>
 
             {/* Navegação Desktop (Links Institucionais) */}

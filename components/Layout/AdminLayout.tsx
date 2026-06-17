@@ -21,6 +21,7 @@ import {
   Car,
   UserCheck
 } from 'lucide-react';
+import { BrandLogo } from '@/components/Frontend/BrandLogo';
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -74,10 +75,8 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
         }`}
       >
         <div className="h-full flex flex-col">
-          <div className="h-16 flex items-center justify-center border-b border-gray-100 px-6">
-            <span className="text-2xl font-black text-[#0284c7] tracking-tighter">
-              RESERVA<span className="text-gray-800">TURISMO</span>
-            </span>
+          <div className="h-16 flex items-center border-b border-gray-100 px-5">
+            <BrandLogo height={34} />
             <button className="ml-auto lg:hidden" onClick={() => setIsSidebarOpen(false)}>
               <X size={20} />
             </button>

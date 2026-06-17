@@ -19,8 +19,8 @@ export const PratikHero = () => {
 
   return (
     <section className="relative bg-secondary overflow-hidden">
-      {/* Imagem das Cataratas + tratamento editorial (gradiente sólido, sem "orbs") */}
-      <div className="absolute inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1597466599360-3b9775841aec?q=80&w=2400&auto=format&fit=crop')] bg-cover bg-center" />
+      {/* Imagem real das Cataratas + tratamento editorial (gradiente sólido, sem "orbs") */}
+      <div className="absolute inset-0 z-0 bg-[url('/images/hero-cataratas.jpg')] bg-cover bg-center" />
       <div className="absolute inset-0 z-0 bg-gradient-to-r from-secondary via-secondary/85 to-secondary/30" />
       <div className="absolute inset-0 z-0 bg-gradient-to-t from-secondary via-transparent to-secondary/40" />
 
